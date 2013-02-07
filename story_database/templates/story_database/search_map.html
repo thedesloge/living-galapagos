@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+
+<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="en"> <!--<![endif]-->
+<head>
+	<meta charset="utf-8" />
+
+	<!-- Set the viewport width to device width for mobile -->
+	<meta name="viewport" content="width=device-width" />
+	{% load analytics %}
+	<title>Living Galapagos</title>
+    
+	<!-- Included CSS Files -->
+	<link rel="stylesheet" href="{{ STATIC_URL }}css/foundation.css">
+	<link rel="stylesheet" href="{{ STATIC_URL }}css/app.css">
+    <link rel="stylesheet" href="{{ STATIC_URL }}css/font_style.css">
+    <link rel="stylesheet" href="{{ STATIC_URL }}css/tinybox_style.css">
+
+	<!--[if lt IE 9]>
+		<link rel="stylesheet" href="css/ie.css">
+	<![endif]-->
+
+
+	<!-- IE Fix for HTML5 Tags -->
+	<!--[if lt IE 9]>
+		<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+  <link rel="stylesheet" href="{{ STATIC_URL }}css/styles.css" />
+  <script src="{{ STATIC_URL }}js/jquery.min.js"></script>
+  <script src="{{ STATIC_URL }}js/jquery.videobackground.js"></script>
+
+  <script src="{{ STATIC_URL }}js/tinybox.js"></script>
+  <script type="text/javascript"
+      src="http://maps.googleapis.com/maps/api/js?key=AIzaSyBD5jFc40l_xDWzujxJvsqb3N0c2sxCf3k&sensor=false">
+    </script>
+    <script type="text/javascript">
+	var geoArray = [
+	    {% for story in filtered_list.story_list %}
+	      {% if story.featured_video.thumbnail and story.parent.latitude and story.parent.longitude %}
+	    	{'popupContent': "<div style='top-padding: 5px;'><a href='/{{ language }}/{{ story.parent.slug }}/'><img src='{{ story.featured_video.thumbnail.url }}'/>" +
+	    					 "<div>{{ story.headline }}</div>" + 
+	    					 "</a></div>",   
+	    	 'marker':new google.maps.Marker({
+				position: new google.maps.LatLng({{ story.parent.latitude }},{{ story.parent.longitude }}),
+				title: "{{ story.headline }}"})},
+			{% endif %}
+    	{% endfor %}
+    	]; 
+	    
+      function initialize() {
+    	var width = $("#map_container").width();
+    	var height = $("#map_container").height();
+    	
+    	$("#map_canvas").width(width);
+    	$("#map_canvas").height(height);
+    	  
+        var mapOptions = {
+          center: new google.maps.LatLng(-0.904961,-89.608612),
+          zoom: 8,
+          mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+        var map = new google.maps.Map(document.getElementById("map_canvas"),
+            mapOptions);
+        
+        var infowindow = new google.maps.InfoWindow();
+        
+        for(i=0; i < geoArray.length; i++){
+        	geoArray[i].marker.setMap(map);
+        	
+        	var marker = geoArray[i].marker;
+        	var content = geoArray[i].popupContent;
+        	var index = i;
+        	createClickListener(marker, content, index);
+        	
+        }
+        
+        function createClickListener(marker, content, index){
+        	google.maps.event.addListener(marker, 'click', function() {
+      		  infowindow.setContent(content);
+      		  infowindow.open(map, marker);
+      		});
+        }
+        
+        
+        //Resize Event
+        $(window).resize(function(){
+        	var width = $("#map_container").width();
+        	var height = $("#map_container").height();
+        	
+        	$("#map_canvas").width(width);
+        	$("#map_canvas").height(height);
+		});
+        google.maps.event.trigger(map, "resize");
+
+      }
+    </script>
+    {% if not is_mobile %}
+  	<script>
+			$(document).ready(function() {
+				initialize();
+				$('dl').toggle();
+				$('h2').bind('click', function(event) {
+					event.preventDefault();
+					$(this).next('dl').slideToggle(500, function() {
+						$('.video-bg-controls').videobackground('resize');
+					});
+				});
+				$('body').prepend('<div class="video-background hide-on-phones"></div>');
+				$('.video-background').videobackground({
+					videoSource: ['{{ background_video.h264_background.url }}',
+						'{{ background_video.ogg_background.url }}'], 
+					controlPosition: '.video-background',
+					poster: '{{ background_video.jpg_background.url }}',
+					loop: 'false', 
+					resize: 'true',
+					loadedCallback: function() {
+						$(this).videobackground('mute', {controlPosition: '.video-background'});
+					}
+				});
+			});
+			
+		</script>
+		{% endif %}
+</head>
+<body>
+<div class="container"> <!-- container -->
+    
+		
+
+		<div class="row" id="header"> <!------------LOGO AND NAV------------>
+        	<div class="twelve columns phone-four">
+            	<ul id="header-ul">
+                	<li id="logo-li">
+						<div class="logo-background"/>
+                		<div class="logo"><a href="/{{language}}"><img src="{{ STATIC_URL }}images/logo.png"/></a></div>
+               		</li>
+                	<li id="top-nav-li">
+                    	<ul class="topNav">
+							
+                            <!--<li><a href="{{language}}/credits/">CREDITS</a></li>-->
+                           {% if language == "en" %}
+                            <li><a href="/en/search-map">ENGLISH</a></li>
+                            <li><a href="/es/search-map">SPANISH</a></li>
+                            <li><a href="/{{language}}/about/">ABOUT</a></li>
+                            {% else %}
+                            <li><a href="/en/search-map">INGLES</a></li>
+                            <li><a href="/es/search-map">ESPAÑOL</a></li>
+                            <li><a href="/{{language}}/about/">SOBRE</a></li>
+                            {% endif %}
+                            <li style="border:none;"><a href="http://livinggalapagos.org/blog">BLOG</a></li>  
+                        </ul>
+                    </li>
+                	<li id="top-cream-bar"></li>
+                </ul>
+            </div>
+        </div> <!-- ////END LOGO AND NAV -->
+    
+    
+    <form action="/{{language}}/search/map/" method="post">{% csrf_token %}
+       <div class="row">
+        <div class="twelve columns" id="filterBox" style="background-image:url({{ STATIC_URL }}images/nav_bg.png);  height:100%; ">
+        <div id="filterStories" style="padding-left: 2.5em;"><h1>FILTER STORIES</h1>
+        <div class="row">
+        	<div class="three columns">
+        		<h3>Search</h3>
+        			<label for="id_search"></label>
+        			{{ form.search }}
+        		   
+        	</div>
+        	<div class="three columns">
+        		<h3>Categories</h3><div style="font-face:font-family:museo-sans-300;font-size: 1em;color:#fff;font-weight:normal;line-height:1.5em;margin-top:.5em;">
+        		    {{ form.category_sea }} Sea<br>
+        		    {{ form.category_land }} Land<br>
+        		    {{ form.category_archive }} Archive<br>
+                    </div>
+        	</div>
+        	<div class="three columns">
+        		<h3>Tags<h3>
+        		{{ form.tags }}
+        	</div>
+        	
+        	<div class="three columns" style="float:left;">
+			<center><input id="filter_button" type="submit" value="filter" style="font-family:Caviar Dreams; font-size:3em;"></center>
+        	</div>
+        </div>
+        
+        </div>
+        </div>
+        </div>
+        </form>
+        
+        
+        <div class="row" id="toggleSearch">
+		<div class="divNav">
+		        VIEW: <a href="/{{ language }}/search/">GRID</a> | <a href="/{{language}}/search/map/">MAP</a>
+		</div>
+        </div>
+        <div class="row">
+        	<div id="map_container" class="twelve columns">
+        		<div id="map_canvas" style="width:1000px; height:500px"></div>	
+        	</div>
+        </div>
+        
+        
+                        
+	</div>	<!-- ////END CONTAINER -->
+    
+        
+ <div id="footer"><!------------FOOTER AREA------------>    
+     
+     	<div id="footer-logo">
+         	<img src="{{ STATIC_URL }}images/logo.png" width="250px" height="109px"/>
+         </div>
+
+     	<div id="footer-links">
+		<div class="footerNav hide-on-phones hide-on-tablets">
+         	<ul>
+         		<li><a href="http://www.facebook.com">FACEBOOK</a></li>
+          	<li><a href="http://www.twitter.com">TWITTER</a></li>
+          {% if language == "en" %}
+         		<li><a href="{{language}}/about/">ABOUT</a></li>
+          	<li><a href="/en/search/">ENGLISH</a></li>
+          	<li><a href="/es/search/">SPANISH</a></li>
+          {% else %}
+          	<li><a href="{{language}}/about/">SOBRE</a></li>
+          	<li><a href="/en/search/">INGLES</a></li>
+                 <li><a href="/es/search/">ESPAÑOL</a></li>
+             {% endif %}
+          	<li style="border:none;"><a href="/{{language}}">LIVING GALAPAGOS © 2012</a></li>
+                 </div>
+             </ul>
+         </div>
+         
+ </div><!--////END FOOTER AREA-->
+
+
+
+
+
+	<!-- Included JS Files -->
+
+	<script src="{{STATIC_URL}}js/modernizr.foundation.js"></script>
+	<script src="{{STATIC_URL}}js/foundation.js"></script>
+	<script src="{{STATIC_URL}}js/app.js"></script>
+	{% analytics "UA-36304525-1" %}
+</body>
+</html>
+

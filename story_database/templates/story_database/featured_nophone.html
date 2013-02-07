@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+
+<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="en"> <!--<![endif]-->
+<head>
+	<meta charset="utf-8" />
+
+	<!-- Set the viewport width to device width for mobile -->
+	<meta name="viewport" content="width=device-width" />
+
+	<title>Living Galapagos</title>
+  
+	<!-- Included CSS Files -->
+	<link rel="stylesheet" href="{{ STATIC_URL }}css/foundation.css">
+	<link rel="stylesheet" href="{{ STATIC_URL }}css/app.css">
+    <link rel="stylesheet" href="{{ STATIC_URL }}css/font_style.css">
+    <link rel="stylesheet" href="{{ STATIC_URL }}css/tinybox_style.css">
+
+	<!--[if lt IE 9]>
+		<link rel="stylesheet" href="css/ie.css">
+	<![endif]-->
+
+
+	<!-- IE Fix for HTML5 Tags -->
+	<!--[if lt IE 9]>
+		<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+  <link rel="stylesheet" href="{{ STATIC_URL }}css/styles.css" />
+  <script src="{{ STATIC_URL }}js/jquery.min.js"></script>
+  <script src="{{ STATIC_URL }}js/jquery.videobackground.js"></script>
+  <script src="http://a.vimeocdn.com/js/froogaloop2.min.js"></script>   
+  <script src="{{ STATIC_URL }}js/dylancode.js"></script>
+  <script src="{{ STATIC_URL }}js/tinybox.js"></script>
+  
+<!--   <script src="http://a.vimeocdn.com/js/froogaloop2.min.js"></script>    -->
+  	<script>
+			$(document).ready(function() {
+				$('dl').toggle();
+				$('h2').bind('click', function(event) {
+					event.preventDefault();
+					$(this).next('dl').slideToggle(500, function() {
+						$('.video-bg-controls').videobackground('resize');
+					});
+				});
+				$('body').prepend('<div class="video-background"></div>');
+				$('.video-background').videobackground({
+					videoSource: ['{{ background_video.h264_background.url }}',
+						'{{ background_video.ogg_background.url }}'], 
+					controlPosition: '.video-background',
+					poster: '{{ background_video.jpg_background.url }}',
+					loop: 'false', 
+					resize: 'false',
+					loadedCallback: function() {
+						$(this).videobackground('mute', {controlPosition: '.video-background'});
+					}
+				});
+			});
+		</script>
+</head>
+<body>
+<div class="container"> <!-- container -->
+    
+		
+
+		<div class="row" id="header"> <!------------LOGO AND NAV------------>
+        	<div class="twelve columns">
+            	<ul id="header-ul">
+                	<li id="logo-li"><div class="logo"><a href="/{{language}}"><img src="{{ STATIC_URL }}images/logo.png"/></a></div></li>
+                	<li id="top-nav-li">
+                    	<ul><div class="topNav">
+							
+                            <!--<li><a href="{{language}}/credits/">CREDITS</a></li>-->
+                           {% if language == "en" %}
+                            <li><a href="{{english_link}}">ENGLISH</a></li>
+                            <li><a href="{{spanish_link}}">SPANISH</a></li>
+                            <li><a href="/{{language}}/about/">ABOUT</a></li>
+                            {% else %}
+                            <li><a href="{{english_link}}">INGLES</a></li>
+                            <li><a href="{{spanish_link}}">ESPAÑOL</a></li>
+                            <li><a href="/{{language}}/about/">SOBRE</a></li>
+                            {% endif %}
+                            <li style="border:none;"><a href="http://livinggalapagos.org/blog">BLOG</a></li>  </div>                         
+                        </ul>
+                    </li>
+                	<li id="top-cream-bar"></li>
+                </ul>
+            </div>
+        </div> <!-- ////END LOGO AND NAV -->
+
+	
+
+    	<div class="row"><!-- video player row -->
+        	<div class="twelve columns" id="video-row">
+            
+            	<div class="row"><!-- Creates row so nav/icon div doesn't go over cream color -->
+                	<div class="twelve columns">
+                    
+                    	<div class="row"> <!------------ICON DIV------------>
+                			<div id="icons-div">
+                 			   <ul><li class="icon" id="icon-feat"><img src="http://uncviscom.webfactional.com/static/images/icon1.png" width="30" height="30" /></li>
+                 		   		<li class="icon" id="icon-cat1"><img src="http://uncviscom.webfactional.com/static/images/icon2.png" width="30" height="30" /></li>
+
+                 		   		<li class="icon" id="icon-cat2"><img src="http://uncviscom.webfactional.com/static/images/icon3.png" width="30" height="30" /></li>
+                 		   		<li class="icon" id="icon-search"><img src="http://uncviscom.webfactional.com/static/images/icon4.png" width="30" height="30" /></li>
+                 		   </ul></div>
+               			 </div> <!-- ////END ICON DIV -->
+                         
+                    	<div class="row"> <!------------SIDEBAR DIV------------>
+
+                			<div id="sidebar-div" style="">
+                            	<div id="slidemenu">
+                                    <div class="scroll" id="scroll-feat">
+										FEATURED<br>
+                                        <img src="face.jpg" style="max-width:100%"/>a<br/><br/>
+                                        <img src="face.jpg" style="max-width:100%"/>b<br/><br/>
+                                        <img src="face.jpg" style="max-width:100%"/>c<br/><br/>
+                                        <img src="face.jpg" style="max-width:100%"/>d<br/><br/>
+                                        <img src="face.jpg" style="max-width:100%"/>e<br/><br/>
+                                        <img src="face.jpg" style="max-width:100%"/>f<br/><br/>
+
+                                    </div>
+
+                                    <div class="scroll" id="scroll-cat1">
+                                    	CATEGORY 1<br>
+                                        <img src="face.jpg" style="max-width:100%"/>1<br/><br/>
+                                        <img src="face.jpg" style="max-width:100%"/>2<br/><br/>
+                                        <img src="face.jpg" style="max-width:100%"/>3<br/><br/>
+                                        <img src="face.jpg" style="max-width:100%"/>d<br/><br/>
+                                        <img src="face.jpg" style="max-width:100%"/>e<br/><br/>
+                                        <img src="face.jpg" style="max-width:100%"/>f<br/><br/>
+                                    </div>
+                                    
+                                    <div class="scroll" id="scroll-cat2">
+
+                                    	CATEGORY 2<br>
+                                        <img src="face.jpg" style="max-width:100%"/>z<br/><br/>
+                                        <img src="face.jpg" style="max-width:100%"/>y<br/><br/>
+                                        <img src="face.jpg" style="max-width:100%"/>x<br/><br/>
+
+                                        <img src="face.jpg" style="max-width:100%"/>d<br/><br/>
+                                        <img src="face.jpg" style="max-width:100%"/>e<br/><br/>
+                                        <img src="face.jpg" style="max-width:100%"/>f<br/><br/>
+                                    </div>
+
+                                    <div class="scroll" id="scroll-search">
+
+                                        SEARCH
+                                    </div>
+
+                                    
+                                    <div class="buttons">
+                                        <span class="scroll-btn" id="up-btn">^</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="scroll-btn" id="down-btn">\/</span>
+                                    </div>
+                                    
+                                </div><!--////end slidemenu-->
+                 		   </div>
+               			 </div> <!-- ////END SIDEBAR DIV -->
+                         
+                    	 <div class="eleven columns centered" id="video-div"><!------------VIDEO------------>
+                            <div class="flex-video widescreen vimeo">
+                                <iframe src="http://player.vimeo.com/video/{{story.featured_video.vimeo_id}}?&api=1&player_id=player_1&title=0&byline=0&portrait=0" id="player_1" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+                            </div>
+                        </div><!-- ////END VIDEO -->
+                        
+                    </div>
+                </div> <!-- End row above bottm cream bar -->
+                
+                <div class="row"> <!-- Create bottom cream bar -->
+                	<div id="bottom-cream-bar"></div>
+                </div> <!-- End bottom cream bar --> 
+                
+            </div>
+        </div><!-- ////END VIDEO PLAYER -->
+        
+		
+                
+        <div class = "body-row row"><!------------CONTENT/SIDEBAR------------>
+        
+        	<div class = "eight columns"> <!------------CONTENT AREA------------>
+            
+            	<div class="row"> <!-- Create Text Above Div -->
+                	<div class="twelve columns">
+                    	<div class="divNav">MORE</div>
+                    </div>
+                </div>  <!-- End Text Above Div -->
+                
+                <div class="row"> <!-- Content Box -->
+                    <div class="twelve columns" id="more-box">
+                    	<div class="storyBox">
+                        	<div class="textHead">{{story.headline}}</div>
+                            <div class="textSubHead">{{story.subheadline}}</div>
+                            <div class="textP"> {{story.description}}</div>
+  							<div class="pullQuote">"{{story.quote}}"<br> -{{story.attribute}}</div>
+  						</div> 
+                    </div>
+                </div>
+            </div> <!-- End content box -->
+                
+            <!-- ////END CONTENT AREA -->
+            	
+            <div class = "four columns" style="padding: .5em; margin: -.5em;"> <!------------SIDEBAR AREA------------>
+                
+              <div class="row"><!-- Create Text Above Div -->
+                    <div class ="twelve columns">
+                        <div class="divNav">RELATED CONTENT</div>
+                    </div></div>
+          <!-- End Text Above Div -->
+                  
+              {% for related_content in related_content_list %}
+              <div class="row"> <!-- Sidebar One -->    
+                    <div class="sidebar-item twelve columns">	 
+                    	 <div onclick="TINY.box.show({iframe:'http://reframingmexico.org/en/infographics-display/?infographic-id=disability',boxid:'frameless',animate:true, width:876, height:502, top: 193, fixed:false})">
+                    	 <img src="{{related_content.thumbnail.url}}"/>
+            	         <div class="sidebarBoxTitle">{{related_content.headline}}</div>
+                         <div class="sidebarBoxP">{{related_content.description}}</div>
+                         <script type="text/javascript"></script>
+                         </div>
+                    </div>
+                </div> <!-- End Sidebar One -->
+                {% endfor %}
+                    
+            </div> <!-- ////END SIDEBAR AREA -->
+            
+        </div><!-- ////END CONTENT/SIDEBAR ROW -->
+        
+		
+			
+        <div class="body-row row"> <!------------R-BAR------------>
+        
+        	<div class="six columns"><!------------RESOURCES AREA------------>
+            
+				<div class="row"><!-- Create Text Above Resources -->
+                	<div class="twelve columns">
+                    	<div class="divNav">RESOURCES</div>
+                    </div>
+                </div><!-- End Text Above Resources -->
+                
+                 
+                 <div class="row" id="resources-box"><!--Create Resources box-->
+                    {% for resource in resource_list %}
+                    {% if forloop.counter < 4 %}
+                    <div class="row" id="top-resources"><!-- Create Top Resources Row -->
+                        <a href="{{resource.url}}">
+                        <div class="three columns">
+                            <img src="{{resource.resource_image.url}}"/>
+                        </div>
+                        </a>
+                                                 
+                    </div><!-- Ends Top Resources Row -->
+                    {% else %}
+                    <div class="row" id="bottom-resources"><!-- Create Bottom Resources Row -->
+                        <a href="{{resource.url}}">
+                        <div class="three columns">
+                            <img src="{{resource.resource_image.url}}"/>
+                        </div>
+                        </a>
+                                                      
+                    </div>
+                    {% endif %}
+                    {% endfor %}
+                    <!-- Ends Bottom Resources Row -->
+                </div><!--End Resources box-->
+
+            </div> <!------------//// END RESEARCH AREA------------>
+            
+        	<div class="six columns"><!------------RELATED RESEARCH AREA------------>
+            
+				<div class="row"><!-- Create Text Above Research -->
+                <div class="divNav">RESEARCH</div>
+                	<div class="twelve columns">
+                    </div>
+                </div><!-- End Text Above Research -->
+	        <div class="row"><!--Create Research Box-->
+                	{% for research in research_list %}
+                    <div class="twelve columns" id="research-box">
+                    	<div class="researchTitle">{{research.title}}</div>
+                        <div class="institute">{{research.institute}}</div>
+                        <div class="researchP">{{research.short_description}}</div>
+                    </div> {% endfor %}
+                </div><!--End Research Box-->
+                
+            </div><!--////END RELATED RESEARCH AREA-->
+            
+        </div><!--////END R-BAR-->
+                        
+	</div>	<!-- ////END CONTAINER -->
+    
+        
+    <div id="footer"><!------------FOOTER AREA------------>    
+    	<div class="row"><!--Puts content into page margins-->
+        
+        	<div id="footer-logo">
+            	<img src="{{ STATIC_URL }}images/logo.png" width="250px" height="109px"/>
+            </div>
+
+        	<div id="footer-links">
+            	<ul>
+                <div class="footerNav">
+            		<li><a href="#">FACEBOOK</a></li>
+	            	<li><a href="#">TWITTER</a></li>
+            		<li><a href="#">ABOUT</a></li>
+	            	<li><a href="#">CREDITS</a></li>
+	            	<li><a href="#">ENGLISH</a></li>
+	            	<li><a href="#">ESPANOL</a></li>
+	            	<li style="border:none;"><a href="#">LIVING GALAPAGOS © 2012</a></li>
+                    </div>
+                </ul>
+            </div>
+            
+        </div>
+    </div><!--////END FOOTER AREA-->
+
+
+
+
+
+	<!-- Included JS Files -->
+
+	<script src="{{STATIC_URL}}js/modernizr.foundation.js"></script>
+	<script src="{{STATIC_URL}}js/foundation.js"></script>
+	<script src="{{STATIC_URL}}js/app.js"></script>
+
+</body>
+</html>
+

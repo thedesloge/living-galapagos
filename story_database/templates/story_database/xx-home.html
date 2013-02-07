@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+
+<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="en"> <!--<![endif]-->
+<head>
+	<meta charset="utf-8" />
+
+	<!-- Set the viewport width to device width for mobile -->
+	<meta name="viewport" content="width=device-width" />
+
+	<title>Living Galapagos</title>
+  	{% load analytics %}
+	<!-- Included CSS Files -->
+	<link rel="stylesheet" href="{{ STATIC_URL }}css/foundation.css">
+	<link rel="stylesheet" href="{{ STATIC_URL }}css/dimlights.css">
+	<link rel="stylesheet" href="{{ STATIC_URL }}css/app.css">
+    <link rel="stylesheet" href="{{ STATIC_URL }}css/font_style.css">
+    <link rel="stylesheet" href="{{ STATIC_URL }}css/tinybox_style.css">
+
+	<!--[if lt IE 9]>
+		<link rel="stylesheet" href="css/ie.css">
+	<![endif]-->
+
+
+	<!-- IE Fix for HTML5 Tags -->
+	<!--[if lt IE 9]>
+		<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+  <link rel="stylesheet" href="{{ STATIC_URL }}css/styles.css" />
+  <script src="{{ STATIC_URL }}js/jquery.min.js"></script>
+  <script src="{{ STATIC_URL }}js/dimlights.js"></script>
+  <script src="{{ STATIC_URL }}js/jquery.videobackground.js"></script>
+  <script src="http://a.vimeocdn.com/js/froogaloop2.min.js"></script> 
+  <script src="http://d3js.org/d3.v2.min.js " type="text/javascript"></script>  
+  <script src="{{ STATIC_URL }}js/dylancode.js"></script>
+  <script src="{{ STATIC_URL }}js/tinybox.js"></script>
+  
+<!--   <script src="http://a.vimeocdn.com/js/froogaloop2.min.js"></script>    -->
+  	<script>
+			$(document).ready(function() {
+				$('dl').toggle();
+				$('h2').bind('click', function(event) {
+					event.preventDefault();
+					$(this).next('dl').slideToggle(500, function() {
+						$('.video-bg-controls').videobackground('resize');
+					});
+				});
+				$('body').prepend('<div class="video-background"></div>');
+				$('.video-background').videobackground({
+					videoSource: ['{{ background_video.h264_background.url }}',
+						'{{ background_video.ogg_background.url }}'], 
+					controlPosition: '.video-background',
+					poster: '{{ background_video.jpg_background.url }}',
+					loop: 'false', 
+					resize: 'true',
+					loadedCallback: function() {
+						$(this).videobackground('mute', {controlPosition: '.video-background'});
+					}
+				});
+			});
+		</script>
+		<script type="text/javascript">
+			function hideVideo() {
+				//$('.flex-video').css({'visibility':'hidden'});
+			}
+			
+		
+	</script>
+</head>
+<body>
+<div class="container"> <!-- container -->
+
+		<div class="row" id="header"> <!------------LOGO AND NAV------------>
+        	<div class="twelve columns phone-four">
+            	<ul id="header-ul">
+                	<li id="logo-li">
+						<div class="logo-background"/>
+                		<div class="logo"><a href="/{{language}}"><img src="{{ STATIC_URL }}images/logo.png"/></a></div>
+               		</li>
+                	<li id="top-nav-li">
+                    	<ul class="topNav">
+							
+                            <!--<li><a href="{{language}}/credits/">CREDITS</a></li>-->
+                           {% if language == "en" %}
+                            <li><a href="{{english_link}}">ENGLISH</a></li>
+                            <li><a href="{{spanish_link}}">SPANISH</a></li>
+                            <li><a href="/{{language}}/about/">ABOUT</a></li>
+                            {% else %}
+                            <li><a href="{{english_link}}">INGLES</a></li>
+                            <li><a href="{{spanish_link}}">ESPAÑOL</a></li>
+                            <li><a href="/{{language}}/about/">SOBRE</a></li>
+                            {% endif %}
+                            <li style="border:none;"><a href="http://livinggalapagos.org/blog">BLOG</a></li>  
+                        </ul>
+                    </li>
+                	<li id="top-cream-bar"></li>
+                </ul>
+            </div>
+        </div> <!-- ////END LOGO AND NAV -->
+
+    	<div class="row" id="vidrow-home"><!-- video player row -->
+        	<div class="twelve columns phone-four" id="video-row" style="z-index: 10;">
+            
+            	<div class="row"><!-- Creates row so nav/icon div doesn't go over cream color -->
+                	<div class="twelve columns phone-four" id="vidrow2">
+                      <div id="homePlayBtn" ><img src="{{ STATIC_URL }}images/play.png"></div>
+                    	<div class="row hide-on-phones"> <!------------ICON DIV------------>
+                			<div class="twelve columns" id="icons-div-home">
+                                <ul>
+                                   
+                                    <li class="icon" id="icon-cat1">
+                                   	</li>
+                                    <li class="icon" id="icon-cat2">
+                                   	</li>
+                                   	
+                                    <li class="icon" id="icon-search">
+                                    	<a href="/search">
+                                    		<div style="height: 50px; width: 50px;"></div>
+                                    	</a>
+                                   	</li>
+                               </ul>
+                             </div>
+               			 </div> <!-- ////END ICON DIV -->
+                         
+                    	<div class="row hide-on-phones"> <!------------SIDEBAR DIV------------>
+
+                			<div id="sidebar-div">
+                			    <div class="buttons" id="topbutton">
+                			    	<div class="scroll-btn" id="up-btn">
+                			    		<img src="{{ STATIC_URL }}/images/uparrow.png"/>
+                			    	</div>
+                			    </div>
+                            	<div id="slidemenu">
+                            	<div class="scroll" id="videotext">
+                            		<img src=" {{ title_card.url }}"/>
+                            	</div>
+                                <div class="scroll" id="scroll-cat1">
+                                	<span class="shadow">SEA</span><br>
+                                        {% for category_story in category_sea_stories %}
+                                          {% if category_story.thumbnail %}
+                                            <div class="menu-img">
+                                            	<a href="/{{language}}/{{category_story.slug}}/"><img src="{{ category_story.thumbnail.url}}"/>
+                                            	  <div class="menu-hover">
+                                            	  	<p>{{ category_story.title }}</p>
+                                            	  </div>
+                                            	</a>
+                                            </div>
+										  {% endif %}
+										{% endfor %}
+                                    </div>
+                                    
+                                    <div class="scroll" id="scroll-cat2">
+										<span class="shadow">LAND</span><br>
+                                        {% for category_story in category_land_stories %}
+                                          {% if category_story.thumbnail %}
+                                            <div class="menu-img">
+											 <a href="/{{language}}/{{category_story.slug}}/"><img src="{{ category_story.thumbnail.url}}" style="max-width:100%"/>
+											  <div class="menu-hover">
+											   <p>{{ category_story.title }}</p>
+											  </div>
+											 </a>
+										    </div>
+										  {% endif %}
+										{% endfor %}
+                                    </div>
+
+                                    <div class="scroll" id="scroll-search">
+
+                                        SEARCH
+                                    </div>
+                                    
+                                </div><!--////end slidemenu-->
+                                <div class="buttons" id="botbutton">
+                                	<div class="scroll-btn" id="down-btn">
+                                		<img src="{{ STATIC_URL }}/images/downarrow.png"/>
+                                	</div>
+                                </div>
+                                
+                 		   </div>
+                 		   <div class="twelve columns" id="rightFloatBar"></div>
+               			 </div> <!-- ////END SIDEBAR DIV -->
+                         
+                    	 <div class="eleven columns centered" id="video-div"><!------------VIDEO------------>
+                            <div class="flex-video widescreen vimeo">
+                                <iframe src="http://player.vimeo.com/video/{{story.featured_video.vimeo_id}}?&api=1&player_id=player_1&title=0&byline=0&portrait=0" id="player_1" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+                            </div>
+                        </div><!-- ////END VIDEO -->
+                        
+                    </div>
+                </div> <!-- End row above bottm cream bar -->
+			</div>
+        </div>                
+        <div class="row" id="bottom-cream-bar-container"> <!-- Create bottom cream bar -->
+           	<div id="bottom-cream-bar"></div>
+        </div> <!-- End bottom cream bar --> 
+		
+              
+        <div class = "body-row row"> <!------------CONTENT AREA------------>
+            {% if related_content_list|length > 0 %}
+              <div class = "eight columns"> <!------------CONTENT AREA------------>
+            {% else %}
+              <div class = "twelve columns"> <!------------CONTENT AREA------------>
+            {% endif %}
+            	<div class="row"> <!-- Create Text Above Div -->
+                	<div class="twelve columns">
+                    	{% if language == 'en' %}
+                    	<div class="divNav">MORE</div>
+                    	{% else %}
+                    	<div class="divNav">MAS</div>
+                    	{% endif %}
+                    </div>
+                </div>  <!-- End Text Above Div -->
+                
+                <div class="row"> <!-- Content Box -->
+                    <div class="twelve columns" id="more-box">
+                    	<div class="storyBox">
+                        	<div class="textHead">{{story.headline}}</div>
+                            <div class="textSubHead">{{story.subheadline}}</div>
+                            <div class="textP"> {{story.description|linebreaks }}</div>
+  							<div class="pullQuote">"{{story.quote}}"<br> {% if story.quote_attribution %} -{{story.quote_attribution}} {% endif %}</div>
+  						</div> 
+                    </div>
+                </div>
+            </div> <!-- End content box -->
+                
+            <!-- ////END CONTENT AREA -->
+            {% if related_content_list|length > 0 %}
+            <div class = "four columns hide-on-phones" style="padding: .5em; margin: -.5em;"> <!------------SIDEBAR AREA------------>  
+              <div class="row"><!-- Create Text Above Div -->
+                    <div class ="twelve columns phone-four">
+                        <div class="divNav">RELATED CONTENT</div>
+                    </div>
+              </div>
+          <!-- End Text Above Div -->
+                  
+              {% for related_content in related_content_list %}
+              <div class="row"> <!-- Sidebar One -->    
+                    <div class="sidebar-item twelve columns phone-four">
+                    	<div class="sidebar-holder">	 
+                    	 <div onclick="TINY.box.show({iframe:'{{ related_content.link }}',boxid:'frameless',animate:true, width:1200, height:675, fixed:false})">
+                    	 <img src="{{related_content.thumbnail.url}}" width="100%"/>
+                    	 <div class="sidebar-text">
+                    	 	<div class="sidebarBoxTitle">{{related_content.headline}}</div>
+                         	<div class="sidebarBoxP">{{related_content.description}}</div>
+                    	 </div>
+                         </div>
+                         </div>
+                    </div>
+                </div> <!-- End Sidebar One -->
+                {% endfor %}
+                    
+            </div> <!-- ////END SIDEBAR AREA -->
+            
+            {% endif%}    
+        </div><!-- ////END CONTENT/SIDEBAR ROW -->
+        
+        
+		
+			
+        <div class="body-row row hide-on-phones"> <!------------R-BAR------------>
+            {% if resource_list|length > 1 %}
+        	<div class="six columns"><!------------RESOURCES AREA------------>
+                
+				<div class="row"><!-- Create Text Above Resources -->
+                	<div class="twelve columns">
+                    	<div class="divNav">RESOURCES</div>
+                    </div>
+                </div><!-- End Text Above Resources -->
+                
+                 <div class="row" id="resources-box"><!--Create Resources box-->
+                    {% for resource in resource_list %}
+                    {% if forloop.counter < 4 %}
+                    <div class="row" id="top-resources"><!-- Create Top Resources Row -->
+                        <div class="three columns">
+                        <a href="{{resource.url}}">
+                            <img src="{{resource.resource_image.url}}"/>
+                        </a>
+                        </div>
+                                                 
+                    </div><!-- Ends Top Resources Row -->
+                    {% else %}
+                    <div class="row" id="bottom-resources"><!-- Create Bottom Resources Row -->
+                        <div class="three columns">
+                        <a href="{{resource.url}}">
+                            <img src="{{resource.resource_image.url}}"/>
+                        </a>
+                        </div>
+                                                      
+                    </div>
+                    {% endif %}
+                    {% endfor %}
+                    <!-- Ends Bottom Resources Row -->
+                </div><!--End Resources box-->
+
+            </div> <!------------//// END RESEARCH AREA------------>
+            {% endif %}
+            
+            {% if research_list|length > 1 %}
+        	<div class="six columns"><!------------RELATED RESEARCH AREA------------>
+            
+				<div class="row"><!-- Create Text Above Research -->
+                <div class="divNav">RESEARCH</div>
+                	<div class="twelve columns">
+                    </div>
+                </div><!-- End Text Above Research -->
+	        <div class="row"><!--Create Research Box-->
+                	{% for research in research_list %}
+                    <div class="twelve columns" id="research-box">
+                    	<div class="researchTitle">{{research.title}}</div>
+                        <div class="institute">{{research.institute}}</div>
+                        <div class="researchP">{{research.short_description}}</div>
+                    </div> {% endfor %}
+                </div><!--End Research Box-->
+                
+            </div><!--////END RELATED RESEARCH AREA-->
+           {% endif %}
+            
+        </div><!--////END R-BAR-->
+                        
+	</div>	<!-- ////END CONTAINER -->
+    
+</div> <!-- ////END CONTAINER -->    
+    <div id="footer"><!------------FOOTER AREA------------>    
+        
+        	<div id="footer-logo">
+            	<img src="{{ STATIC_URL }}images/logo.png" width="250px" height="109px"/>
+            </div>
+
+        	<div id="footer-links">
+        		<div class="footerNav hide-on-phones">
+            	<ul>
+            		<li><a href="#">FACEBOOK</a></li>
+	            	<li><a href="#">TWITTER</a></li>
+	            {% if language == "en" %}
+            		<li><a href="{{language}}/about/">ABOUT</a></li>
+	            	<li><a href="{{english_link}}">ENGLISH</a></li>
+	            	<li><a href="{{spanish_link}}">SPANISH</a></li>
+	            {% else %}
+	            	<li><a href="{{language}}/about/">SOBRE</a></li>
+	            	<li><a href="{{english_link}}">INGLES</a></li>
+                    <li><a href="{{spanish_link}}">ESPAÑOL</a></li>
+                {% endif %}
+	            	<li style="border:none;"><a href="{{language}}">LIVING GALAPAGOS © 2012</a></li>
+                    
+                </ul>
+                </div>
+            </div>
+            
+    </div><!--////END FOOTER AREA-->
+    <div class="dim"></div>
+    
+
+
+
+
+
+	<!-- Included JS Files -->
+
+	<script src="{{STATIC_URL}}js/modernizr.foundation.js"></script>
+	<script src="{{STATIC_URL}}js/foundation.js"></script>
+	<script src="{{STATIC_URL}}js/app.js"></script>
+	{% analytics "UA-34853305-1" %}
+</body>
+</html>
+

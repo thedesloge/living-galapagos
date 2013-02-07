@@ -1,0 +1,8 @@
+The following two Django modules are needed
+
+1. Django Piston
+   https://bitbucket.org/jespern/django-piston/wiki/Home
+
+2. django-multilingual-model
+   https://github.com/dokterbob/django-multilingual-model
+
