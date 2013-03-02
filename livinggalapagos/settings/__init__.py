@@ -9,7 +9,7 @@ HOSTS = {
 
 from local import *
 
-if HOST_NAME == HOSTS['Donaldo.local']:
+if HOST_NAME == 'Donaldo.local':
     try:
         from uat import *
     except Exception, e:

@@ -3,7 +3,7 @@ import zipfile
 import datetime
 from django.db import models
 from multilingual_model.models import MultilingualModel, MultilingualTranslation
-from livinggalapagos.story_database.zipstorage import ZipStorage
+from story_database.zipstorage import ZipStorage
 from django.core.files.storage import FileSystemStorage
 from django.template.defaultfilters import slugify
 
