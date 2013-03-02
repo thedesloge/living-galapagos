@@ -3,7 +3,7 @@ import zipfile
 import datetime
 from django.db import models
 from hvad.models import TranslatableModel, TranslatedFields
-from language_test.zipstorage import ZipStorage
+from story_database.zipstorage import ZipStorage
 from django.core.files.storage import FileSystemStorage
 from django.template.defaultfilters import slugify
 
