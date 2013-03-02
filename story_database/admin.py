@@ -1,118 +1,64 @@
-from livinggalapagos.story_database.models import * 
 from django.contrib import admin
-from multilingual_model.admin import TranslationInline
+from django import forms
+from language_test.models import *
+from hvad.admin import TranslatableAdmin
 
-class CategoryTranslationInline(TranslationInline):
-  model = Category_Translation
+class StoryPageAdmin(TranslatableAdmin):
+  model = StoryPage
+  list_display = ('name', 'video')
+  list_display_links = ('name', 'video',)
+  list_filter = ('category', 'tags', 'creation_date', 'last_modified')
+  filter_horizontal = ('tags', 'related_stories', 'interactives')
+  raw_id_fields = ('video',)
+  autocomplete_lookup_fields = {
+    'fk': ['video'],
+  }
+  search_fields  = ['name']
 
-class CategoryAdmin(admin.ModelAdmin):
-  prepopulated_fields = {"slug":("name",)}
-  list_display = ['name']
-  inlines = [CategoryTranslationInline]
-
-class TagTranslationInline(TranslationInline):
-  model = Tag_Translation
-
-class TagAdmin(admin.ModelAdmin):
-  prepopulated_fields = {"slug":("name",)}
-  list_display = ['name'];
-  inlines = [TagTranslationInline]
-
-class PosterFrameAdmin(admin.ModelAdmin):
-  prepopulated_fields = {"slug":("name",)}
-  list_display = ['name']
-
-class RelatedContentTranslationInline(TranslationInline):
-  model = Related_Content_Translation
-
-class RelatedContentAdmin(admin.ModelAdmin):
-  prepopulated_fields = {"slug":("name",)}
-  list_display = ['name']
-  inlines = [RelatedContentTranslationInline]
-
-class InfographicTranslationInline(TranslationInline):
-  prepopulated_fields = {"slug":("title",)}
-  model = Infographic_Translation
-
-class InfographicAdmin(admin.ModelAdmin):
-  prepopulated_fields = {"slug":("name",)}
-  list_display = ['name']
-  inlines = [InfographicTranslationInline]
-
-class PhotoGalleryTranslationInline(TranslationInline):
-  model = Photo_Gallery_Translation
-
-class PhotoGalleryAdmin(admin.ModelAdmin):
-  prepopulated_fields = {"slug":("name",)}
-  list_display = ['name']
-  inlines = [PhotoGalleryTranslationInline]
-
-class PhotoTranslationInline(TranslationInline):
-  model = Photo_Translation
-
-class PhotoAdmin(admin.ModelAdmin):
-  prepopulated_fields = {"slug":("name",)}
-  list_display = ['name']
-  inlines = [PhotoTranslationInline]
-
-class StoryTranslationInline(TranslationInline):
-  model = Story_Translation
-  fieldsets = [
-       (None, {'fields': ['language_code']}),
-       ('Translation', {'fields' : ['headline', 'subheadline', 'single_line_description', 'description', 'quote', 'quote_attribution','poster_frame','featured_video', 'related_content'], 'classes' : ['collapse']})] 
-
-class StoryAdmin(admin.ModelAdmin):
-  prepopulated_fields = {"slug":("name",)}
-  list_display = ['name', 'creation_date', 'last_modified', 'menu_order']
+class InteractiveAdmin(TranslatableAdmin):
+  model = Interactive
+  list_display = ('name',)
+  list_display_links = ('name',)
+  list_filter = ('category', 'tag', 'creation_date', 'last_modified')
+  filter_horizontal = ('tag',)
+  raw_id_fields = ('category',)
+  autocomplete_lookup_fields = {
+    'fk': ['category']
+  }
   search_fields = ['name']
-  list_filter = ['creation_date']
-  inlines = [StoryTranslationInline]
+  
+class VideoAdmin(TranslatableAdmin):
+  model = Video
+  list_filter = ('creation_date', 'last_modified', 'category')
+  search_fields = ['name']
+  
+class ItemInline(admin.TabularInline):
+  model = MenuItem
+  fields = ('name','name_es', 'page', 'position')
+  raw_id_fields = ('page',)
+  sort_field_name = "position"
+  
+  autocomplete_lookup_fields = {
+    'fk': ['page'],
+  }
 
-class ResearchTranslation(TranslationInline):
-  model = Research_Translation
+class FeaturedStoryItemInline(admin.TabularInline):
+  model = FeaturedStoryItem
+  fields = ('page', 'position')
+  raw_id_fields = ('page',)
+  sort_field_name = "position"
+  
+  auto_complete_name = {
+    'fk': ['page'],
+  }
 
-class ResearchAdmin(admin.ModelAdmin):
-  prepopulated_fields = {"slug":("name",)}
-  list_display = ['name']
-  inlines = [ResearchTranslation]
-
-class VideoAdmin(admin.ModelAdmin):
-  prepopulated_fields = {"slug":("name",)}
-
-class AboutPageTranslationInline(TranslationInline):
-  model = About_Page_Translation
-
-class AboutPageAdmin(admin.ModelAdmin):
-    prepopulated_fields = {"slug":("name",)}
-    inlines = [AboutPageTranslationInline]
-    
-class FeaturedStoryAdmin(admin.ModelAdmin):
-    prepopulated_fields = {"slug":("name",)}
-    
-class BackgroundVideoAdmin(admin.ModelAdmin):
-    prepopulated_field = {"slug":("name",)}
-    
-    
-class TitleCardTranslationInline(TranslationInline):
-  model = Title_Card_Translation 
-
-class TitleCardAdmin(admin.ModelAdmin):
-  prepopulated_fields = {"slug":("name",)}
-  inlines = [TitleCardTranslationInline]
-    
-admin.site.register(Site)
-admin.site.register(Story, StoryAdmin)
+admin.site.register(Menu,
+                  inlines = [ItemInline],
+)
+admin.site.register(FeaturedStory,
+                    inlines = [FeaturedStoryItemInline],
+                    )
+admin.site.register(StoryPage, StoryPageAdmin) 
 admin.site.register(Video, VideoAdmin)
-admin.site.register(Category, CategoryAdmin)
-admin.site.register(Infographic, InfographicAdmin)
-#admin.site.register(Photo, PhotoAdmin)
-#admin.site.register(Photo_Gallery, PhotoGalleryAdmin)
-admin.site.register(Related_Content, RelatedContentAdmin)
-admin.site.register(Poster_Frame, PosterFrameAdmin)
-admin.site.register(Tag, TagAdmin)
-admin.site.register(Resources)
-admin.site.register(Featured_Story, FeaturedStoryAdmin)
-admin.site.register(Research, ResearchAdmin)
-admin.site.register(Background_Video, BackgroundVideoAdmin)
-admin.site.register(About_Page, AboutPageAdmin)
-admin.site.register(Title_Card, TitleCardAdmin)
+admin.site.register(Interactive, InteractiveAdmin)
+
