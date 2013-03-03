@@ -2,14 +2,14 @@ import socket
 
 HOST_NAME = socket.gethostname()
 HOSTS = {
-    'Donaldo.local': 'dons_machine',
+    'dons_machine': 'Donaldo.local',
     'prod': 'prod-server',
     'dev': 'dev-server'
 }
 
 from local import *
 
-if HOST_NAME == 'Donaldo.local':
+if HOST_NAME == HOSTS['dons_machine']:
     try:
         from uat import *
     except Exception, e:
