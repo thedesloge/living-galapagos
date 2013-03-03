@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django import forms
-from language_test.models import *
+from story_database.models import *
 from hvad.admin import TranslatableAdmin
 
 class StoryPageAdmin(TranslatableAdmin):
