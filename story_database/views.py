@@ -1,19 +1,31 @@
 # Create your views here.
 from django.http import Http404
 from django.shortcuts import *
-from livinggalapagos.story_database.models import *
+from story_database.models import *
 from pprint import PrettyPrinter
 from django import forms
 
 
 def home(request, language_code='en'):
-  return render_to_response('story_database/home.html', getLanguageForStory( getFeaturedStory(), language_code, request, True ), context_instance=RequestContext(request));
+  return render_to_response(
+            'story_database/home.html',
+            getLanguageForStory( getFeaturedStoryPage(), language_code, request, True ),
+            context_instance=RequestContext(request)
+        )
 
 def featured_story_page(request, story_slug, language_code='en'):
-  return render_to_response('story_database/featured.html', getLanguageForStory( getStoryBySlug(request, story_slug), language_code, request, False ), context_instance=RequestContext(request))
+  return render_to_response(
+            'story_database/featured.html',
+            getLanguageForStory( getStoryBySlug(request, story_slug), language_code, request, False ),
+            context_instance=RequestContext(request)
+        )
 
 def about(request, language_code='en'):
-  return render_to_response('story_database/about.html', getAboutPage(language_code, request), context_instance=RequestContext(request))
+  return render_to_response(
+            'story_database/about.html',
+            getAboutPage(language_code, request),
+            context_instance=RequestContext(request)
+        )
   
 
 def search(request, language_code='en'):
@@ -134,6 +146,10 @@ def search_map(request, language_code='en'):
     
     return render_to_response('story_database/search_map.html', {'form':form, "filtered_list":story_list, "background_video":background_vid, "language":language_code}, context_instance=RequestContext(request))
 
+
+#END VIEW HANDLING BEGIN support functions
+
+
 def credits(request, language_code='en'):
   return render_to_response('story_database/credits.html', {'foo':'bar', 'language':language_code})
 
@@ -188,14 +204,12 @@ def getAboutPageTitleCard(language):
   except Title_Card.DoesNotExist:
     return {}
 
-def getFeaturedStory():
+def getFeaturedStoryPage():
   
   try:
-      featuredStories = Featured_Story.objects.all()[:1];
-      for featuredStory in featuredStories:
-          story = featuredStory.story
-          return story
-  except Featured_Story.DoesNotExist:
+      featured_story_collection = FeaturedStory.objects.get(name="Main Page")
+      return featured_story_collection.featuredstoryitem_set.all()[0].page
+  except FeaturedStory.DoesNotExist:
       raise Http404
   
 
@@ -222,52 +236,51 @@ def getStoryBySlug(request, storySlug):
   return story
 
 def getLanguageForStory(story, language, request, isFeatured):
-  try:
-    storyTranslation = Story_Translation.objects.get(parent=story, language_code=language)
-  except Story_Translation.DoesNotExist:
-    raise Http404
-  
-  
   
   template_object = {}
   template_object["is_mobile"] = request.is_mobile
-  try:
-      print str(storyTranslation.related_content)
-      relatedContent = Related_Content_Translation.objects.get(parent=storyTranslation.related_content, language_code=language)
-      template_object['related_content_list'] = retrieveRelatedContent(relatedContent, language)
-  except Related_Content_Translation.DoesNotExist:
-    template_object['related_content_list'] = {}
   
-  template_object['research_list'] = getResearchList(story.category, language) 
-  template_object['story'] = storyTranslation
-  template_object['resource_list'] = Resources.objects.all()
+  #Story Language Translated items
+  story_translation = story.translations.get(language_code=language)
+  template_object['headline'] = story_translation.headline
+  template_object['description'] = story_translation.description
+  template_object['quote'] = story_translation.quote
+  template_object['quote_attribution'] = story_translation.quote_attribution
+  
+  #Story Page video
+  template_object['video'] = buildVideoObject(Video.objects.language(language).get(id=story.video.id))
+  
+  #Story Page Related Stories
+  template_object['related_stories'] = {}
+  
+  #Story Page Interactives
+  template_object['interactives'] = {} 
+  
+  
   template_object['language'] = language
-  template_object['site_categories'] = Category_Translation.objects.filter(language_code=language)
-  template_object['stories_in_category'] = getStoriesInCategory(request, story.category, language)
-  template_object['category_sea_stories'] = getStoriesInCategory(request, "category-sea", language)
-  template_object['category_land_stories'] = getStoriesInCategory(request, "category-land", language)
+  #template_object['site_categories'] = Category_Translation.objects.filter(language_code=language)
+  #template_object['stories_in_category'] = getStoriesInCategory(request, story.category, language)
+  #template_object['category_sea_stories'] = getStoriesInCategory(request, "category-sea", language)
+  #template_object['category_land_stories'] = getStoriesInCategory(request, "category-land", language)
   template_object['english_link'] = getEnglishLink(request) 
   template_object['spanish_link'] = getSpanishLink(request)
-  template_object['title_card'] = getTitleCardForStory(story, language)
-
-  try:
-    if isFeatured:
-        cat = Category.objects.get(slug='featuredhp');
-        template_object['background_video'] = Background_Video.objects.get(category=cat)
-    else:
-        template_object['background_video'] = Background_Video.objects.get(category=story.category)
-  except Background_Video.DoesNotExist:  
-    template_object['background_video'] = {}
     
   return template_object
 
-def getTitleCardForStory(story, language):
-    try:
-        titleCard = Title_Card.objects.get(story=story)
-        titleCardTrans = Title_Card_Translation.objects.get(parent=titleCard, language_code=language)
-        return titleCardTrans.title_card
-    except Title_Card.DoesNotExist:
-        return {}
+def buildVideoObject(video):
+    video_obj = {}
+    if video.thumbnail:
+        video_obj['thumbnail'] = video.thumbnail.url
+    
+    video_obj['vimeo_id'] = video.vimeo_id
+    video_obj['headline'] = video.headline
+    video_obj['description'] = video.description
+    video_obj['subheadline'] = video.subheadline
+    if video.poster_frame:
+        video_obj['poster_frame'] = video.poster_frame.url
+    video_obj['single_line_description'] = video.single_line_description
+    
+    return video_obj
     
     
 

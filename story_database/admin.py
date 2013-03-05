@@ -2,10 +2,11 @@ from django.contrib import admin
 from django import forms
 from story_database.models import *
 from hvad.admin import TranslatableAdmin
+from hvad.forms import TranslatableModelForm
 
 class StoryPageAdmin(TranslatableAdmin):
   model = StoryPage
-  list_display = ('name', 'video')
+  list_display = ('name', 'video', 'category', 'all_translations',)
   list_display_links = ('name', 'video',)
   list_filter = ('category', 'tags', 'creation_date', 'last_modified')
   filter_horizontal = ('tags', 'related_stories', 'interactives')
@@ -14,23 +15,29 @@ class StoryPageAdmin(TranslatableAdmin):
     'fk': ['video'],
   }
   search_fields  = ['name']
+  prepopulated_fields = {"slug": ("name",)}
 
 class InteractiveAdmin(TranslatableAdmin):
   model = Interactive
-  list_display = ('name',)
+  list_display = ('name', 'all_translations',)
   list_display_links = ('name',)
   list_filter = ('category', 'tag', 'creation_date', 'last_modified')
   filter_horizontal = ('tag',)
   raw_id_fields = ('category',)
+  prepopulated_fields = {"slug": ("name",)}
   autocomplete_lookup_fields = {
     'fk': ['category']
   }
   search_fields = ['name']
-  
+        
+    
 class VideoAdmin(TranslatableAdmin):
   model = Video
   list_filter = ('creation_date', 'last_modified', 'category')
+  list_display = ('name', 'thumbnail', 'all_translations')
   search_fields = ['name']
+  prepopulated_fields = {"slug": ("name",)}
+  
   
 class ItemInline(admin.TabularInline):
   model = MenuItem
@@ -48,17 +55,49 @@ class FeaturedStoryItemInline(admin.TabularInline):
   raw_id_fields = ('page',)
   sort_field_name = "position"
   
-  auto_complete_name = {
+  autocomplete_lookup_fields = {
     'fk': ['page'],
   }
+  
+class PosterFrameAdmin(admin.ModelAdmin):
+    model = PosterFrame
+    list_display = ('name', 'poster_frame_image',)
+    prepopulated_fields = {"slug": ("name",)}
 
 admin.site.register(Menu,
                   inlines = [ItemInline],
 )
+
+class TagAdmin(TranslatableAdmin):
+    model = Tag
+    list_display = ('name', 'all_translations',)
+    prepopulated_fields = {'slug':('name',)}
+    search_fields = ['name']
+    
+class CategoryAdmin(TranslatableAdmin):
+    model = Category
+    list_display = ('name', 'all_translations')
+    prepopulated_fields = {'slug':('name',)}
+    search_fields = ['name']
+    
+class BackgroundVideoAdmin(admin.ModelAdmin):
+    model = BackgroundVideo
+    prepopulated_fields = {'slug': ('name',)}
+    list_display = ('name', 'category', 'story_page', 'h264_background', 'ogg_background', 'fallback_image')
+    search_fields= ['name']
+    raw_id_fields = ('story_page','category',)
+    autocomplete_lookup_fields = {
+    'fk': ['story_page', 'category'],
+  }
+    
 admin.site.register(FeaturedStory,
                     inlines = [FeaturedStoryItemInline],
                     )
 admin.site.register(StoryPage, StoryPageAdmin) 
 admin.site.register(Video, VideoAdmin)
 admin.site.register(Interactive, InteractiveAdmin)
+admin.site.register(PosterFrame, PosterFrameAdmin)
+admin.site.register(Tag, TagAdmin)
+admin.site.register(Category, CategoryAdmin)
+admin.site.register(BackgroundVideo, BackgroundVideoAdmin)
 
