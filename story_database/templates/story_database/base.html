@@ -157,14 +157,14 @@
 	<div class="row"> <!-- Content Box -->
 	<div class="twelve columns" id="more-box">
 		<div class="storyBox">
-			<div class="textHead">{{story.headline}}</div>
-			<div class="textSubHead">{{story.subheadline}}</div>
+			<div class="textHead">{{headline}}</div>
+			<div class="textSubHead">{{subheadline}}</div>
 			{% if story.about_text %}
 			<div class="textP"> {{story.about_text|linebreaks }}</div>
 			{% else %}
-			<div class="textP"> {{story.description|linebreaks }}</div>
+			<div class="textP"> {{description|linebreaks }}</div>
 			{% endif %}
-			<div class="pullQuote">"{{story.quote}}"<br> {% if story.quote_attribution %} -{{story.quote_attribution}} {% endif %}</div>
+			<div class="pullQuote">"{{quote}}"<br> {% if quote_attribution %} -{{quote_attribution}} {% endif %}</div>
 		</div> 
 	</div>
 </div>

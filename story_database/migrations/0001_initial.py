@@ -8,6 +8,41 @@ from django.db import models
 class Migration(SchemaMigration):
 
     def forwards(self, orm):
+        # Adding model 'Role'
+        db.create_table(u'story_database_role', (
+            (u'id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
+            ('title', self.gf('django.db.models.fields.CharField')(max_length=100)),
+        ))
+        db.send_create_signal(u'story_database', ['Role'])
+
+        # Adding model 'CreditTranslation'
+        db.create_table(u'story_database_credit_translation', (
+            (u'id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
+            ('bio', self.gf('django.db.models.fields.TextField')()),
+            ('language_code', self.gf('django.db.models.fields.CharField')(max_length=15, db_index=True)),
+            ('master', self.gf('django.db.models.fields.related.ForeignKey')(related_name='translations', null=True, to=orm['story_database.Credit'])),
+        ))
+        db.send_create_signal(u'story_database', ['CreditTranslation'])
+
+        # Adding unique constraint on 'CreditTranslation', fields ['language_code', 'master']
+        db.create_unique(u'story_database_credit_translation', ['language_code', 'master_id'])
+
+        # Adding model 'Credit'
+        db.create_table(u'story_database_credit', (
+            (u'id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
+            ('first_name', self.gf('django.db.models.fields.CharField')(max_length=100)),
+            ('last_name', self.gf('django.db.models.fields.CharField')(max_length=100)),
+        ))
+        db.send_create_signal(u'story_database', ['Credit'])
+
+        # Adding M2M table for field role on 'Credit'
+        db.create_table(u'story_database_credit_role', (
+            ('id', models.AutoField(verbose_name='ID', primary_key=True, auto_created=True)),
+            ('credit', models.ForeignKey(orm[u'story_database.credit'], null=False)),
+            ('role', models.ForeignKey(orm[u'story_database.role'], null=False))
+        ))
+        db.create_unique(u'story_database_credit_role', ['credit_id', 'role_id'])
+
         # Adding model 'CategoryTranslation'
         db.create_table(u'story_database_category_translation', (
             (u'id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
@@ -72,7 +107,7 @@ class Migration(SchemaMigration):
             ('last_modified', self.gf('django.db.models.fields.DateField')(auto_now=True, blank=True)),
             ('name', self.gf('django.db.models.fields.CharField')(unique=True, max_length=100)),
             ('slug', self.gf('django.db.models.fields.SlugField')(max_length=50)),
-            ('author', self.gf('django.db.models.fields.CharField')(max_length=255)),
+            ('author', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['story_database.Credit'], null=True, blank=True)),
             ('category', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['story_database.Category'], null=True, blank=True)),
             ('thumbnail', self.gf('django.db.models.fields.files.FileField')(max_length=100, null=True, blank=True)),
         ))
@@ -83,25 +118,10 @@ class Migration(SchemaMigration):
             (u'id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
             ('name', self.gf('django.db.models.fields.CharField')(unique=True, max_length=200)),
             ('slug', self.gf('django.db.models.fields.SlugField')(max_length=50)),
-            ('poster_frame', self.gf('django.db.models.fields.files.ImageField')(max_length=100)),
+            ('is_spanish', self.gf('django.db.models.fields.BooleanField')(default=False)),
+            ('poster_frame', self.gf('django.db.models.fields.files.FileField')(max_length=100)),
         ))
         db.send_create_signal(u'story_database', ['PosterFrame'])
-
-        # Adding model 'InteractiveTranslation'
-        db.create_table(u'story_database_interactive_translation', (
-            (u'id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
-            ('headline', self.gf('django.db.models.fields.CharField')(max_length=255)),
-            ('subheadline', self.gf('django.db.models.fields.CharField')(max_length=255, null=True, blank=True)),
-            ('description', self.gf('django.db.models.fields.TextField')()),
-            ('single_line_description', self.gf('django.db.models.fields.CharField')(max_length=300, null=True, blank=True)),
-            ('infographic_files', self.gf('django.db.models.fields.files.FileField')(max_length=100)),
-            ('language_code', self.gf('django.db.models.fields.CharField')(max_length=15, db_index=True)),
-            ('master', self.gf('django.db.models.fields.related.ForeignKey')(related_name='translations', null=True, to=orm['story_database.Interactive'])),
-        ))
-        db.send_create_signal(u'story_database', ['InteractiveTranslation'])
-
-        # Adding unique constraint on 'InteractiveTranslation', fields ['language_code', 'master']
-        db.create_unique(u'story_database_interactive_translation', ['language_code', 'master_id'])
 
         # Adding model 'Interactive'
         db.create_table(u'story_database_interactive', (
@@ -111,9 +131,22 @@ class Migration(SchemaMigration):
             ('name', self.gf('django.db.models.fields.CharField')(unique=True, max_length=200)),
             ('slug', self.gf('django.db.models.fields.SlugField')(max_length=50)),
             ('category', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['story_database.Category'], null=True, blank=True)),
-            ('thumbnail', self.gf('django.db.models.fields.files.ImageField')(max_length=100)),
+            ('is_spanish', self.gf('django.db.models.fields.BooleanField')(default=False)),
+            ('thumbnail', self.gf('django.db.models.fields.files.FileField')(max_length=100)),
+            ('headline', self.gf('django.db.models.fields.CharField')(max_length=255)),
+            ('subheadline', self.gf('django.db.models.fields.CharField')(max_length=255, null=True, blank=True)),
+            ('description', self.gf('django.db.models.fields.TextField')()),
+            ('infographic_files', self.gf('django.db.models.fields.files.FileField')(max_length=100, null=True)),
         ))
         db.send_create_signal(u'story_database', ['Interactive'])
+
+        # Adding M2M table for field author on 'Interactive'
+        db.create_table(u'story_database_interactive_author', (
+            ('id', models.AutoField(verbose_name='ID', primary_key=True, auto_created=True)),
+            ('interactive', models.ForeignKey(orm[u'story_database.interactive'], null=False)),
+            ('credit', models.ForeignKey(orm[u'story_database.credit'], null=False))
+        ))
+        db.create_unique(u'story_database_interactive_author', ['interactive_id', 'credit_id'])
 
         # Adding M2M table for field tag on 'Interactive'
         db.create_table(u'story_database_interactive_tag', (
@@ -151,7 +184,7 @@ class Migration(SchemaMigration):
             ('latitude', self.gf('django.db.models.fields.DecimalField')(null=True, max_digits=10, decimal_places=6, blank=True)),
             ('longitude', self.gf('django.db.models.fields.DecimalField')(null=True, max_digits=10, decimal_places=6, blank=True)),
             ('video', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['story_database.Video'], null=True, blank=True)),
-            ('thumbnail', self.gf('django.db.models.fields.files.ImageField')(max_length=100, null=True, blank=True)),
+            ('thumbnail', self.gf('django.db.models.fields.files.FileField')(max_length=100, null=True, blank=True)),
         ))
         db.send_create_signal(u'story_database', ['StoryPage'])
 
@@ -232,9 +265,6 @@ class Migration(SchemaMigration):
         # Removing unique constraint on 'StoryPageTranslation', fields ['language_code', 'master']
         db.delete_unique(u'story_database_storypage_translation', ['language_code', 'master_id'])
 
-        # Removing unique constraint on 'InteractiveTranslation', fields ['language_code', 'master']
-        db.delete_unique(u'story_database_interactive_translation', ['language_code', 'master_id'])
-
         # Removing unique constraint on 'VideoTranslation', fields ['language_code', 'master']
         db.delete_unique(u'story_database_video_translation', ['language_code', 'master_id'])
 
@@ -243,6 +273,21 @@ class Migration(SchemaMigration):
 
         # Removing unique constraint on 'CategoryTranslation', fields ['language_code', 'master']
         db.delete_unique(u'story_database_category_translation', ['language_code', 'master_id'])
+
+        # Removing unique constraint on 'CreditTranslation', fields ['language_code', 'master']
+        db.delete_unique(u'story_database_credit_translation', ['language_code', 'master_id'])
+
+        # Deleting model 'Role'
+        db.delete_table(u'story_database_role')
+
+        # Deleting model 'CreditTranslation'
+        db.delete_table(u'story_database_credit_translation')
+
+        # Deleting model 'Credit'
+        db.delete_table(u'story_database_credit')
+
+        # Removing M2M table for field role on 'Credit'
+        db.delete_table('story_database_credit_role')
 
         # Deleting model 'CategoryTranslation'
         db.delete_table(u'story_database_category_translation')
@@ -265,11 +310,11 @@ class Migration(SchemaMigration):
         # Deleting model 'PosterFrame'
         db.delete_table(u'story_database_posterframe')
 
-        # Deleting model 'InteractiveTranslation'
-        db.delete_table(u'story_database_interactive_translation')
-
         # Deleting model 'Interactive'
         db.delete_table(u'story_database_interactive')
+
+        # Removing M2M table for field author on 'Interactive'
+        db.delete_table('story_database_interactive_author')
 
         # Removing M2M table for field tag on 'Interactive'
         db.delete_table('story_database_interactive_tag')
@@ -330,6 +375,20 @@ class Migration(SchemaMigration):
             'master': ('django.db.models.fields.related.ForeignKey', [], {'related_name': "'translations'", 'null': 'True', 'to': u"orm['story_database.Category']"}),
             'translation': ('django.db.models.fields.CharField', [], {'max_length': '100'})
         },
+        u'story_database.credit': {
+            'Meta': {'object_name': 'Credit'},
+            'first_name': ('django.db.models.fields.CharField', [], {'max_length': '100'}),
+            u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
+            'last_name': ('django.db.models.fields.CharField', [], {'max_length': '100'}),
+            'role': ('django.db.models.fields.related.ManyToManyField', [], {'to': u"orm['story_database.Role']", 'symmetrical': 'False'})
+        },
+        u'story_database.credittranslation': {
+            'Meta': {'unique_together': "[('language_code', 'master')]", 'object_name': 'CreditTranslation', 'db_table': "u'story_database_credit_translation'"},
+            'bio': ('django.db.models.fields.TextField', [], {}),
+            u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
+            'language_code': ('django.db.models.fields.CharField', [], {'max_length': '15', 'db_index': 'True'}),
+            'master': ('django.db.models.fields.related.ForeignKey', [], {'related_name': "'translations'", 'null': 'True', 'to': u"orm['story_database.Credit']"})
+        },
         u'story_database.featuredstory': {
             'Meta': {'object_name': 'FeaturedStory'},
             u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
@@ -344,25 +403,20 @@ class Migration(SchemaMigration):
         },
         u'story_database.interactive': {
             'Meta': {'object_name': 'Interactive'},
+            'author': ('django.db.models.fields.related.ManyToManyField', [], {'to': u"orm['story_database.Credit']", 'symmetrical': 'False'}),
             'category': ('django.db.models.fields.related.ForeignKey', [], {'to': u"orm['story_database.Category']", 'null': 'True', 'blank': 'True'}),
             'creation_date': ('django.db.models.fields.DateField', [], {'auto_now_add': 'True', 'blank': 'True'}),
-            u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'last_modified': ('django.db.models.fields.DateField', [], {'auto_now': 'True', 'blank': 'True'}),
-            'name': ('django.db.models.fields.CharField', [], {'unique': 'True', 'max_length': '200'}),
-            'slug': ('django.db.models.fields.SlugField', [], {'max_length': '50'}),
-            'tag': ('django.db.models.fields.related.ManyToManyField', [], {'symmetrical': 'False', 'to': u"orm['story_database.Tag']", 'null': 'True', 'blank': 'True'}),
-            'thumbnail': ('django.db.models.fields.files.ImageField', [], {'max_length': '100'})
-        },
-        u'story_database.interactivetranslation': {
-            'Meta': {'unique_together': "[('language_code', 'master')]", 'object_name': 'InteractiveTranslation', 'db_table': "u'story_database_interactive_translation'"},
             'description': ('django.db.models.fields.TextField', [], {}),
             'headline': ('django.db.models.fields.CharField', [], {'max_length': '255'}),
             u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'infographic_files': ('django.db.models.fields.files.FileField', [], {'max_length': '100'}),
-            'language_code': ('django.db.models.fields.CharField', [], {'max_length': '15', 'db_index': 'True'}),
-            'master': ('django.db.models.fields.related.ForeignKey', [], {'related_name': "'translations'", 'null': 'True', 'to': u"orm['story_database.Interactive']"}),
-            'single_line_description': ('django.db.models.fields.CharField', [], {'max_length': '300', 'null': 'True', 'blank': 'True'}),
-            'subheadline': ('django.db.models.fields.CharField', [], {'max_length': '255', 'null': 'True', 'blank': 'True'})
+            'infographic_files': ('django.db.models.fields.files.FileField', [], {'max_length': '100', 'null': 'True'}),
+            'is_spanish': ('django.db.models.fields.BooleanField', [], {'default': 'False'}),
+            'last_modified': ('django.db.models.fields.DateField', [], {'auto_now': 'True', 'blank': 'True'}),
+            'name': ('django.db.models.fields.CharField', [], {'unique': 'True', 'max_length': '200'}),
+            'slug': ('django.db.models.fields.SlugField', [], {'max_length': '50'}),
+            'subheadline': ('django.db.models.fields.CharField', [], {'max_length': '255', 'null': 'True', 'blank': 'True'}),
+            'tag': ('django.db.models.fields.related.ManyToManyField', [], {'symmetrical': 'False', 'to': u"orm['story_database.Tag']", 'null': 'True', 'blank': 'True'}),
+            'thumbnail': ('django.db.models.fields.files.FileField', [], {'max_length': '100'})
         },
         u'story_database.menu': {
             'Meta': {'object_name': 'Menu'},
@@ -382,9 +436,15 @@ class Migration(SchemaMigration):
         u'story_database.posterframe': {
             'Meta': {'object_name': 'PosterFrame'},
             u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
+            'is_spanish': ('django.db.models.fields.BooleanField', [], {'default': 'False'}),
             'name': ('django.db.models.fields.CharField', [], {'unique': 'True', 'max_length': '200'}),
-            'poster_frame': ('django.db.models.fields.files.ImageField', [], {'max_length': '100'}),
+            'poster_frame': ('django.db.models.fields.files.FileField', [], {'max_length': '100'}),
             'slug': ('django.db.models.fields.SlugField', [], {'max_length': '50'})
+        },
+        u'story_database.role': {
+            'Meta': {'object_name': 'Role'},
+            u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
+            'title': ('django.db.models.fields.CharField', [], {'max_length': '100'})
         },
         u'story_database.storypage': {
             'Meta': {'object_name': 'StoryPage'},
@@ -399,7 +459,7 @@ class Migration(SchemaMigration):
             'related_stories': ('django.db.models.fields.related.ManyToManyField', [], {'symmetrical': 'False', 'to': u"orm['story_database.StoryPage']", 'null': 'True', 'blank': 'True'}),
             'slug': ('django.db.models.fields.SlugField', [], {'max_length': '50'}),
             'tags': ('django.db.models.fields.related.ManyToManyField', [], {'symmetrical': 'False', 'to': u"orm['story_database.Tag']", 'null': 'True', 'blank': 'True'}),
-            'thumbnail': ('django.db.models.fields.files.ImageField', [], {'max_length': '100', 'null': 'True', 'blank': 'True'}),
+            'thumbnail': ('django.db.models.fields.files.FileField', [], {'max_length': '100', 'null': 'True', 'blank': 'True'}),
             'video': ('django.db.models.fields.related.ForeignKey', [], {'to': u"orm['story_database.Video']", 'null': 'True', 'blank': 'True'})
         },
         u'story_database.storypagetranslation': {
@@ -429,7 +489,7 @@ class Migration(SchemaMigration):
         },
         u'story_database.video': {
             'Meta': {'object_name': 'Video'},
-            'author': ('django.db.models.fields.CharField', [], {'max_length': '255'}),
+            'author': ('django.db.models.fields.related.ForeignKey', [], {'to': u"orm['story_database.Credit']", 'null': 'True', 'blank': 'True'}),
             'category': ('django.db.models.fields.related.ForeignKey', [], {'to': u"orm['story_database.Category']", 'null': 'True', 'blank': 'True'}),
             'creation_date': ('django.db.models.fields.DateField', [], {'auto_now_add': 'True', 'blank': 'True'}),
             u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),

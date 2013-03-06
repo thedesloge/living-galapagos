@@ -17,6 +17,25 @@ def common_translated_fields():
                               quote_attribution = models.TextField(blank=True, null=True, verbose_name=u'* Attribution (Optional)'),
       )
 
+class Role(models.Model):
+    title = models.CharField(max_length=100)
+    
+    def __unicode__(self):
+        self.title
+
+class Credit(TranslatableModel):
+    first_name = models.CharField(max_length=100)
+    last_name = models.CharField(max_length=100)
+    role = models.ManyToManyField(Role)
+    
+    translations = TranslatedFields(
+        bio = models.TextField(verbose_name="* Bio | About (Brief)"),
+    )
+    
+    def __unicode__(self):
+        return self.first_name, " ", self.last_name
+
+
 class Category(TranslatableModel):
     class Meta:
         verbose_name = 'Category'
@@ -57,7 +76,7 @@ class Video(TranslatableModel):
     last_modified = models.DateField(auto_now=True)
     name = models.CharField(max_length=100, unique=True)
     slug = models.SlugField()
-    author = models.CharField(max_length=255)
+    author = models.ForeignKey(Credit, null=True, blank=True)
     category = models.ForeignKey('Category', blank=True, null=True)
     thumbnail = models.FileField(upload_to='uploads/video/thumbnails/%Y/%m/%d', blank=True, null=True, verbose_name=u'Thumbnail (Optional)')
     
@@ -95,6 +114,7 @@ class PosterFrame(models.Model):
     
     name = models.CharField(max_length=200, unique=True)
     slug = models.SlugField()
+    is_spanish = models.BooleanField(blank=True, default=False, verbose_name="Is Spanish Translation")
     poster_frame = models.FileField(upload_to=get_poster_frame_path)
     
     def poster_frame_image(self):
@@ -108,7 +128,7 @@ class PosterFrame(models.Model):
     def autocomplete_search_fields():
         return ("id__iexact", "name__icontains",)
  
-class Interactive(TranslatableModel):
+class Interactive(models.Model):
     class Meta:
         verbose_name = "Interactive | Infographic"
         verbose_name_plural = "Interactives | Infographics"
@@ -124,21 +144,27 @@ class Interactive(TranslatableModel):
     creation_date = models.DateField(auto_now_add=True)
     last_modified = models.DateField(auto_now=True)
     name = models.CharField(max_length=200, unique=True)
+    author = models.ManyToManyField(Credit)
     slug = models.SlugField()
     category = models.ForeignKey('Category', blank=True, null=True)
     tag = models.ManyToManyField(Tag, verbose_name="Tags",blank=True, null=True)
+    is_spanish = models.BooleanField(blank=True, default=False, verbose_name="Is Spanish Translation")
     thumbnail = models.FileField(upload_to=get_thumbnail_path)
-    
-    translations = TranslatedFields(
-        headline = models.CharField(max_length=255, verbose_name=u'* Title/Headline'),
-        subheadline = models.CharField(max_length=255, blank=True, null=True, verbose_name=u'* Subheadline'),
-        description = models.TextField(verbose_name=u'* Description'),
-        single_line_description = models.CharField(max_length=300, blank=True, null=True, verbose_name=u'* Single Line Description (Optional)'),
-        infographic_files = models.FileField(upload_to=get_infographics_path, storage=ZipStorage, verbose_name=u"* Interactive's Files (zip file)")
-    )
+    headline = models.CharField(max_length=255, verbose_name=u'Title/Headline')
+    subheadline = models.CharField(max_length=255, blank=True, null=True, verbose_name=u'Subheadline')
+    description = models.TextField(verbose_name=u'Description')
+    single_line_description = models.CharField(max_length=300, blank=True, null=True, verbose_name=u'* Single Line Description (Optional)'),
+    infographic_files = models.FileField(upload_to=get_infographics_path, storage=ZipStorage, verbose_name=u"* Interactive's Files (zip file)", null=True)
     
     def __unicode__(self):
         return self.name
+    
+    def thumbnail_image(self):
+        if self.thumbnail:
+            return '<img src="/media/%s" width="200px"/>' % self.thumbnail.url
+        else:
+            return 'None'
+    thumbnail_image.allow_tags = True
     
     @staticmethod
     def autocomplete_search_fields():

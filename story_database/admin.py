@@ -17,11 +17,11 @@ class StoryPageAdmin(TranslatableAdmin):
   search_fields  = ['name']
   prepopulated_fields = {"slug": ("name",)}
 
-class InteractiveAdmin(TranslatableAdmin):
+class InteractiveAdmin(admin.ModelAdmin):
   model = Interactive
-  list_display = ('name', 'all_translations',)
+  list_display = ('name', 'thumbnail_image', 'is_spanish',)
   list_display_links = ('name',)
-  list_filter = ('category', 'tag', 'creation_date', 'last_modified')
+  list_filter = ('category', 'tag', 'creation_date', 'last_modified', 'is_spanish')
   filter_horizontal = ('tag',)
   raw_id_fields = ('category',)
   prepopulated_fields = {"slug": ("name",)}
@@ -34,9 +34,13 @@ class InteractiveAdmin(TranslatableAdmin):
 class VideoAdmin(TranslatableAdmin):
   model = Video
   list_filter = ('creation_date', 'last_modified', 'category')
-  list_display = ('name', 'thumbnail', 'all_translations')
+  list_display = ('name', 'thumbnail', 'all_translations', 'author')
   search_fields = ['name']
   prepopulated_fields = {"slug": ("name",)}
+  raw_id_fields = ('category', 'author')
+  autocomplete_lookup_fields = {
+    'fk': ['category', 'author']
+  }
   
   
 class ItemInline(admin.TabularInline):
@@ -61,7 +65,9 @@ class FeaturedStoryItemInline(admin.TabularInline):
   
 class PosterFrameAdmin(admin.ModelAdmin):
     model = PosterFrame
-    list_display = ('name', 'poster_frame_image',)
+    list_display = ('name', 'poster_frame_image','is_spanish')
+    search_fields = ['name']
+    list_filter = ('is_spanish',)
     prepopulated_fields = {"slug": ("name",)}
 
 admin.site.register(Menu,
@@ -90,6 +96,10 @@ class BackgroundVideoAdmin(admin.ModelAdmin):
     'fk': ['story_page', 'category'],
   }
     
+class CreditAdmin(TranslatableAdmin):
+    model = Credit
+    search_fields = ['name']
+       
 admin.site.register(FeaturedStory,
                     inlines = [FeaturedStoryItemInline],
                     )
@@ -100,4 +110,6 @@ admin.site.register(PosterFrame, PosterFrameAdmin)
 admin.site.register(Tag, TagAdmin)
 admin.site.register(Category, CategoryAdmin)
 admin.site.register(BackgroundVideo, BackgroundVideoAdmin)
+admin.site.register(Role)
+admin.site.register(Credit, CreditAdmin)
 
