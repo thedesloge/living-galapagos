@@ -95,7 +95,7 @@ class PosterFrame(models.Model):
     
     name = models.CharField(max_length=200, unique=True)
     slug = models.SlugField()
-    poster_frame = models.ImageField(upload_to=get_poster_frame_path)
+    poster_frame = models.FileField(upload_to=get_poster_frame_path)
     
     def poster_frame_image(self):
         return '<img src="/media/%s" width="200px"/>' % self.poster_frame.url
@@ -127,7 +127,7 @@ class Interactive(TranslatableModel):
     slug = models.SlugField()
     category = models.ForeignKey('Category', blank=True, null=True)
     tag = models.ManyToManyField(Tag, verbose_name="Tags",blank=True, null=True)
-    thumbnail = models.ImageField(upload_to=get_thumbnail_path)
+    thumbnail = models.FileField(upload_to=get_thumbnail_path)
     
     translations = TranslatedFields(
         headline = models.CharField(max_length=255, verbose_name=u'* Title/Headline'),
@@ -156,7 +156,7 @@ class StoryPage(TranslatableModel):
     video = models.ForeignKey(Video, verbose_name=u'Story Video', blank=True, null=True)
     related_stories = models.ManyToManyField('StoryPage', verbose_name=u'Related Stories', blank=True, null=True)
     interactives = models.ManyToManyField(Interactive, verbose_name=u'Interactive or Infographic', blank=True, null=True)
-    thumbnail = models.ImageField(upload_to='uploads/story/thumbnail/%Y/%m/%d', blank=True, null=True)
+    thumbnail = models.FileField(upload_to='uploads/story/thumbnail/%Y/%m/%d', blank=True, null=True)
     
     translations = common_translated_fields()
       
