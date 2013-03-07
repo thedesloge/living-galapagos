@@ -144,7 +144,7 @@ class Interactive(models.Model):
     creation_date = models.DateField(auto_now_add=True)
     last_modified = models.DateField(auto_now=True)
     name = models.CharField(max_length=200, unique=True)
-    author = models.ManyToManyField(Credit)
+    author = models.ManyToManyField(Credit, blank=True, null=True)
     slug = models.SlugField()
     category = models.ForeignKey('Category', blank=True, null=True)
     tag = models.ManyToManyField(Tag, verbose_name="Tags",blank=True, null=True)

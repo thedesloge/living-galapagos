@@ -228,9 +228,9 @@ def getStoryBySlug(request, storySlug):
     if request.session.get('isECUADOR') == True and storySlug == 'forbidden-refuge':
         raise Http404  
 
-    story = Story.objects.get(slug=storySlug)
+    story = StoryPage.objects.get(slug=storySlug)
     
-  except Story.DoesNotExist:
+  except StoryPage.DoesNotExist:
     raise Http404
 
   return story
@@ -241,7 +241,11 @@ def getLanguageForStory(story, language, request, isFeatured):
   template_object["is_mobile"] = request.is_mobile
   
   #Story Language Translated items
-  story_translation = story.translations.get(language_code=language)
+  try:
+      story_translation = story.translations.get(language_code=language)
+  except StoryPageTranslation.DoesNotExist:
+      raise Http404
+  
   template_object['headline'] = story_translation.headline
   template_object['description'] = story_translation.description
   template_object['quote'] = story_translation.quote
@@ -250,18 +254,18 @@ def getLanguageForStory(story, language, request, isFeatured):
   #Story Page video
   template_object['video'] = buildVideoObject(Video.objects.language(language).get(id=story.video.id))
   
+  #Get Interactives
+  template_object['related_content_list'] = getInteractivedForStory(story, language)
+  
   #Story Page Related Stories
   template_object['related_stories'] = {}
   
-  #Story Page Interactives
-  template_object['interactives'] = {} 
-  
   
   template_object['language'] = language
-  #template_object['site_categories'] = Category_Translation.objects.filter(language_code=language)
-  #template_object['stories_in_category'] = getStoriesInCategory(request, story.category, language)
-  #template_object['category_sea_stories'] = getStoriesInCategory(request, "category-sea", language)
-  #template_object['category_land_stories'] = getStoriesInCategory(request, "category-land", language)
+  template_object['site_categories'] = Category.objects.all()
+  template_object['stories_in_category'] = getStoriesInCategory(request, story.category, language)
+  template_object['category_sea_stories'] = getStoriesInCategory(request, "category-sea", language)
+  template_object['category_land_stories'] = getStoriesInCategory(request, "category-land", language)
   template_object['english_link'] = getEnglishLink(request) 
   template_object['spanish_link'] = getSpanishLink(request)
     
@@ -281,7 +285,18 @@ def buildVideoObject(video):
     video_obj['single_line_description'] = video.single_line_description
     
     return video_obj
+
+def getInteractivedForStory(story, language):
+    list = story.interactives.all()
     
+    interactive_list = []
+    for interactive in list:
+        if interactive.is_spanish and language == 'es':
+            interactive_list.append(interactive)
+        elif not interactive.is_spanish and language == 'en': 
+            interactive_list.append(interactive)
+    
+    return interactive_list
     
 
 def getEnglishLink(request):
@@ -342,8 +357,17 @@ def getStoriesByCategory(request, cat, language):
 def getStoriesInCategory(request, category, language):
     
     try:
-        tempCategory = Category.objects.get(slug=category)
-        return getStoriesByCategory(request, tempCategory, language)
+        cat = Category.objects.get(slug=category)
+        story_list = cat.storypage_set.all()
+        ret_val = []
+        for story in story_list:
+            story_obj = {}
+            story_obj['thumbnail'] = story.thumbnail
+            story_obj['slug'] = story.slug
+            story_obj['title'] = story.translations.get(language_code=language).headline
+            ret_val.append(story_obj)
+         
+        return  ret_val
          
     except TypeError as inst:
         return {}
