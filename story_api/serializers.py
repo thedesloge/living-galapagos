@@ -5,3 +5,8 @@ class StorySerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = StoryPage
         fields = ('name','video')
+        
+class VideoSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = Video
+        fields = ('name')
