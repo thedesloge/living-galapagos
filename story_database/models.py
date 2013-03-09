@@ -86,7 +86,8 @@ class Video(TranslatableModel):
         description = models.TextField(verbose_name=u'* Description'),
         single_line_description = models.CharField(max_length=300, blank=True, null=True, verbose_name=u'* Single Line Description (Optional)'),
         vimeo_id = models.IntegerField(verbose_name=u'* Vimeo ID'),
-        poster_frame = models.ForeignKey('PosterFrame', blank=True, null=True, verbose_name="* Poster Frame")
+        poster_frame = models.ForeignKey('PosterFrame', blank=True, null=True, verbose_name="* Poster Frame"),
+        title_card = models.FileField(upload_to='uploads/video/title-card/%Y/%m/%d', blank=True, null=True, verbose_name=u'Title Card')
     )
     
     def thumbnail_image(self):
