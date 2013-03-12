@@ -4,7 +4,8 @@ HOST_NAME = socket.gethostname()
 HOSTS = {
     'dons_machine': 'Donaldo.local',
     'prod': 'prod-server',
-    'dev': 'dev-server'
+    'dev': 'dev-server',
+    'steven_machine': 'cm077-03'
 }
 
 from local import *
@@ -24,3 +25,10 @@ elif HOST_NAME == HOSTS['prod']:
         from production import *
     except Exception, e:
         pass
+    
+elif HOST_NAME == HOSTS['steven_machine']:
+    try:
+        from production import *
+    except Exception, e:
+        pass
+

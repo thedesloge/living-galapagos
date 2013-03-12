@@ -87,6 +87,31 @@ $(document).ready(function () {
 
 	/* DISABLED BUTTONS ------------- */
 	/* Gives elements with a class of 'disabled' a return: false; */
+	
+	/* Accordion Functionality */
+	
+	
+	/*$(".expand").click(function(){
+			$(this).toggleClass("active");
+			$(this).next("div").stop('true','true').slideToggle("slow");
+				console.log($(this));
+				console.log("expand from li");
+		});*/
+	
+	$('.nav-toggle').click(function(e){
+		console.log("nav toggle");
+			//get collapse content selector
+			e.preventDefault();
+			var collapse_content_selector = $(this).attr('href');					
+ 
+			//make the collapse content to be shown or hide
+			var toggle_switch = $(this);
+			$(collapse_content_selector).slideToggle(function(){
+			  if($(this).css('display')=='none'){
+                                
+			  }
+			});
+		  });
   
 
 });

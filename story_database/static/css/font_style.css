@@ -29,11 +29,16 @@
 
 .storyBox {
 	padding: 7%;
-	-moz-column-width: 20em;
--webkit-column-width: 20em;
--moz-column-gap: 3em;
--webkit-column-gap:3em;
+	-moz-column-width: 22em;
+-webkit-column-width: 22em;
+-moz-column-gap: 4em;
+-webkit-column-gap:4em;
 overflow:auto;
+}
+
+.contentBox {
+	padding: 4em 4em;
+	
 }
 
 .textHead {
@@ -248,7 +253,7 @@ float: left;
 
 .logo {
 	position: absolute;
-	left: 17%;
+	left: 4%;
 	bottom: 0px;
 /* 	padding-top:7.2em; */
 /* 	padding-right:0.5em;  */

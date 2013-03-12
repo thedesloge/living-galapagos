@@ -47,7 +47,7 @@
 					$('.video-bg-controls').videobackground('resize');
 				});
 			});
-			$('body').prepend('<div class="video-background hide-on-phones hide-on-tablets"></div>');
+			/*$('body').prepend('<div class="video-background hide-on-phones hide-on-tablets"></div>');
 			$('.video-background').videobackground({
 				videoSource: ['{{ background_video.h264_background.url }}',
 					'{{ background_video.ogg_background.url }}'], 
@@ -58,7 +58,7 @@
 				loadedCallback: function() {
 					$(this).videobackground('mute', {controlPosition: '.video-background'});
 				}
-			});
+			});*/
 		});
 	</script>
 	{% endif %}
@@ -68,6 +68,9 @@
 <!--<div class="hide-on-desktops" id="bg-fallback-home"></div> -->
 {% endblock %}
 <div class="container" > <!-- container -->
+
+
+    	
 
 		<div class="row hide-on-phones" id="header"> <!------------LOGO AND NAV------------>
         	<div class="twelve columns phone-five">
@@ -98,16 +101,20 @@
 			    
                         </ul>
                     </li>
-                	<li id="top-cream-bar"></li>
-                </ul>
+		
+		
+<a href="#title1" class="nav-toggle"><span id="top-cream-bar"></span></a>			
+<!--cream bar was here-->
+	
             </div>
         </div> <!-- ////END LOGO AND NAV -->
-        
+		</ul>
+    
         <!---phone top nav--->
 	
 	<div class="row show-on-phones">
 		<div class="phone-four" id="phoneLogo">
-			<a href="/{{language}}"><img src="http://reinhardt.jomc.unc.edu/static/images/logo.png"/></a>
+			<a href="/{{language}}"><img src="http://reinhardt.jomc.unc.edu/static/images/logo.png" /></a>
 		
 		<div id="phoneTopNav">
 			<ul class="phoneULtop">
@@ -127,21 +134,40 @@
 		
 		</div>
     </div> 
-    
-        
+
+
+ 		
+       
 	<!---end phone top nav --->
 
-
+		<div id="title1">
+                	
 {% block video %}
 <div>Video Goes here</div>
+			
+		
 {% endblock %}
-<div class="row" id="bottom-cream-bar-container"> <!-- Create bottom cream bar -->
+		
+
+<div class="row" id="bottom-cream-bar-container">
 	<div class="twelve columns" id="bottom-cream-bar" ></div>
 </div> <!-- End bottom cream bar -->
 
+<div class="clear-float"></div>
+
+		</div> <!-- closes video segment -->
+		<br />
+		<a href="#title1" class="nav-toggle">Close Video</a> <!-- link that closes video -->
+
+		
+		
+
+		
+	
+
 <div class = "body-row row"> <!------------CONTENT AREA------------>
 	{% if related_content_list|length > 0 %}
-		<div class = "eight columns"> <!------------CONTENT AREA------------>
+		<div class = "twelve columns"> <!------------CONTENT AREA------------>
 	{% else %}
 		<div class = "twelve columns"> <!------------CONTENT AREA------------>
 	{% endif %}
@@ -156,6 +182,8 @@
 		</div>  <!-- End Text Above Div -->
 	<div class="row"> <!-- Content Box -->
 	<div class="twelve columns" id="more-box">
+		<div class="row">
+		<div class="eight columns">
 		<div class="storyBox">
 			<div class="textHead">{{headline}}</div>
 			<div class="textSubHead">{{subheadline}}</div>
@@ -165,24 +193,45 @@
 			<div class="textP"> {{description|linebreaks }}</div>
 			{% endif %}
 			<div class="pullQuote">"{{quote}}"<br> {% if quote_attribution %} -{{quote_attribution}} {% endif %}</div>
+			
+			</div>
+		</div>
+		<div class="four columns">
+		<div class="contentBox">	
+			{% for related_content in related_content_list %}
+             	 
+                    	 <div onclick="TINY.box.show({iframe:'{{ related_content.link }}',boxid:'frameless',animate:true, width:1200, height:675, fixed:false})">
+                    	 <img src="{{related_content.thumbnail.url}}" width="100%"/>
+                    	 <div class="sidebar-text">
+                    	 	<div class="sidebarBoxTitle">{{related_content.headline}}</div>
+                         	<div class="sidebarBoxP">{{related_content.description}}</div>
+			 </div>   	
+                    </div>
+                </div> <!-- End Sidebar One -->
+		</div><!-- end three columns -->
+		
+		</div>
+                {% endfor %}
 		</div> 
 	</div>
 </div>
 </div> <!-- End content box -->
 <!-- ////END CONTENT AREA -->
 
+<!--sidebar content that used to be in right column but is now in main section -->
+
 {% if related_content_list|length > 0 %}
-            <div class = "four columns hide-on-phones" style="padding: .5em; margin: -.5em;"> <!------------SIDEBAR AREA------------>  
-              <div class="row"><!-- Create Text Above Div -->
-                    <div class ="twelve columns phone-four">
+            <!--<div class = "four columns hide-on-phones" style="padding: .5em; margin: -.5em;"> <!------------SIDEBAR AREA------------>  
+            <!--  <div class="row"><!-- Create Text Above Div -->
+                    <!--<div class ="twelve columns phone-four">
                         <div class="divNav">RELATED CONTENT</div>
                     </div>
-              </div>
+	      </div>
           <!-- End Text Above Div -->
                   
               {% for related_content in related_content_list %}
-              <div class="row"> <!-- Sidebar One -->    
-                    <div class="sidebar-item twelve columns phone-four">
+             <!-- <div class="row"> <!-- Sidebar One -->    
+                    <!--<div class="sidebar-item twelve columns phone-four">
                     	<div class="sidebar-holder">	 
                     	 <div onclick="TINY.box.show({iframe:'{{ related_content.link }}',boxid:'frameless',animate:true, width:1200, height:675, fixed:false})">
                     	 <img src="{{related_content.thumbnail.url}}" width="100%"/>
@@ -196,11 +245,12 @@
                 </div> <!-- End Sidebar One -->
                 {% endfor %}
                     
-            </div> <!-- ////END SIDEBAR AREA -->
+           <!-- </div> <!-- ////END SIDEBAR AREA -->
             
             {% endif%}    
-        </div><!-- ////END CONTENT/SIDEBAR ROW -->
+       <!-- </div><!-- ////END CONTENT/SIDEBAR ROW -->
 
+<!--END sidebar content that used to be in right column but is now in main section -->
 
 	<!---phone nav--->
         <a id="stories"></a>
