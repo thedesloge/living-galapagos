@@ -91,11 +91,7 @@
                  		   </div>
                			 </div> <!-- ////END SIDEBAR DIV -->
                          
-                    	 <div class="eleven columns centered" id="video-div"><!------------VIDEO------------>
-                            <div class="flex-video widescreen vimeo">
-                                <iframe src="http://player.vimeo.com/video/{{video.vimeo_id}}?&api=1&player_id=player_1&title=0&byline=0&portrait=0" id="player_1" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
-                            </div>
-                        </div><!-- ////END VIDEO -->
+                    	
                         
                     </div>
                 </div> <!-- End row above bottm cream bar -->
@@ -105,14 +101,71 @@
 {% if is_mobile %}
 <div class="row" id="vidrow"><!-- video player row -->
   <div class="twelve columns phone-four" id="video-background" style="z-index: 10; background-image: url('http://reinhardt.jomc.unc.edu/static/images/nav_bg.png');">          
-        <div class="eleven columns centered" id="video-div"><!------------VIDEO------------>
-	  <div class="flex-video widescreen vimeo">
-	    <iframe src="http://player.vimeo.com/video/{{story.featured_video.vimeo_id}}?&api=1&player_id=player_1&title=0&byline=0&portrait=0" id="player_1" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
-	  </div>
-	</div><!-- ////END VIDEO -->
+      
       </div>
 </div>
 {% endif %}
-{% endblock %}
+
+
+
+
+<div class = "body-row row"> <!------------CONTENT AREA------------>
+	{% if related_content_list|length > 0 %}
+		<div class = "twelve columns"> <!------------CONTENT AREA------------>
+	{% else %}
+		<div class = "twelve columns"> <!------------CONTENT AREA------------>
+	{% endif %}
+		<div class="row"> <!-- Create Text Above Div -->
+			<div class="twelve columns">
+			{% if language == 'en' %}
+				<div class="divNav">MORE</div>
+			{% else %}
+				<div class="divNav">M&#193;S</div>
+			{% endif %}
+			</div>
+		</div>  <!-- End Text Above Div -->
+	<div class="row"> <!-- Content Box -->
+	<div class="twelve columns" id="more-box">
+		
+		<div class="info-background"></div>
+		
+		<div class="row">
+		<div class="eight columns">
+		<div class="storyBox">
+			<div class="textHead">{{headline}}</div>
+			<div class="textSubHead">{{subheadline}}</div>
+			{% if story.about_text %}
+			<div class="textP"> {{story.about_text|linebreaks }}</div>
+			{% else %}
+			<div class="textP"> {{description|linebreaks }}</div>
+			{% endif %}
+			<div class="pullQuote">"{{quote}}"<br> {% if quote_attribution %} -{{quote_attribution}} {% endif %}</div>
+			
+			</div>
+		</div>
+		<div class="four columns">
+		<div class="contentBox">
+			<div class="textSubHead">RELATED CONTENT</div>
+			{% for related_content in related_content_list %}
+             	 
+                    	 <div onclick="TINY.box.show({iframe:'{{ related_content.link }}',boxid:'frameless',animate:true, width:1200, height:675, fixed:false})">
+                    	 <img src="{{related_content.thumbnail.url}}" width="100%"/>
+                    	 <div class="sidebar-text">
+                    	 	<div class="sidebarBoxTitle">{{related_content.headline}}</div>
+                         	<div class="sidebarBoxP">{{related_content.description}}</div>
+			 </div>   	
+                    </div>
+                </div> <!-- End Sidebar One -->
+		</div><!-- end three columns -->
+		
+		</div>
+                {% endfor %}
+		</div> 
+	</div>
+</div>
+</div> <!-- End content box -->
+<!-- ////END CONTENT AREA -->
 		
 
+{% endblock %}
+		
