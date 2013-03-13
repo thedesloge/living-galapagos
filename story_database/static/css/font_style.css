@@ -28,6 +28,7 @@
 /*story text*/
 
 .storyBox {
+	margin-top: 9em;
 	padding: 7%;
 	-moz-column-width: 22em;
 -webkit-column-width: 22em;
@@ -37,7 +38,7 @@ overflow:auto;
 }
 
 .contentBox {
-	padding: 4em 4em;
+	padding: 14em 4em;
 	
 }
 
@@ -55,6 +56,14 @@ overflow:auto;
 	color:#a9a8a6;
 	line-height:1.3em;
 	padding-bottom: .8em;
+}
+
+.textSubHeadVideo {
+	font-family:museo-sans-500;
+	font-size:1.1em;
+	color:#A89E88;
+	line-height:1.3em;
+	padding-top: .8em;
 }
 
 .textP {

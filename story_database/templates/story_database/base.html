@@ -103,8 +103,19 @@
                     </li>
 		
 		
-<a href="#title1" class="nav-toggle"><span id="top-cream-bar"></span></a>			
-<!--cream bar was here-->
+
+	<a href="#title1" class="nav-toggle">
+		<span id="top-cream-bar">
+			<div class="arrow-yes">
+				
+			</div>
+			<div class="arrow-no">
+					<img src="../../static/images/video-arrow.png" style="float: left; display: inline; margin: .3em 1em"/>
+					<div class="textSubHeadVideo">WATCH VIDEO: {{storyTitle}}</div>
+				</div>
+		</span>
+	</a>			
+
 	
             </div>
         </div> <!-- ////END LOGO AND NAV -->
@@ -182,6 +193,9 @@
 		</div>  <!-- End Text Above Div -->
 	<div class="row"> <!-- Content Box -->
 	<div class="twelve columns" id="more-box">
+		
+		<div class="info-background"></div>
+		
 		<div class="row">
 		<div class="eight columns">
 		<div class="storyBox">
@@ -197,7 +211,8 @@
 			</div>
 		</div>
 		<div class="four columns">
-		<div class="contentBox">	
+		<div class="contentBox">
+			<div class="textSubHead">RELATED CONTENT</div>
 			{% for related_content in related_content_list %}
              	 
                     	 <div onclick="TINY.box.show({iframe:'{{ related_content.link }}',boxid:'frameless',animate:true, width:1200, height:675, fixed:false})">

@@ -69,8 +69,11 @@ div.logo { max-width: 17%; padding-bottom: 28px; }
 #top-nav-li {text-align: right; margin-top: 100px; width:78.32%; float: left; display: inline; background-color: none; z-index: 10;}
 #top-nav-li ul {}
 #top-nav-li ul li { list-style-type: none; display: inline; border-right: 1px solid #fff; padding:0 1em;}
-#top-cream-bar {text-align: right; margin-bottom: 0px; height: 40px; width:100%; float: right; display: inline; background-image: url(../images/content-top.png);background-repeat:repeat-x; background-color: #EAE5D7;}
-/*#top-cream-bar {text-align: right; margin-bottom: 0px; height: 40px; width:74.6%; float: right; display: inline; background-image: url(../images/content-top.png);background-repeat:repeat-x; background-color: #EAE5D7;}*/
+#top-cream-bar {text-align: left; margin-bottom: 0px; height: 40px; width:100%; float: right; display: inline; background-image: url(../images/content-top.png);background-repeat:repeat-x; background-color: #EAE5D7;}
+.hide{visibility: hidden;}
+.show{visibility: visible;}
+.arrow-yes {width:100%;}
+.arrow-no {width:100%;}
 #video-row {background:none; position: relative; }
 #icons-div {width: 4.3%; position: absolute; top: 0; left: 0; z-index: 1; color: #FFF; padding-top:1em; height: 100%;}
 #icons-div li{text-align: center; display:block; text-decoration:none; margin-bottom:1em;}
@@ -119,6 +122,10 @@ bottom-cream-bar-container {background-image:url(../images/nav_bg.png); border:1
 box-shadow: 0 0 13px #000;
 
 }
+
+.info-background{ margin-top: 3em; position:absolute; width: 100%; height:8em; background-image:url("http://reinhardt.jomc.unc.edu/static/images/nav_bg.png");}
+
+
 .sidebar-item {background-color: #fff; -moz-box-shadow: 0 0 13px #000;
 -webkit-box-shadow: 0 0 13px #000;
 box-shadow: 0 0 13px #000; margin-bottom: 17px;}

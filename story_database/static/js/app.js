@@ -1,6 +1,6 @@
 /* Foundation v2.1.5 http://foundation.zurb.com */
 $(document).ready(function () {
-
+	console.log("doc ready")
 	/* Use this js doc for all application specific JS */
 
 	/* TABS --------------------------------- */
@@ -100,6 +100,7 @@ $(document).ready(function () {
 	
 	$('.nav-toggle').click(function(e){
 		console.log("nav toggle");
+			$(".arrow-yes").toggleClass("hide");
 			//get collapse content selector
 			e.preventDefault();
 			var collapse_content_selector = $(this).attr('href');					
@@ -107,11 +108,19 @@ $(document).ready(function () {
 			//make the collapse content to be shown or hide
 			var toggle_switch = $(this);
 			$(collapse_content_selector).slideToggle(function(){
+				
 			  if($(this).css('display')=='none'){
+				
                                 
 			  }
 			});
+		$(".arrow-yes").toggleClass("hide");
+		$(".arrow-no").toggleClass("hide");
 		  });
-  
+	
+		$(".arrow-yes").toggleClass("hide");
+		$(".arrow-no").toggleClass("hide");
+		
+           
 
 });

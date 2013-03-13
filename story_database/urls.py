@@ -7,6 +7,7 @@ urlpatterns = patterns('story_database.views',
     
      url(r'^$', 'home', name='home page english'),
      url(r'^(?P<language_code>en|es)/$', 'home', name="english or spanish home page"),
+     url(r'^(?P<language_code>en|es)/article/(?P<story_slug>.*)/$', 'article_story_page', name="article story"),
      url(r'^about/$', 'about'),
      url(r'^search/$', 'search'),
      url(r'^search/map/$', 'search_map'),

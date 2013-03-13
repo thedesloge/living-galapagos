@@ -13,6 +13,13 @@ def home(request, language_code='en'):
             context_instance=RequestContext(request)
         )
 
+def article_story_page(request, story_slug, language_code='en'):
+  return render_to_response(
+            'story_database/article.html',
+            getLanguageForStory( getStoryBySlug(request, story_slug), language_code, request, False ),
+            context_instance=RequestContext(request)
+        )
+
 def featured_story_page(request, story_slug, language_code='en'):
   return render_to_response(
             'story_database/featured.html',

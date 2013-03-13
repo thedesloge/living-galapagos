@@ -1,0 +1,118 @@
+{% extends 'story_database/base.html' %}
+
+{% block background-image-fallback %}
+<div class="hide-on-desktops" id="bg-fallback-stories"></div>
+{% endblock %}    
+{% block video %}
+{% if not is_mobile %}		
+    	<div class="row" id="vidrow"><!-- video player row -->
+        	<div class="twelve columns phone-four" id="video-row" style="z-index: 10;">
+            
+            	<div class="row"><!-- Creates row so nav/icon div doesn't go over cream color -->
+                	<div class="twelve columns phone-four" id="vidrow2">
+                    
+                    	<div class="row hide-on-phones"> <!------------ICON DIV------------>
+                			<div class="twelve columns" id="icons-div">
+                                <ul>
+                                   
+                                    <li class="icon" id="icon-cat1">
+                                   	</li>
+                                    <li class="icon" id="icon-cat2">
+                                   	</li>
+                                   	
+                                    <li class="icon" id="icon-search">
+                                    	<a href="/search">
+                                    		<div style="height: 50px; width: 50px;"></div>
+                                    	</a>
+                                   	</li>
+                               </ul>
+                             </div>
+               			 </div> <!-- ////END ICON DIV -->
+                         
+                    	<div class="row hide-on-phones"> <!------------SIDEBAR DIV------------>
+
+                			<div id="sidebar-div">
+                			    <div class="buttons" id="topbutton">
+                			    	<div class="scroll-btn" id="up-btn">
+                			    		<img src="{{ STATIC_URL }}/images/uparrow.png"/>
+                			    	</div>
+                			    </div>
+                            	<div id="slidemenu">
+                            	<div class="scroll" id="videotext">
+                            		<img src=" {{ title_card.url }}"/>
+                            		<!-- PLAY BUTTON -->
+                			<div id="playStory" >
+                                		<img src="{{ STATIC_URL }}/images/play.png"/>
+                                	</div>
+                                	<!-- END PLAY BUTTON-->
+                            	</div>
+                                <div class="scroll" id="scroll-cat1">
+                                	<span class="shadow">SEA</span><br>
+                                        {% for category_story in category_sea_stories %}
+                                          {% if category_story.thumbnail %}
+                                            <div class="menu-img">
+                                            	<a href="/{{language}}/{{category_story.slug}}/"><img src="{{ category_story.thumbnail.url}}"/>
+                                            	  <div class="menu-hover">
+                                            	  	<p>{{ category_story.title }}</p>
+                                            	  </div>
+                                            	</a>
+                                            </div>
+										  {% endif %}
+										{% endfor %}
+                                    </div>
+                                    
+                                    <div class="scroll" id="scroll-cat2">
+										<span class="shadow">LAND</span><br>
+                                        {% for category_story in category_land_stories %}
+                                          {% if category_story.thumbnail %}
+                                            <div class="menu-img">
+											 <a href="/{{language}}/{{category_story.slug}}/"><img src="{{ category_story.thumbnail.url}}" style="max-width:100%"/>
+											  <div class="menu-hover">
+											   <p>{{ category_story.title }}</p>
+											  </div>
+											 </a>
+										    </div>
+										  {% endif %}
+										{% endfor %}
+                                    </div>
+
+                                    <div class="scroll" id="scroll-search">
+
+                                        SEARCH
+                                    </div>
+                                    
+                                </div><!--////end slidemenu-->
+                                <div class="buttons" id="botbutton">
+                                	<div class="scroll-btn" id="down-btn">
+                                		<img src="{{ STATIC_URL }}/images/downarrow.png"/>
+                                	</div>
+                                </div>
+                                
+                 		   </div>
+               			 </div> <!-- ////END SIDEBAR DIV -->
+                         
+                    	 <div class="eleven columns centered" id="video-div"><!------------VIDEO------------>
+                            <div class="flex-video widescreen vimeo">
+                                <iframe src="http://player.vimeo.com/video/{{video.vimeo_id}}?&api=1&player_id=player_1&title=0&byline=0&portrait=0" id="player_1" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+                            </div>
+                        </div><!-- ////END VIDEO -->
+                        
+                    </div>
+                </div> <!-- End row above bottm cream bar -->
+			</div>
+        </div>          
+{% endif %}
+{% if is_mobile %}
+<div class="row" id="vidrow"><!-- video player row -->
+  <div class="twelve columns phone-four" id="video-background" style="z-index: 10; background-image: url('http://reinhardt.jomc.unc.edu/static/images/nav_bg.png');">          
+        <div class="eleven columns centered" id="video-div"><!------------VIDEO------------>
+	  <div class="flex-video widescreen vimeo">
+	    <iframe src="http://player.vimeo.com/video/{{story.featured_video.vimeo_id}}?&api=1&player_id=player_1&title=0&byline=0&portrait=0" id="player_1" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+	  </div>
+	</div><!-- ////END VIDEO -->
+      </div>
+</div>
+{% endif %}
+{% endblock %}
+		
+
