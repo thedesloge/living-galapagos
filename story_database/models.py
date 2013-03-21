@@ -193,6 +193,8 @@ class StoryPage(TranslatableModel):
     @staticmethod
     def autocomplete_search_fields():
         return ("id__iexact", "name__icontains",)
+      
+
   
 class FeaturedStory(models.Model):
     class Meta:

@@ -16,6 +16,8 @@ class StoryPageAdmin(TranslatableAdmin):
   }
   search_fields  = ['name']
   prepopulated_fields = {"slug": ("name",)}
+  
+  
 
 class InteractiveAdmin(admin.ModelAdmin):
   model = Interactive
@@ -103,7 +105,7 @@ class CreditAdmin(TranslatableAdmin):
 admin.site.register(FeaturedStory,
                     inlines = [FeaturedStoryItemInline],
                     )
-admin.site.register(StoryPage, StoryPageAdmin) 
+admin.site.register(StoryPage, StoryPageAdmin)
 admin.site.register(Video, VideoAdmin)
 admin.site.register(Interactive, InteractiveAdmin)
 admin.site.register(PosterFrame, PosterFrameAdmin)

@@ -4,134 +4,22 @@
 <div class="hide-on-desktops" id="bg-fallback-stories"></div>
 {% endblock %}    
 {% block video %}
-{% if not is_mobile %}		
-    	<div class="row" id="vidrow"><!-- video player row -->
-        	<div class="twelve columns phone-four" id="video-row" style="z-index: 10;">
-            
-            	<div class="row"><!-- Creates row so nav/icon div doesn't go over cream color -->
-                	<div class="twelve columns phone-four" id="vidrow2">
-                    
-                    	<div class="row hide-on-phones"> <!------------ICON DIV------------>
-                			<div class="twelve columns" id="icons-div">
-                                <ul>
-                                   
-                                    <li class="icon" id="icon-cat1">
-                                   	</li>
-                                    <li class="icon" id="icon-cat2">
-                                   	</li>
-                                   	
-                                    <li class="icon" id="icon-search">
-                                    	<a href="/search">
-                                    		<div style="height: 50px; width: 50px;"></div>
-                                    	</a>
-                                   	</li>
-                               </ul>
-                             </div>
-               			 </div> <!-- ////END ICON DIV -->
-                         
-                    	<div class="row hide-on-phones"> <!------------SIDEBAR DIV------------>
+{% if not is_mobile %}
 
-                			<div id="sidebar-div">
-                			    <div class="buttons" id="topbutton">
-                			    	<div class="scroll-btn" id="up-btn">
-                			    		<img src="{{ STATIC_URL }}/images/uparrow.png"/>
-                			    	</div>
-                			    </div>
-                            	<div id="slidemenu">
-                            	<div class="scroll" id="videotext">
-                            		<img src=" {{ title_card.url }}"/>
-                            		<!-- PLAY BUTTON -->
-                			<div id="playStory" >
-                                		<img src="{{ STATIC_URL }}/images/play.png"/>
-                                	</div>
-                                	<!-- END PLAY BUTTON-->
-                            	</div>
-                                <div class="scroll" id="scroll-cat1">
-                                	<span class="shadow">SEA</span><br>
-                                        {% for category_story in category_sea_stories %}
-                                          {% if category_story.thumbnail %}
-                                            <div class="menu-img">
-                                            	<a href="/{{language}}/{{category_story.slug}}/"><img src="{{ category_story.thumbnail.url}}"/>
-                                            	  <div class="menu-hover">
-                                            	  	<p>{{ category_story.title }}</p>
-                                            	  </div>
-                                            	</a>
-                                            </div>
-										  {% endif %}
-										{% endfor %}
-                                    </div>
-                                    
-                                    <div class="scroll" id="scroll-cat2">
-										<span class="shadow">LAND</span><br>
-                                        {% for category_story in category_land_stories %}
-                                          {% if category_story.thumbnail %}
-                                            <div class="menu-img">
-											 <a href="/{{language}}/{{category_story.slug}}/"><img src="{{ category_story.thumbnail.url}}" style="max-width:100%"/>
-											  <div class="menu-hover">
-											   <p>{{ category_story.title }}</p>
-											  </div>
-											 </a>
-										    </div>
-										  {% endif %}
-										{% endfor %}
-                                    </div>
-
-                                    <div class="scroll" id="scroll-search">
-
-                                        SEARCH
-                                    </div>
-                                    
-                                </div><!--////end slidemenu-->
-                                <div class="buttons" id="botbutton">
-                                	<div class="scroll-btn" id="down-btn">
-                                		<img src="{{ STATIC_URL }}/images/downarrow.png"/>
-                                	</div>
-                                </div>
-                                
-                 		   </div>
-               			 </div> <!-- ////END SIDEBAR DIV -->
-                         
-                    	
-                        
-                    </div>
-                </div> <!-- End row above bottm cream bar -->
-			</div>
-        </div>          
-{% endif %}
-{% if is_mobile %}
-<div class="row" id="vidrow"><!-- video player row -->
-  <div class="twelve columns phone-four" id="video-background" style="z-index: 10; background-image: url('http://reinhardt.jomc.unc.edu/static/images/nav_bg.png');">          
-      
-      </div>
+<div class="row">
+    <div class="twelve columns">
+        <div class="break"></div>
+    </div>
 </div>
-{% endif %}
 
-
-
-
-<div class = "body-row row"> <!------------CONTENT AREA------------>
-	{% if related_content_list|length > 0 %}
-		<div class = "twelve columns"> <!------------CONTENT AREA------------>
-	{% else %}
-		<div class = "twelve columns"> <!------------CONTENT AREA------------>
-	{% endif %}
-		<div class="row"> <!-- Create Text Above Div -->
-			<div class="twelve columns">
-			{% if language == 'en' %}
-				<div class="divNav">MORE</div>
-			{% else %}
-				<div class="divNav">M&#193;S</div>
-			{% endif %}
-			</div>
-		</div>  <!-- End Text Above Div -->
 	<div class="row"> <!-- Content Box -->
-	<div class="twelve columns" id="more-box">
+	<div class="twelve columns" id="article-more-box">
+					<a href="#"><span class="chapter">CHAPTER 1</span></a><span class="chapter">|</span>
+                                        <a href="#"><span class="chapter">CHAPTER 2</span></a><span class="chapter">|</span>
+                                        <a href="#"><span class="chapter">CHAPTER 3</span></a>
 		
-		<div class="info-background"></div>
 		
-		<div class="row">
-		<div class="eight columns">
-		<div class="storyBox">
+		<div class="articleBox">
 			<div class="textHead">{{headline}}</div>
 			<div class="textSubHead">{{subheadline}}</div>
 			{% if story.about_text %}
@@ -141,11 +29,7 @@
 			{% endif %}
 			<div class="pullQuote">"{{quote}}"<br> {% if quote_attribution %} -{{quote_attribution}} {% endif %}</div>
 			
-			</div>
-		</div>
-		<div class="four columns">
-		<div class="contentBox">
-			<div class="textSubHead">RELATED CONTENT</div>
+                        <div class="textSubHead">RELATED CONTENT</div>
 			{% for related_content in related_content_list %}
              	 
                     	 <div onclick="TINY.box.show({iframe:'{{ related_content.link }}',boxid:'frameless',animate:true, width:1200, height:675, fixed:false})">
@@ -153,17 +37,21 @@
                     	 <div class="sidebar-text">
                     	 	<div class="sidebarBoxTitle">{{related_content.headline}}</div>
                          	<div class="sidebarBoxP">{{related_content.description}}</div>
-			 </div>   	
-                    </div>
-                </div> <!-- End Sidebar One -->
-		</div><!-- end three columns -->
+			 </div>   
+                        
+                        {% endfor %}
+			</div>
 		
+		
+                </div> <!-- End Sidebar One -->
 		</div>
-                {% endfor %}
+                
 		</div> 
 	</div>
 </div>
 </div> <!-- End content box -->
+
+
 <!-- ////END CONTENT AREA -->
 		
 

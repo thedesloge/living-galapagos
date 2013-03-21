@@ -64,8 +64,8 @@ body {
 }
 
 #logo-li {margin-bottom: 0em; width: 21.68%; height: 160px; display: inline; background-size:30%; float: left;  }
-.logo-background{ margin-top: 5%; position:absolute; width: 100%; height:65%; z-index: -1; background-image:url("http://reinhardt.jomc.unc.edu/static/images/nav_bg.png");}
-div.logo { max-width: 17%; padding-bottom: 28px; }
+.logo-background{ margin-top: 5%; position:absolute; width: 100%; height:66%; z-index: -1; background-image:url("http://reinhardt.jomc.unc.edu/static/images/nav_bg.png");}
+div.logo { max-width: 17%; padding-bottom: 6px; }
 #top-nav-li {text-align: right; margin-top: 100px; width:78.32%; float: left; display: inline; background-color: none; z-index: 10;}
 #top-nav-li ul {}
 #top-nav-li ul li { list-style-type: none; display: inline; border-right: 1px solid #fff; padding:0 1em;}
@@ -106,6 +106,7 @@ div#botbutton {bottom: 0; line-height: 41px; vertical-align: bottom;}
 #icon-search{ background-position: center top; background-image: url("http://reinhardt.jomc.unc.edu/static/images/icon-search.png"); background-repeat: no-repeat; height: 33px; width: 100%;}
 #icon-search:hover{ background-position: center top; background-image: url("http://reinhardt.jomc.unc.edu/static/images/active-search.png"); background-repeat: no-repeat; height: 33px; width: 100%;}
 
+.learnImage{margin: 2em 0em 2em 0em; text-align: center}
 
 div.dim {position: fixed; top: 0; bottom: 0; left: 0; right: 0; height: 3000px; z-index: 8; background-image:url(../images/dim.png); display: none; opacity: 0.0;}
 
@@ -123,6 +124,16 @@ box-shadow: 0 0 13px #000;
 
 }
 
+#article-more-box {height: 100%; border: none; background-image: url(../images/content-top.png); background-repeat:repeat-x; background-color:#fff; 
+-moz-box-shadow: 0 0 13px #000;
+-webkit-box-shadow: 0 0 13px #000;
+box-shadow: 0 0 13px #000;
+padding-top: .9em;
+padding-left: .9em;
+
+}
+
+.break{height: 3em;}
 .info-background{ margin-top: 3em; position:absolute; width: 100%; height:8em; background-image:url("http://reinhardt.jomc.unc.edu/static/images/nav_bg.png");}
 
 

@@ -2,15 +2,35 @@
 
 {% block background-image-fallback %}
 <div class="hide-on-desktops" id="bg-fallback-home"></div>
-{% endblock %} 
+{% endblock %}
+
 {% block video %}
 {% if not is_mobile %}
+
+<div class="row">
+	<div class="twelve columns">
+	<a href="#section1" class="nav-toggle">
+		<span id="top-cream-bar" >
+			<div class="arrow-yes">
+				
+			</div>
+			<div class="arrow-no">
+					<img src="../../static/images/video-arrow.png" style="float: left; display: inline; margin: .3em 1em"/>
+					<div class="textSubHeadVideo">WATCH VIDEO: {{storyTitle}}</div>
+				</div>
+		</span>
+	</a>
+	</div>
+</div>
+
+<div id="section1">		
 <div class="row" id="vidrow-home"><!-- video player row -->
-	<div class="twelve columns phone-four" id="video-row" style="z-index: 10;">
+	<div class="twelve columns phone-four" id="video-row" >
             
 		<div class="row"><!-- Creates row so nav/icon div doesn't go over cream color -->
 			<div class="twelve columns phone-four" id="vidrow2">
 				<div id="homePlayBtn" ><img src="{{ STATIC_URL }}images/play.png"></div>
+				
 				<div class="row hide-on-phones"> <!------------ICON DIV------------>
 					<div class="twelve columns" id="icons-div-home">
 						<ul>
@@ -25,7 +45,7 @@
 					</div>
 				</div> 
 				<!-- ////END ICON DIV -->
-                
+               
                 <!------------SIDEBAR DIV------------>
                 <div class="row hide-on-phones"> 
 
@@ -82,16 +102,34 @@
 					<div class="twelve columns" id="rightFloatBar"></div>
 				</div> <!-- ////END SIDEBAR DIV -->
                          
+				
+				
 				<div class="eleven columns centered" id="video-div"><!------------VIDEO------------>
 					<div class="flex-video widescreen vimeo" id="flex-video">
 						<iframe src="https://player.vimeo.com/video/{{video.vimeo_id}}?&api=1&player_id=player_1&title=0&byline=0&portrait=0" id="player_1" frameborder="0" style="height:0;"></iframe>
 					</div>
 				</div><!-- ////END VIDEO -->
+				
+
                         
 			</div>
 		</div> <!-- End row above bottm cream bar -->
 	</div>
-</div>                
+</div>
+
+ 
+ <!-- closes video segment -->
+
+<div class="row" id="bottom-cream-bar-container">
+	<div class="twelve columns" id="bottom-cream-bar" ></div>
+</div> <!-- End bottom cream bar -->
+
+
+<div class="clear-float"></div>
+</div> <!--closes section 1-->
+		
+		
+		<a href="#section1" class="nav-toggle">Close Video</a> <!-- link that closes video -->
 {% endif %}
 {% if is_mobile %}
 <div class="row" id="vidrow-home"><!-- video player row -->
@@ -103,6 +141,8 @@
 	</div><!-- ////END VIDEO -->
       </div>
 </div>
+
+
 {% endif %}
 
 

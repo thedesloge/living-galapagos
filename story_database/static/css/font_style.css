@@ -37,6 +37,18 @@
 overflow:auto;
 }
 
+.articleBox {
+	
+	padding: 6% 7% 7% 7%;
+	
+}
+
+.articleBoxThin {
+	
+	padding: 11% 7% 7% 7%;
+	
+}
+
 .contentBox {
 	padding: 14em 4em;
 	
@@ -63,7 +75,17 @@ overflow:auto;
 	font-size:1.1em;
 	color:#A89E88;
 	line-height:1.3em;
-	padding-top: .8em;
+	padding-top: .9em;
+}
+
+.chapter {
+	font-family:museo-sans-500;
+	font-size:1.1em;
+	color:#A89E88;
+	line-height:1.3em;
+	padding-top: .9em;
+	padding-left: .45em;
+	padding-right: .45em;
 }
 
 .textP {

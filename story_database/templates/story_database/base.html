@@ -47,7 +47,7 @@
 					$('.video-bg-controls').videobackground('resize');
 				});
 			});
-			/*$('body').prepend('<div class="video-background hide-on-phones hide-on-tablets"></div>');
+			$('body').prepend('<div class="video-background hide-on-phones hide-on-tablets"></div>');
 			$('.video-background').videobackground({
 				videoSource: ['{{ background_video.h264_background.url }}',
 					'{{ background_video.ogg_background.url }}'], 
@@ -58,7 +58,7 @@
 				loadedCallback: function() {
 					$(this).videobackground('mute', {controlPosition: '.video-background'});
 				}
-			});*/
+			});
 		});
 	</script>
 	{% endif %}
@@ -103,18 +103,7 @@
                     </li>
 		
 		
-
-	<a href="#title1" class="nav-toggle">
-		<span id="top-cream-bar">
-			<div class="arrow-yes">
-				
-			</div>
-			<div class="arrow-no">
-					<img src="../../static/images/video-arrow.png" style="float: left; display: inline; margin: .3em 1em"/>
-					<div class="textSubHeadVideo">WATCH VIDEO: {{storyTitle}}</div>
-				</div>
-		</span>
-	</a>			
+	
 
 	
             </div>
@@ -160,17 +149,7 @@
 {% endblock %}
 		
 
-<div class="row" id="bottom-cream-bar-container">
-	<div class="twelve columns" id="bottom-cream-bar" ></div>
-</div> <!-- End bottom cream bar -->
 
-<div class="clear-float"></div>
-
-		</div> <!-- closes video segment -->
-		<br />
-		<a href="#title1" class="nav-toggle">Close Video</a> <!-- link that closes video -->
-
-		
 
 
 <!--sidebar content that used to be in right column but is now in main section -->
@@ -367,7 +346,8 @@
 			</div>
 		</div>
         </div>
-    </div><!--////END FOOTER AREA-->
+    </div>
+</div><!--////END FOOTER AREA-->
 {% endif %}
     <div class="dim"></div>
     

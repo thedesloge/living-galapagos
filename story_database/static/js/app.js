@@ -110,14 +110,15 @@ $(document).ready(function () {
 			$(collapse_content_selector).slideToggle(function(){
 				
 			  if($(this).css('display')=='none'){
-				
+				console.log("if");
                                 
 			  }
 			});
+			console.log("bottom of function");
 		$(".arrow-yes").toggleClass("hide");
 		$(".arrow-no").toggleClass("hide");
 		  });
-	
+	console.log("another one");
 		$(".arrow-yes").toggleClass("hide");
 		$(".arrow-no").toggleClass("hide");
 		
