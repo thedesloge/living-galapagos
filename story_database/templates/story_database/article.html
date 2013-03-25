@@ -2,9 +2,10 @@
 
 {% block background-image-fallback %}
 <div class="hide-on-desktops" id="bg-fallback-stories"></div>
-{% endblock %}    
+{% endblock %}
+
 {% block video %}
-{% if not is_mobile %}
+<!-- took out "if not is mobile" page has no mobile interface right now -->
 
 <div class="row">
     <div class="twelve columns">
@@ -13,7 +14,8 @@
 </div>
 
 	<div class="row"> <!-- Content Box -->
-	<div class="twelve columns" id="article-more-box">
+	<div class="twelve columns">
+	    <div id="article-more-box">
 					<a href="#"><span class="chapter">CHAPTER 1</span></a><span class="chapter">|</span>
                                         <a href="#"><span class="chapter">CHAPTER 2</span></a><span class="chapter">|</span>
                                         <a href="#"><span class="chapter">CHAPTER 3</span></a>
@@ -38,16 +40,17 @@
                     	 	<div class="sidebarBoxTitle">{{related_content.headline}}</div>
                          	<div class="sidebarBoxP">{{related_content.description}}</div>
 			 </div>   
-                        
-                        {% endfor %}
+
 			</div>
-		
+		     {% endfor %}
 		
                 </div> <!-- End Sidebar One -->
 		</div>
-                
-		</div> 
+               
+		</div>
+	
 	</div>
+</div>
 </div>
 </div> <!-- End content box -->
 

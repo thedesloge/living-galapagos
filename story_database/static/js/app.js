@@ -121,7 +121,6 @@ $(document).ready(function () {
 	console.log("another one");
 		$(".arrow-yes").toggleClass("hide");
 		$(".arrow-no").toggleClass("hide");
-		
-           
+	
 
 });

@@ -260,6 +260,7 @@
                                 if($('#homePlayBtn')){
                                 	$('#player_1').css({'width':'0', 'height':'0'});
                                 	$('#homePlayBtn').show();
+                                        $('#section1').hide();
                                 	$(".dim").css("display", "none");
                     			}
                             });
