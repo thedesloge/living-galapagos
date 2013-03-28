@@ -240,10 +240,10 @@ def getLanguageForArticle(article, language, request):
         chap['headline'] = chap_translation.headline
         chap['subheadline'] = chap_translation.subheadline
         chap['body_text'] = chap_translation.body_text
-        chap['infographics'] = chap_translation.interactives.all
+        chap['infographics'] = chap_translation.interactives.all()
         
         videos = []
-        translated_videos = chapter.videos.all
+        translated_videos = chapter.videos.all()
         for vid in translated_videos:
             videos.append(buildVideoObject(vid))
             
