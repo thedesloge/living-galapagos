@@ -13,10 +13,10 @@ def home(request, language_code='en'):
             context_instance=RequestContext(request)
         )
 
-def article_story_page(request, story_slug, language_code='en'):
+def article_story_page(request, article_slug, language_code='en'):
   return render_to_response(
             'story_database/article.html',
-            getLanguageForStory( getStoryBySlug(request, story_slug), language_code, request, False ),
+            getLanguageForArticle( get_article_by_slug(request, article_slug), language_code, request ),
             context_instance=RequestContext(request)
         )
 
@@ -184,6 +184,15 @@ def getStoryBySlug(request, storySlug):
     raise Http404
 
   return story
+  
+def get_article_by_slug(request, article_slug):
+    
+    try:
+        article_page = ArticlePage.objects.get(slug=article_slug)
+        return article_page
+    except ArticlePage.DoesNotExist:
+        raise Http404
+    
 
 def getLanguageForStory(story, language, request, isFeatured):
   
@@ -218,7 +227,31 @@ def getLanguageForStory(story, language, request, isFeatured):
   template_object['research_list'] = []
     
   return template_object
-
+  
+def getLanguageForArticle(article, language, request):
+    template_object = {}
+    
+    chapters = article.article_chapter.all()
+    
+    chap = {}
+    for chapter in chapters:
+        chap_translation = chapter.translations.get(language_code=language)
+        chap['headline'] = chap_translation.headline
+        chap['subheadline'] = chap_translation.subheadline
+        chap['body_text'] = chap_translation.body_text
+        chap['infographics'] = chap_translation.infographics.all
+        
+        videos = []
+        translated_videos = chapter.videos.all
+        for vid in translated_videos:
+            videos.append(buildVideoObject(vid))
+            
+        chap['videos'] = videos
+        if chapter.pano_head:
+            chap['pano_head'] = chapter.pano_head.url
+     
+    template_object["chapters"] = chap
+    return template_object
 
 
 

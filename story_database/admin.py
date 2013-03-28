@@ -101,6 +101,20 @@ class BackgroundVideoAdmin(admin.ModelAdmin):
 class CreditAdmin(TranslatableAdmin):
     model = Credit
     search_fields = ['name']
+    
+class ArticlePageAdmin(TranslatableAdmin):
+    model = ArticlePage
+    list_display = ('name',)
+    prepopulated_fields = {"slug": ("name",)}
+    
+class ArticleChapterAdmin(TranslatableAdmin):
+  model = StoryPage
+  list_display = ('name', 'all_translations',)
+  list_display_links = ('name',)
+  list_filter = ('creation_date', 'last_modified')
+  filter_horizontal = ('related_stories',)
+  search_fields  = ['name']
+  prepopulated_fields = {"slug": ("name",)}
        
 admin.site.register(FeaturedStory,
                     inlines = [FeaturedStoryItemInline],
@@ -114,4 +128,5 @@ admin.site.register(Category, CategoryAdmin)
 admin.site.register(BackgroundVideo, BackgroundVideoAdmin)
 admin.site.register(Role)
 admin.site.register(Credit, CreditAdmin)
-
+admin.site.register(ArticlePage, ArticlePageAdmin)
+admin.site.register(ArticleChapter, ArticleChapterAdmin)

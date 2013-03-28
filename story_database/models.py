@@ -260,6 +260,49 @@ class BackgroundVideo(models.Model):
         
     def __unicode__(self):
         return self.name
+
+class ArticleChapter(TranslatableModel):
+  creation_date = models.DateField(auto_now_add=True)
+  last_modified = models.DateField(auto_now=True)
+  name = models.CharField(max_length=200)
+  slug = models.SlugField()
+  related_stories = models.ManyToManyField('StoryPage', verbose_name=u'Related Stories', blank=True, null=True)
+  videos = models.ManyToManyField(Video, verbose_name=u'Related Videos', blank=True, null=True)
+  pano_head = models.FileField(upload_to='uploads/article/pano_head/%Y/%m/%d', blank=True, null=True, verbose_name=u'Chapter Heading Pano Image')
+  translations = TranslatedFields(
+                  headline = models.CharField(max_length=255, verbose_name=u'* Title/Headline'),
+                  subheadline = models.CharField(max_length=255, blank=True, null=True, verbose_name=u'* Subheadline (Optional)'),
+                  body_text = models.TextField(verbose_name=u'* Description'),
+                  quote = models.TextField(blank=True, null=True, verbose_name=u'* Quote (Optional)'),
+                  quote_attribution = models.TextField(blank=True, null=True, verbose_name=u'* Attribution (Optional)'),
+                  interactives = models.ManyToManyField(Interactive, verbose_name=u'Interactive or Infographic', blank=True, null=True),
+  )
+    
+  def __unicode__(self):
+      return self.name
   
+  @staticmethod
+  def autocomplete_search_fields():
+      return ("id__iexact", "name__icontains",)
+
+class ArticlePage(TranslatableModel):
+  creation_date = models.DateField(auto_now_add=True)
+  last_modified = models.DateField(auto_now=True)
+  name = models.CharField(max_length=200)
+  slug = models.SlugField()
+  article_chapter = models.ManyToManyField(ArticleChapter, blank=True, null=True)
+  thumbnail = models.FileField(upload_to='uploads/article/thumbnail/%Y/%m/%d', blank=True, null=True)
+    
+  translation = TranslatedFields(
+                title = models.CharField(max_length=255, verbose_name=u'* Title/Headline')
+  )
+  def __unicode__(self):
+      return self.name
   
-  
+  @staticmethod
+  def autocomplete_search_fields():
+      return ("id__iexact", "name__icontains",)
+
+
+
+
