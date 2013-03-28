@@ -236,6 +236,7 @@ def getLanguageForArticle(article, language, request):
     chap_obj = []
     for chapter in chapters:
         chap_translation = chapter.translations.get(language_code=language)
+        chap={}
         chap['headline'] = chap_translation.headline
         chap['subheadline'] = chap_translation.subheadline
         chap['body_text'] = chap_translation.body_text
