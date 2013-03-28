@@ -233,7 +233,7 @@ def getLanguageForArticle(article, language, request):
     
     chapters = article.article_chapter.all()
     
-    chap = {}
+    chap_obj = []
     for chapter in chapters:
         chap_translation = chapter.translations.get(language_code=language)
         chap['headline'] = chap_translation.headline
@@ -249,8 +249,9 @@ def getLanguageForArticle(article, language, request):
         chap['videos'] = videos
         if chapter.pano_head:
             chap['pano_head'] = chapter.pano_head.url
-     
-    template_object["chapters"] = chap
+            
+        chap_obj.append(chap)
+    template_object["chapters"] = chap_obj
     return template_object
 
 
