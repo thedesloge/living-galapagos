@@ -231,6 +231,7 @@ def getLanguageForStory(story, language, request, isFeatured):
 def getLanguageForArticle(article, language, request):
     template_object = {}
     
+    template_object['headline'] = article.name
     chapters = article.article_chapter.all()
     
     chap_obj = []
