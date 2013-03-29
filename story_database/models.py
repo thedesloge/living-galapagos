@@ -266,7 +266,7 @@ class ArticleChapter(TranslatableModel):
   last_modified = models.DateField(auto_now=True)
   name = models.CharField(max_length=200)
   slug = models.SlugField()
-  related_stories = models.ManyToManyField('StoryPage', verbose_name=u'Related Stories', blank=True, null=True)
+  related_stories = models.ManyToManyField('ArticlePage', verbose_name=u'Related Stories', blank=True, null=True)
   videos = models.ManyToManyField(Video, verbose_name=u'Related Videos', blank=True, null=True)
   pano_head = models.FileField(upload_to='uploads/article/pano_head/%Y/%m/%d', blank=True, null=True, verbose_name=u'Chapter Heading Pano Image')
   translations = TranslatedFields(
