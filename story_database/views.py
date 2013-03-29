@@ -230,29 +230,33 @@ def getLanguageForStory(story, language, request, isFeatured):
   
 def getLanguageForArticle(article, language, request):
     template_object = {}
-    
-    chapters = article.article_chapter.all()
-    
-    chap_obj = []
-    for chapter in chapters:
-        chap_translation = chapter.translations.get(language_code=language)
-        chap={}
-        chap['headline'] = chap_translation.headline
-        chap['subheadline'] = chap_translation.subheadline
-        chap['body_text'] = chap_translation.body_text
-        chap['infographics'] = chap_translation.interactives.all()
+    try:
+        chapters = article.article_chapter.all()
         
-        videos = []
-        translated_videos = chapter.videos.all()
-        for vid in translated_videos:
-            videos.append(buildVideoObject(vid))
+        chap_obj = []
+        for chapter in chapters:
+            chap_translation = chapter.translations.get(language_code=language)
+            chap={}
+            chap['headline'] = chap_translation.headline
+            chap['subheadline'] = chap_translation.subheadline
+            chap['body_text'] = chap_translation.body_text
+            chap['infographics'] = chap_translation.interactives.all()
             
-        chap['videos'] = videos
-        if chapter.pano_head:
-            chap['pano_head'] = chapter.pano_head.url
+            videos = []
+            translated_videos = chapter.videos.all()
+            for vid in translated_videos:
+                videos.append(buildVideoObject(vid))
+                
+            chap['videos'] = videos
             
-        chap_obj.append(chap)
-    template_object["chapters"] = chap_obj
+            if chapter.pano_head:
+                chap['pano_head'] = chapter.pano_head.url
+                
+            chap_obj.append(chap)
+        template_object["chapters"] = chap_obj
+    
+    except ArticlePage.DoesNotExist:
+        pass
     return template_object
 
 
