@@ -22,16 +22,16 @@
 		
 		
 		<div class="articleBox">
+		    {% for chapter in chapters %}
 			<div class="textHead">{{headline}}</div>
 			<div class="textSubHead">{{subheadline}}</div>
-			{% if story.about_text %}
-			<div class="textP"> {{story.about_text|linebreaks }}</div>
-			{% else %}
-			<div class="textP"> {{description|linebreaks }}</div>
-			{% endif %}
-			<div class="pullQuote">"{{quote}}"<br> {% if quote_attribution %} -{{quote_attribution}} {% endif %}</div>
+			<div class="textP"> {{body_text|linebreaks }}</div>
 			
+			
+			<div class="pullQuote">"{{quote}}"<br> {% if quote_attribution %} -{{quote_attribution}} {% endif %}</div>
+		    {% endfor %}
                         <div class="textSubHead">RELATED CONTENT</div>
+		    
 			{% for related_content in related_content_list %}
              	 
                     	 <div onclick="TINY.box.show({iframe:'{{ related_content.link }}',boxid:'frameless',animate:true, width:1200, height:675, fixed:false})">
