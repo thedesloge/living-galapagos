@@ -230,23 +230,9 @@ def getLanguageForStory(story, language, request, isFeatured):
   
 def getLanguageForArticle(article, language, request):
     template_object = {}
-#<<<<<<< HEAD
-    
-    template_object['headline'] = article.name
-    chapters = article.article_chapter.all()
-    
-    chap_obj = []
-    for chapter in chapters:
-        chap_translation = chapter.translations.get(language_code=language)
-        chap={}
-        chap['headline'] = chap_translation.headline
-        chap['subheadline'] = chap_translation.subheadline
-        chap['body_text'] = chap_translation.body_text
-        chap['infographics'] = chap_translation.interactives.all()
-#=======
+    template_object["is_mobile"] = request.is_mobile
     try:
         chapters = article.article_chapter.all()
-#>>>>>>> 7e16b81541232bef7006e1996d326c69886202e5
         
         chap_obj = []
         for chapter in chapters:
@@ -256,6 +242,8 @@ def getLanguageForArticle(article, language, request):
             chap['subheadline'] = chap_translation.subheadline
             chap['body_text'] = chap_translation.body_text
             chap['infographics'] = chap_translation.interactives.all()
+            chap['quote'] = chap_translation.quote
+            chap['quote_attribution'] = chap_translation.quote_attribution
             
             videos = []
             translated_videos = chapter.videos.all()
