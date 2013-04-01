@@ -42,6 +42,12 @@ overflow:auto;
 	padding: 40px 7% 20px 3em;
 	
 }
+.articleBoxText {
+	
+	padding: 11px 0% 0% 0%;
+	
+	
+}
 
 .articleBoxThin {
 	
@@ -59,7 +65,15 @@ overflow:auto;
 	font-size: 4.1em;
 	color: #29221c;
 	line-height: 1em;
-	
+}
+
+.textHeadArt {
+	font-family:qhytsdakx;
+	font-size: 4.1em;
+	color: #29221c;
+	line-height: 1em;
+	margin-left: 1.05em;
+	margin-top: 1em;
 }
 
 .textSubHead {
@@ -68,6 +82,14 @@ overflow:auto;
 	color:#a9a8a6;
 	line-height:1.3em;
 	padding-bottom: .8em;
+}
+.textSubHeadArt {
+	font-family:museo-sans-500;
+	font-size:1.1em;
+	color:#a9a8a6;
+	line-height:1.3em;
+	padding-bottom: .8em;
+	margin-left: 4em;
 }
 
 .textSubHeadVideo {
@@ -79,11 +101,11 @@ overflow:auto;
 }
 
 .chapter {
-	font-family:museo-sans-500;
+	font-family:Caviar Dreams;
 	font-size:1.1em;
 	color:#A89E88;
 	line-height:1.3em;
-	padding-top: .9em;
+	
 	padding-left: .45em;
 	padding-right: .45em;
 }
@@ -93,6 +115,20 @@ overflow:auto;
 	font-size:1.1em;
 	color: #29221c; 
 	line-height:1.7em;
+}
+
+.artTextHolder{
+	margin-top:20em;
+	margin-left:3.6em;
+	margin-right:20em;
+}
+
+.textPArt p{
+	font-family: museo-sans-300;
+	font-size:1.1em;
+	color: #29221c;
+	line-height:1.7em;
+	
 }
 
 .textP p{
@@ -171,8 +207,8 @@ text-transform:uppercase;
 	font-family:Caviar Dreams;
 	font-size: 1.5em;
 	line-height: 2.2em;
-	color:#F6F3EE;	
-	text-shadow: 2px 2px 2px #000;
+	color:#373737;	
+	/*text-shadow: 2px 2px 2px #000;*/
 }
 
 .footerNav, .footerNav a, .footerNav a:hover, .footerNav a:focus {
