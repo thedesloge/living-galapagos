@@ -244,13 +244,15 @@ def getLanguageForArticle(article, language, request):
             chap['infographics'] = chap_translation.interactives.all()
             chap['quote'] = chap_translation.quote
             chap['quote_attribution'] = chap_translation.quote_attribution
-            
+            chap['id'] = chap_translation.id
             videos = []
             translated_videos = chapter.videos.all()
             for vid in translated_videos:
                 videos.append(buildVideoObject(vid))
                 
             chap['videos'] = videos
+            #chap['vimeo_id'] = videos[0]
+            #chap['steven'] = buildVideoObject(Video.objects.language(language).get(id=story.video.id))
             
             if chapter.pano_head:
                 chap['pano_head'] = chapter.pano_head.url

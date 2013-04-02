@@ -137,10 +137,18 @@ padding-left: .9em;
 margin: 1em 0em 1em 0em;
 }
 
-#reportInfo{
+.reportInfo{
 	background-color: red;
 	height: 20px;
 	width: 400px;
+	position: relative;
+	z-index: -1;
+}
+
+.scroll{
+	overflow: scroll;
+	height: 500px;
+	width: 20em;
 }
 
 .break{height: 3em;}
@@ -177,7 +185,8 @@ box-shadow: 0 0 13px #000;}
 .sidebarBoxTitle {text-transform:uppercase;}
 .sidebarBoxP {font-family:museo-sans-500;!important}
 
-.panoHead{width: 100%; height: 250px; z-index: 0; position:absolute; background-color:#dae4fb; margin-left: -12px;}
+.panoHead{width: 100%; height: 250px; z-index: 0; position:absolute; margin-left: -12px; }
+.invisible{opacity: .00; position: absolute; z-index: -1;}
 
 
 
