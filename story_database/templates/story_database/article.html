@@ -14,17 +14,19 @@
 	<div class="row"> <!-- Content Box -->
 	<div class="twelve columns">
 	    <div id="article-more-box">
-					<a href="#"><span class="chapter">CHAPTER 1</span></a><span class="chapter">|</span>
-                                        <a href="#"><span class="chapter">CHAPTER 2</span></a><span class="chapter">|</span>
-                                        <a href="#"><span class="chapter">CHAPTER 3</span></a>
-	
+		{% for chapter in chapters %}
+			<a href="#chapter{{chapter.id }}"><span class="chapter">CHAPTER {{ forloop.counter }} </span></a><span class="chapter">|</span>
+                                     
+	     {% endfor %}
+			<a href="#"><span class="chapter">LEARN</span></a>
 	<div class="textHead">{{headline}}</div>
 	
 		
 		<div class="articleBoxText">
 		    {% for chapter in chapters %}
+			<div class="invisible"><h4><a name="chapter{{chapter.id }}"></a></h4></div>
 			
-			<div class="panoHead"><img src="{{chapter.pano_head}}"></img>
+			<div class="panoHead"><img src="http://localhost:8000/media/{{chapter.pano_head}}"></img>
 			   
 			<div class="textHeadArt">{{chapter.headline}}</div>
 			<div class="textSubHeadArt">{{chapter.subheadline}}</div>
@@ -33,13 +35,16 @@
 		<div class="articleBox">-->
 		    <div class="artTextHolder">
 			<div class="textPArt"> {{chapter.body_text|linebreaks }}</div>
-			<div class="textPArt"> {{chapter.videos}}</div>
-		
-				
+			<div class="textPArt"> {{chapter.vimeo_id}}</div>
+			Start of the iframe<iframe src="https://player.vimeo.com/video/{{video.vimeo_id}}?&api=1&player_id=player_1&title=0&byline=0&portrait=0" id="player_1" frameborder="0" style="height:0;"></iframe>
+					
+			<div onclick="TINY.box.show({iframe:'{{ related_content.link }}',boxid:'frameless',animate:true, width:1200, height:675, fixed:false})">
+                    	 <img src="{{chapter.infographics.thumbnail.url}}" width="100%"/></div>
+			
              	 
                     	 <div class="sidebar-text">
 			  {% for videos in chapter %}
-			    <iframe src="https://player.vimeo.com/video/{{videos.vimeo_id}}?&api=1&player_id=player_1&title=0&byline=0&portrait=0" id="player_2" frameborder="0" style="height:0;"></iframe>
+			    <iframe src="https://player.vimeo.com/video/{{video.vimeo_id}}?&api=1&player_id=player_1&title=0&byline=0&portrait=0" id="player_2" frameborder="0" style="height:0;"></iframe>
 			{% endfor %}
 			 </div>   	
                     
@@ -47,6 +52,7 @@
             
 		    
 			<div class="pullQuote">"{{chapter.quote}}"<br> {% if chapter.quote_attribution %} -{{chapter.quote_attribution}} {% endif %}</div>
+			<br />
 		    </div>	
 			
 		    
