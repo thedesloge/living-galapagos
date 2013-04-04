@@ -36,23 +36,73 @@
 
 		</style>
 	    
-	    <div id="layerslider-container">
+	    <div id="ls-container-fullscreen">
 			
-			<div id="layerslider" style="width: 960px; height: 300px; margin: 0 auto;">
+			<div id="layerslider" style="width: 960px; height: 330px; margin: 0 auto;">
 
 				<div class="ls-layer" style="slidedelay: 2000;">
 
 					
 					<!--<img src="../slide_assets/beach_bg.png" class="ls-bg">-->
-					<a href="#" class="ls-s1" style="top:20px; left:242px; slidedirection : top; durationin : 2000; delayin : 0;"><img src="{{ STATIC_URL }}images/slide_assets/icon1.png"></a>
-					<a href="#" class="ls-s1" style="top:20px; left:410px; slidedirection : top; durationin :2000; delayin : 0;"><img src="{{ STATIC_URL }}images/slide_assets/icon2.png"></a>	
-					<a href="#" class="ls-s1" style="top:20px; left:578px; slidedirection : top; durationin :2000; delayin : 0;"><img src="{{ STATIC_URL }}images/slide_assets/icon3.png"></a>
-					<a href="#" class="ls-s1" style="top:150px; left:492px; slidedirection : bottom; durationin :2000; delayin : 0;"><img src="{{ STATIC_URL }}images/slide_assets/icon5.png"></a>
-					<a href="#" class="ls-s1" style="top:150px; left:328px; slidedirection : bottom; durationin : 2000; delayin : 0;"><img src="{{ STATIC_URL }}images/slide_assets/icon4.png"></a>
 					
+					<a href="#" class="ls-s1" style="top:20px; left:242px; slidedirection : top; durationin : 2000; delayin : 0;">
+					    <div onclick="TINY.box.show({iframe:'{{ related_content.link }}',boxid:'frameless',animate:true, width:1200, height:675, fixed:false})">
+					    <img src="{{ STATIC_URL }}images/slide_assets/icon1.png" width="100%"/>
+					    </div>
+					</a>
 					
+					<a href="#" class="ls-s1" style="top:20px; left:410px; slidedirection : top; durationin :2000; delayin : 0;">
+					    <div onclick="TINY.box.show({iframe:'{{ related_content.link }}',boxid:'frameless',animate:true, width:1200, height:675, fixed:false})">
+					    <img src="{{ STATIC_URL }}images/slide_assets/icon2.png" width="100%"/>
+					    </div>
+					</a>
 					
-
+					<a href="#" class="ls-s1" style="top:20px; left:578px; slidedirection : top; durationin :2000; delayin : 0;">
+					    <div onclick="TINY.box.show({iframe:'{{ related_content.link }}',boxid:'frameless',animate:true, width:1200, height:675, fixed:false})">
+					    <img src="{{ STATIC_URL }}images/slide_assets/icon3.png" width="100%">
+					    </div>
+					</a>
+					
+					<a href="#" class="ls-s1" style="top:150px; left:492px; slidedirection : bottom; durationin :2000; delayin : 0;">
+					    <div onclick="TINY.box.show({iframe:'{{ related_content.link }}',boxid:'frameless',animate:true, width:1200, height:675, fixed:false})">
+					    <img src="{{ STATIC_URL }}images/slide_assets/icon5.png" width="100%">
+					    </div>
+					</a>
+					<a href="#" class="ls-s1" style="top:150px; left:328px; slidedirection : bottom; durationin : 2000; delayin : 0;">
+					    <div onclick="TINY.box.show({iframe:'{{ related_content.link }}',boxid:'frameless',animate:true, width:1200, height:675, fixed:false})">
+					    <img src="{{ STATIC_URL }}images/slide_assets/icon4.png" width="100%">
+					    </div>
+					</a>
+					
+					<!--<a href="#" class="ls-s1" style="top:20px; left:30%; slidedirection : top; durationin : 2000; delayin : 0;">
+					    <div onclick="TINY.box.show({iframe:'{{ related_content.link }}',boxid:'frameless',animate:true, width:1200, height:675, fixed:false})">
+					    <img src="{{ STATIC_URL }}images/slide_assets/icon1.png" />
+					    </div>
+					</a>
+					
+					<a href="#" class="ls-s1" style="top:20px; left:50%; slidedirection : top; durationin :2000; delayin : 0;">
+					    <div onclick="TINY.box.show({iframe:'{{ related_content.link }}',boxid:'frameless',animate:true, width:1200, height:675, fixed:false})">
+					    <img src="{{ STATIC_URL }}images/slide_assets/icon2.png" />
+					    </div>
+					</a>
+					
+					<a href="#" class="ls-s1" style="top:20px; left:70%; slidedirection : top; durationin :2000; delayin : 0;">
+					    <div onclick="TINY.box.show({iframe:'{{ related_content.link }}',boxid:'frameless',animate:true, width:1200, height:675, fixed:false})">
+					    <img src="{{ STATIC_URL }}images/slide_assets/icon3.png">
+					    </div>
+					</a>
+					
+					<a href="#" class="ls-s1" style="top:150px; left:40%; slidedirection : bottom; durationin :2000; delayin : 0;">
+					    <div onclick="TINY.box.show({iframe:'{{ related_content.link }}',boxid:'frameless',animate:true, width:1200, height:675, fixed:false})">
+					    <img src="{{ STATIC_URL }}images/slide_assets/icon5.png">
+					    </div>
+					</a>
+					<a href="#" class="ls-s1" style="top:150px; left:60%; slidedirection : bottom; durationin : 2000; delayin : 0;">
+					    <div onclick="TINY.box.show({iframe:'{{ related_content.link }}',boxid:'frameless',animate:true, width:1200, height:675, fixed:false})">
+					    <img src="{{ STATIC_URL }}images/slide_assets/icon4.png">
+					    </div>
+					</a>-->
+					
 				</div>
 				
 				
