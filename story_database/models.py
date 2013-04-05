@@ -156,7 +156,7 @@ class Interactive(models.Model):
     description = models.TextField(verbose_name=u'Description')
     single_line_description = models.CharField(max_length=300, blank=True, null=True, verbose_name=u'* Single Line Description (Optional)'),
     infographic_files = models.FileField(upload_to=get_infographics_path, storage=ZipStorage, verbose_name=u"* Interactive's Files (zip file)", null=True)
-    poster_frame = models.ForeignKey('PosterFrame', blank=True, null=True)
+    poster_frame = models.ForeignKey('PosterFrame', blank=True, null=True, verbose_name=u"Interactive Posterframe (used for article page, width 780)")
     
     def __unicode__(self):
         return self.name
