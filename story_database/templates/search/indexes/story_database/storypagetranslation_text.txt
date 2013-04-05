@@ -1,0 +1,5 @@
+{{ object.headline }}
+{{ object.subheadline }}
+{{ object.description }}
+{{ object.quote }}
+{{ object.quote_attribution }}
