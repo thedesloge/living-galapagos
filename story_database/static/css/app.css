@@ -188,6 +188,26 @@ box-shadow: 0 0 13px #000;}
 .panoHead{width: 100%; height: 250px; z-index: 0; position:absolute; margin-left: -12px; }
 .invisible{opacity: .00; position: absolute; z-index: -1;}
 
+.article_interactive_img_right{
+	float: right;
+	display: inline;
+	clear: both;
+	
+}
+
+.article_interactive_img_left{
+	float: left;
+	display: inline;
+	clear: both;
+	
+}
+
+.spacer {
+	position:relative;
+	background: #000;
+	height: 50px;
+}
+
 
 
 

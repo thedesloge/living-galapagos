@@ -251,9 +251,8 @@ def getLanguageForArticle(article, language, request):
                 videos.append(buildVideoObject(vid))
                 
             chap['videos'] = videos
-            chap['vimeo_id'] = vid.vimeo_id
-            #chap['headline'] = vid.headline
-            #chap['subheadline'] = vid.subheadline
+            #chap['vimeo_id'] = vid.vimeo_id
+        
             
             
             if chapter.pano_head:

@@ -38,32 +38,18 @@
 		<!--</div>
 		<div class="articleBox">-->
 		    <div class="artTextHolder">
-			<div class="textPArt"> {{chapter.body_text|linebreaks }}</div>
-			<!--<div class="textPArt"> {{chapter.videos}}</div>
-			<h4>capter.videos: {{chapter.videos}}</h4>
-			<h4>capter.vimeo_id: {{chapter.vimeo_id}}</h4>-->
-			
-			
-			 <div class="sidebar-text">
-                    	 	<div class="sidebarBoxTitle">{{chapter.headline}}</div>
-                         	<div class="sidebarBoxP">{{chapter.subheadline}}</div>
-			 </div> 
-			<iframe src="https://player.vimeo.com/video/{{chapter.vimeo_id}}?&api=1&player_id=player_1&title=0&byline=0&portrait=0" frameborder="0" style="width:720px; height:466px;"></iframe>
-					
-			<div onclick="TINY.box.show({iframe:'{{ related_content.link }}',boxid:'frameless',animate:true, width:1200, height:675, fixed:false})">
-                    	 <img src="{{chapter.infographics}}" width="100%"/></div>
-			
-                    <!--	 <div class="sidebar-text">
-			  {% for videos in chapter %}
-			    <iframe src="https://player.vimeo.com/video/{{video.vimeo_id}}?&api=1&player_id=player_1&title=0&byline=0&portrait=0" id="player_2" frameborder="0" style="height:0;"></iframe>
-			{% endfor %}
-			 </div>  --> 	
-                    
-            
-            
+			<div class="textPArt">
+			    
+			    {{chapter.body_text| safe | escape | linebreaks}}
+			    
+	    </div>
 		    
 			<div class="pullQuote">"{{chapter.quote}}"<br> {% if chapter.quote_attribution %} -{{chapter.quote_attribution}} {% endif %}</div>
+			
 			<br />
+			
+			<div style="clear: both"></div>
+			
 		    </div>	
 			
 		    
