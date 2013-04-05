@@ -17,6 +17,16 @@ def common_translated_fields():
                               quote_attribution = models.TextField(blank=True, null=True, verbose_name=u'* Attribution (Optional)'),
       )
 
+class StoryCategoryHeader(TranslatableModel):
+      name = models.CharField(max_length=100)
+      slug = models.SlugField(max_length=100)
+      background_image = models.FileField(upload_to="uploads/story-category-header/images/%Y/%m/%d")
+      
+      translations = TranslatedFields(
+            category_name = models.CharField(max_length=255, verbose_name=u'* Category Name'),
+            category_description = models.TextField(verbose_name=u'* Category Description')
+            )
+
 class Role(models.Model):
     title = models.CharField(max_length=100)
     
@@ -182,6 +192,7 @@ class StoryPage(TranslatableModel):
     latitude = models.DecimalField(max_digits=10, decimal_places=6, blank=True, null=True)
     longitude = models.DecimalField(max_digits=10, decimal_places=6, blank=True, null=True)
     video = models.ForeignKey(Video, verbose_name=u'Story Video', blank=True, null=True)
+    story_category_header = models.ForeignKey(StoryCategoryHeader, verbose_name=u'Story Category Header', blank=True, null=True)
     related_stories = models.ManyToManyField('StoryPage', verbose_name=u'Related Stories', blank=True, null=True)
     interactives = models.ManyToManyField(Interactive, verbose_name=u'Interactive or Infographic', blank=True, null=True)
     thumbnail = models.FileField(upload_to='uploads/story/thumbnail/%Y/%m/%d', blank=True, null=True)

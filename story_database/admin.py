@@ -17,7 +17,11 @@ class StoryPageAdmin(TranslatableAdmin):
   search_fields  = ['name']
   prepopulated_fields = {"slug": ("name",)}
   
-  
+class StoryCategoryHeaderAdmin(TranslatableAdmin):
+  model = StoryCategoryHeader
+  list_display = ('name', 'all_translations')
+  search_fields = ['name']
+  prepopulated_fields = {"slug": ("name",)}
 
 class InteractiveAdmin(admin.ModelAdmin):
   model = Interactive
@@ -120,6 +124,7 @@ admin.site.register(FeaturedStory,
                     inlines = [FeaturedStoryItemInline],
                     )
 admin.site.register(StoryPage, StoryPageAdmin)
+admin.site.register(StoryCategoryHeader, StoryCategoryHeaderAdmin)
 admin.site.register(Video, VideoAdmin)
 admin.site.register(Interactive, InteractiveAdmin)
 admin.site.register(PosterFrame, PosterFrameAdmin)

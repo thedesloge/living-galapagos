@@ -225,12 +225,22 @@ def getLanguageForStory(story, language, request, isFeatured):
   template_object['spanish_link'] = getSpanishLink(request)
   template_object['resource_list'] = []
   template_object['research_list'] = []
+  template_object['category_header'] = getCategoryHeader(story.story_category_header, language)
     
   return template_object
+
+def getCategoryHeader(category_header, language):
+  ret_val = {}
+  ret_val['title'] = category_header.translations.get(language_code=language).category_name
+  ret_val['description'] = category_header.translations.get(language_code=language).category_description
+  if category_header.background_image:
+    ret_val['background_image'] = category_header.background_image.url
+  return ret_val
   
 def getLanguageForArticle(article, language, request):
     template_object = {}
     template_object["is_mobile"] = request.is_mobile
+    template_object['language'] = language
     try:
         chapters = article.article_chapter.all()
         
