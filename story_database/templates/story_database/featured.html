@@ -16,7 +16,7 @@
 			</div>
 			<div class="arrow-no">
 					<img src="../../static/images/video-arrow.png" style="float: left; display: inline; margin: .3em 1em"/>
-					<div class="textSubHeadVideo">WATCH VIDEO: {{storyTitle}}</div>
+					<div class="textSubHeadVideo">WATCH VIDEO: {{headline}}</div>
 				</div>
 		</span>
 	</a>
@@ -120,7 +120,7 @@
 <div class="clear-float"></div>
 </div> <!--closes section 1-->
 		
-		<a href="#section1" class="nav-toggle">Close Video</a> <!-- link that closes video -->
+		<!--<a href="#section1" class="nav-toggle">Close Video</a>--> <!-- link that closes video -->
 {% endif %}
 {% if is_mobile %}
 <div class="row" id="vidrow-home"><!-- video player row -->
@@ -155,12 +155,13 @@
 		</div>-->  <!-- End Text Above Div -->
 	<div class="row"> <!-- Content Box -->
 	<div class="twelve columns" id="more-box">
-		
-		<div class="info-background">
-			<div class="textHead">{{category_header.title}}</div>
-			<div class="textSubHead">{{category_header.description}}</div>
-			<img src="http://localhost:8000/media/{{category_header.background_image}}"/>
-		</div>
+			
+			<span class="holder">
+			<div class="info-background"><img class="cat-img" src="{{category_header.background_image}}"></img>
+			<div class="textCatHead">{{category_header.title}}</div>
+			<div class="textCatSubHead">{{category_header.description}}</div>
+			</div></span>
+			
 		
 		<div class="row">
 		<div class="eight columns">

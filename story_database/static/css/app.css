@@ -64,7 +64,7 @@ body {
 }
 
 #logo-li {margin-bottom: 0em; width: 21.68%; height: 160px; display: inline; background-size:30%; float: left;  }
-.logo-background{ margin-top: 5%; position:absolute; width: 100%; height:66%; z-index: -1; background-image:url("http://reinhardt.jomc.unc.edu/static/images/nav_bg.png");}
+.logo-background{ margin-top: 60px; position:absolute; width: 100%; height:66%; z-index: -1; background-image:url("http://reinhardt.jomc.unc.edu/static/images/nav_bg.png");}
 div.logo { max-width: 17%; padding-bottom: 6px; }
 #top-nav-li {text-align: right; margin-top: 100px; width:78.32%; float: left; display: inline; background-color: none; z-index: 10;}
 #top-nav-li ul {}
@@ -108,7 +108,7 @@ div#botbutton {bottom: 0; line-height: 41px; vertical-align: bottom;}
 
 .learnImage{margin: 2em 0em 2em 0em; text-align: center}
 
-div.dim {position: fixed; top: 0; bottom: 0; left: 0; right: 0; height: 3000px; z-index: 8; background-image:url(../images/dim.png); display: none; opacity: 0.0;}
+/*div.dim {position: fixed; top: 0; bottom: 0; left: 0; right: 0; height: 3000px; z-index: 8; background-image:url(../images/dim.png); display: none; opacity: 0.0;}*/
 
 #vidrow-home {z-index: 10;}
 #vidrow {z-index: 10;background-image: url("http://reinhardt.jomc.unc.edu/static/images/nav_bg.png");}
@@ -128,7 +128,7 @@ box-shadow: 0 0 13px #000;
 -moz-box-shadow: 0 0 13px #000;
 -webkit-box-shadow: 0 0 13px #000;
 box-shadow: 0 0 13px #000;
-padding-top: .9em;
+padding-top: 1%;
 padding-left: .9em;
 
 }
@@ -152,7 +152,29 @@ margin: 1em 0em 1em 0em;
 }
 
 .break{height: 3em;}
-.info-background{ margin-top: 3em; position:absolute; width: 100%; height:8em; background-image:url("http://reinhardt.jomc.unc.edu/static/images/nav_bg.png");}
+.cat-img{}
+.holder{}
+
+@media screen and (max-width:1000px) {
+    .cat-img{visibility:hidden;}
+    .holder{top: 41px; position: absolute; z-index: 1; background-image:url(../images/nav_bg.png); width: 100%; height:11em; margin-bottom:13%;}
+    .textHead {
+	font-family:qhytsdakx;
+	font-size: 4.1em;
+	color: #29221c;
+	line-height: 1em;
+	margin-top: 1em;
+}
+    .textSubHead {
+	font-family:museo-sans-500;
+	font-size:1.1em;
+	color:#a9a8a6;
+	line-height:1.3em;
+	padding-bottom: .8em;
+	margin-top: 1em;
+}
+}
+.info-background{ margin-top: 3.3%; position:absolute; width: 100%; height:8em;}
 
 
 .sidebar-item {background-color: #fff; -moz-box-shadow: 0 0 13px #000;
@@ -185,7 +207,7 @@ box-shadow: 0 0 13px #000;}
 .sidebarBoxTitle {text-transform:uppercase;}
 .sidebarBoxP {font-family:museo-sans-500;!important}
 
-.panoHead{width: 100%; height: 250px; z-index: 0; position:absolute; margin-left: -12px; }
+.panoHead{width: 100%; height: 350px; z-index: 0; position:absolute; margin-left: -12px; }
 .invisible{opacity: .00; position: absolute; z-index: -1;}
 
 .article_interactive_img_right{

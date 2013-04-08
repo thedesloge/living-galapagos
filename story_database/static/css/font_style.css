@@ -72,9 +72,41 @@ overflow:auto;
 	font-size: 4.1em;
 	color: #29221c;
 	line-height: 1em;
-	margin-left: 1.05em;
+	margin-left: .85em;
 	position:relative;
-	top: -65%;
+	z-index:1;
+	margin-top: 6.6%;
+}
+
+.textSubHeadArt {
+	font-family:museo-sans-500;
+	font-size:1.1em;
+	color:#29221c;
+	line-height:1.3em;
+	padding-bottom: .75em;
+	margin-left: 3.3em;
+	position:relative;
+}
+
+.textCatHead {
+	font-family:museo-sans-500;
+	font-size:1.6em;
+	color:#EAE5D7;
+	line-height:1.3em;
+	padding-bottom: .4em;
+	margin-top: -13%;
+	padding-left: 4.8%;
+	
+}
+
+.textCatSubHead {
+	font-family:museo-sans-500;
+	font-size:1.1em;
+	color:#EAE5D7;
+	line-height:1.3em;
+	padding-bottom: .8em;
+	padding-left: 4.8%;
+	
 }
 
 .textSubHead {
@@ -85,16 +117,7 @@ overflow:auto;
 	padding-bottom: .8em;
 	
 }
-.textSubHeadArt {
-	font-family:museo-sans-500;
-	font-size:1.1em;
-	color:#a9a8a6;
-	line-height:1.3em;
-	padding-bottom: .8em;
-	margin-left: 4em;
-	position:relative;
-	top: -65%;
-}
+
 
 .textSubHeadVideo {
 	font-family:museo-sans-500;
@@ -108,8 +131,6 @@ overflow:auto;
 	font-family:Caviar Dreams;
 	font-size:1.1em;
 	color:#A89E88;
-	line-height:1.3em;
-	
 	padding-left: .45em;
 	padding-right: .45em;
 }
@@ -122,9 +143,10 @@ overflow:auto;
 }
 
 .artTextHolder{
-	margin-top:20em;
 	margin-left:3.6em;
 	margin-right:3.6em;
+	margin-top: 15%;
+	position: relative;
 }
 
 .textPArt p{

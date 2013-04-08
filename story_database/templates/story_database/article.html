@@ -30,11 +30,11 @@
 		    {% for chapter in chapters %}
 			<div class="invisible"><h4><a name="chapter{{chapter.id }}"></a></h4></div>
 			
-			<div class="panoHead"><img src="http://localhost:8000/media/{{chapter.pano_head}}" height="300"></img>
-			   
+			<div class="panoHead"><img src="{{chapter.pano_head}}" height="300"></img>
+			</div>  
 			<div class="textHeadArt">{{chapter.headline}}</div>
 			<div class="textSubHeadArt">{{chapter.subheadline}}</div>
-			</div>
+			
 		<!--</div>
 		<div class="articleBox">-->
 		    <div class="artTextHolder">

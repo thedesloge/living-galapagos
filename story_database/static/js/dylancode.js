@@ -223,13 +223,13 @@
                             froogaloop.addEvent('play', function(data) {
 								if (!isPlaying){
 									$(".dim").css("display","block");
-									$(".dim").animate({ opacity: "1.0" }, 800);;
+									//$(".dim").animate({ opacity: "1.0" }, 800);;
 									isPlaying = true;
 									//makePause(false);
-									$("#slidemenu").animate({"left": "-100%"}, 300, function(){
+									//$("#slidemenu").animate({"left": "-100%"}, 300, function(){
 										$("#sidebar-div").css("width","0%");
 										froogaloop.api('play');
-									});
+									//});
 								}
 								console.log('play event');
 								
@@ -257,11 +257,14 @@
                             froogaloop.addEvent('finish', function(data) {
 								//Add onFinish stuff
                                 console.log('finish');
+                                $('#section1').slideToggle("hide");
+                                $(".arrow-yes").toggleClass("hide");
+                                $(".arrow-no").toggleClass("hide");
                                 if($('#homePlayBtn')){
                                 	$('#player_1').css({'width':'0', 'height':'0'});
                                 	$('#homePlayBtn').show();
-                                        //$('#section1').hide();
-                                	$(".dim").css("display", "none");
+                                        
+                                	//$(".dim").css("display", "none");
                     			}
                             });
                         }
