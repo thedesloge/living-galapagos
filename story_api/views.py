@@ -27,22 +27,16 @@ class NavView(APIView):
         response = {}
         catList = []
         try:
-            for category in Category.objects.all():
-                c = {}
-                c['name'] = category.translations.get(language_code=lang).translation
-                stories = []
-                for story in StoryPage.objects.filter(category=category):
-                    story_trans = story.translations.get(language_code=lang)
-                    t_nail = ""
-                    if story.thumbnail:
-                        t_nail = story.thumbnail.url
-                    stories.append({'headline':story_trans.headline, 'thumbnail':t_nail})
-                c['stories'] = stories
-                catList.append(c)
+            for menu in Menu.objects.all():
+                catList.append(MenuSerializer())
+                
         except CategoryTranslation.DoesNotExist:
             pass   
-        response['navigation'] = catList   
-        return Response(response)
+        response['navigation'] = catList
+        
+        serializer = MenuSerializer(instance=Menu.objects.all(), many=True)
+        data = serializer.data 
+        return Response(data)
 
 class StoryList(generics.ListAPIView):
     """

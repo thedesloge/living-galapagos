@@ -30,4 +30,20 @@ class VideoSerializer(serializers.HyperlinkedModelSerializer):
 class CategorySerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Category
+
+class MenuItemSerializer(serializers.ModelSerializer):
+    page = StorySerializer()
+    
+    class Meta:
+        model = MenuItem
+        fields = ('name','name_es', 'url','position', 'page')
+        depth = 1
+
+class MenuSerializer(serializers.ModelSerializer):
+    category = CategorySerializer()
+    menuitem_set = MenuItemSerializer()
+    class Meta:
+        model = Menu
+        depth = 1
         
+    

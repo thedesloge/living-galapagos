@@ -4,6 +4,7 @@ from django.shortcuts import *
 from story_database.models import *
 from pprint import PrettyPrinter
 from django import forms
+from haystack.query import SearchQuerySet
 
 
 def home(request, language_code='en'):
@@ -49,59 +50,35 @@ def search(request, language_code='en'):
         filtered_list = {}
         search = form.cleaned_data['search']
         
-        storyList = {}
-        tags = Tag.objects.filter(name__in=form.cleaned_data['tags'])
-        
-        if (form.cleaned_data['category_sea'] and form.cleaned_data['category_land'] and form.cleaned_data['category_archive']):
-            if tags:
-                storyList = Story.objects.filter(tags__in=tags).order_by('menu_order')
-            else:
-                storyList = Story.objects.all()
-            
-        elif form.cleaned_data['category_sea']:
-            cat = Category.objects.get(slug='category-sea')
-            if tags:
-                storyList = Story.objects.filter(category=cat, tags__in=tags).order_by('menu_order')
-            else:
-                storyList = Story.objects.filter(category=cat).order_by('menu_order')
-                
-        elif form.cleaned_data['category_land']:
-            cat = Category.objects.get(slug='category-land')
-            if tags:
-                storyList = Story.objects.filter(category=cat, tags__in=tags).order_by('menu_order')
-            else:
-                storyList = Story.objects.filter(category=cat).order_by('menu_order')
-                
-        elif form.cleaned_data['category_archive']:
-            cat = Category.objects.get(slug='archive')
-            if tags:
-                storyList = Story.objects.filter(category=cat, tags__in=tags).order_by('menu_order')
-            else:
-                storyList = Story.objects.filter(category=cat).order_by('menu_order')
-                
-        filtered_list['story_list'] = getFilteredCategory(search, language_code, storyList)
+        story_query_set = SearchQuerySet().filter(text=search)
+        print "Got ", story_query_set.filter(language_code='en').count(), " stories"
+        filtered_list['story_list'] = {}
         background_vid = {}
-        try:
-            cat = Category.objects.get(slug='category-sea');
-            background_vid = Background_Video.objects.get(category=cat)
-        except Background_Video.DoesNotExist:  
-            pass
         
         return render_to_response('story_database/search.html', {'form':form, "filtered_list":filtered_list,"background_video":background_vid, "language":language_code}, context_instance=RequestContext(request))
     else:    
       return render_to_response('story_database/search.html', {'form':form, "language":language_code}, context_instance=RequestContext(request))
   else:  
     form = SearchForm(initial={'category_land':True, 'category_sea':True, 'category_archive':True})
-    allStories = Story.objects.all().order_by('menu_order')
+    all_stories = StoryPageTranslation.objects.filter(language_code=language_code)
     story_list = {}
-    story_list['story_list'] = Story_Translation.objects.filter(parent__in=allStories, language_code=language_code)
+    
+    temp_list = {}
+    for story in all_stories:
+        if story.master.thumbnail:
+            temp_list['thumbnail'] = story.master.thumbnail.url
+            
+        temp_list['slug'] = story.master.slug
+        temp_list['headline'] = story.headline
+        temp_list['single_line_description'] = story.single_line_description 
+    story_list['story_list'] = temp_list
     
     background_vid = {}
-    try:
-        cat = Category.objects.get(slug='category-sea');
-        background_vid = Background_Video.objects.get(category=cat)
-    except Background_Video.DoesNotExist:  
-        pass
+    #try:
+    #    cat = Category.objects.get(slug='category-sea');
+    #    background_vid = Background_Video.objects.get(category=cat)
+    #except Background_Video.DoesNotExist:  
+    #    pass
     
     return render_to_response('story_database/search.html', {'form':form, "filtered_list":story_list, "background_video":background_vid , "language":language_code}, context_instance=RequestContext(request))
 

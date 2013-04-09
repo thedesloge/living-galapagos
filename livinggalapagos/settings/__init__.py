@@ -3,7 +3,7 @@ import socket
 HOST_NAME = socket.gethostname()
 HOSTS = {
     'dons_machine': 'Donaldo.local',
-    'dons_machine': 'mid-campus-02266.wireless.unc.edu',
+    #'dons_machine': 'mid-campus-02266.wireless.unc.edu',
     'prod': 'prod-server',
     'dev': 'dev-server',
     'steven_machine': 'cm077-03'

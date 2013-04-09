@@ -10,7 +10,6 @@
 
 	<!-- Set the viewport width to device width for mobile -->
 	<meta name="viewport" content="width=device-width" />
-	{% load analytics %}
 	<title>Living Galapagos</title>
   	
 	<!-- Included CSS Files -->
@@ -93,32 +92,23 @@
         </div> <!-- ////END LOGO AND NAV -->
     
     
-    <form action="/{{language}}/search/" method="post">{% csrf_token %}
+    <form action="." method="get">
        <div class="row">
         <div class="twelve columns" id="filterBox" style="background-image:url({{ STATIC_URL }}images/nav_bg.png); height:100%;">
         <div id="filterStories" style="padding-left: 2.5em;"><h1>FILTER STORIES</h1>
         <div class="row">
         	<div class="three columns">
-        		<h3>Search</h3>
-        			<label for="id_search"></label>
-        			{{ form.search }}
-        		   
-        	</div>
-        	<div class="three columns">
-        		<h3>Categories</h3><div style="font-face:font-family:museo-sans-300;font-size: 1em;color:#fff;font-weight:normal;line-height:1.5em;margin-top:.5em;">
-        		    {{ form.category_sea }} Sea<br>
-        		    {{ form.category_land }} Land<br>
-        		    {{ form.category_archive }} Archive<br>
-                    </div>
-        	</div>
-        	<div class="three columns">
-        		<h3>Tags</h3>
-        		{{ form.tags }}
+        			<table>
+		            {{ form.as_table }}
+		            <tr>
+		                <td>&nbsp;</td>
+		                <td>
+		                    <input type="submit" value="Search">
+		                </td>
+		            </tr>
+		        </table>
         	</div>
         	
-        	<div class="three columns" style="float:left;">
-			<!--added an id and removed style attribute, also added <center> around the input--> <center><input id="filter_button" type="submit" value="filter" style="font-family:Caviar Dreams; font-size:3em;"></center>
-        	</div>
         </div>
         
         </div>
@@ -133,21 +123,24 @@
 	  </div>
         
         <ul class="block-grid three-up mobile">
-        	{% for story in filtered_list.story_list %}
-			{% if story.featured_video.thumbnail %}
+        	{% if query %}
+        	{{ language }}
+        	{% for result in page.object_list %}
+			{% if result.story_thumbnail %}
 			<li>
-			  <a href="/{{language}}/{{story.parent.slug}}">
+			  <a href="/{{result.language}}/{{result.story_slug}}">
 				<div class="gridItem">
 				 
-					<img src="{{story.featured_video.thumbnail.url}}" width="100%"/>
-			    <div class="sidebarBoxTitle">{{ story.headline }}</div>
-					<div class="sidebarBoxP" style="color: #555; ">{{ story.single_line_description }}</div>
+					<img src="{{result.story_thumbnail}}" width="100%"/>
+			    <div class="sidebarBoxTitle">{{ result.headline }}</div>
+					<div class="sidebarBoxP" style="color: #555; ">{{ result.single_line_description }}</div>
 			     
 				</div>
 			  </a>
 			</li>
 			{% endif %}
         	{% endfor %}
+        	{% endif %}
         </ul>
         </div>
                         
@@ -192,7 +185,6 @@
 	<script src="{{STATIC_URL}}js/modernizr.foundation.js"></script>
 	<script src="{{STATIC_URL}}js/foundation.js"></script>
 	<script src="{{STATIC_URL}}js/app.js"></script>
-	{% analytics "UA-36304525-1" %}
 </body>
 </html>
 

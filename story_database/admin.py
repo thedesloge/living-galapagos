@@ -59,6 +59,11 @@ class ItemInline(admin.TabularInline):
     'fk': ['page'],
   }
 
+class MenuAdmin(admin.ModelAdmin):
+    model = Menu
+    list_display = ('name', 'category')
+    inlines = [ItemInline]
+
 class FeaturedStoryItemInline(admin.TabularInline):
   model = FeaturedStoryItem
   fields = ('page', 'position')
@@ -75,10 +80,6 @@ class PosterFrameAdmin(admin.ModelAdmin):
     search_fields = ['name']
     list_filter = ('is_spanish',)
     prepopulated_fields = {"slug": ("name",)}
-
-admin.site.register(Menu,
-                  inlines = [ItemInline],
-)
 
 class TagAdmin(TranslatableAdmin):
     model = Tag
@@ -119,7 +120,11 @@ class ArticleChapterAdmin(TranslatableAdmin):
   filter_horizontal = ('related_stories',)
   search_fields  = ['name']
   prepopulated_fields = {"slug": ("name",)}
-       
+
+
+admin.site.register(Menu,
+                  MenuAdmin,
+)     
 admin.site.register(FeaturedStory,
                     inlines = [FeaturedStoryItemInline],
                     )

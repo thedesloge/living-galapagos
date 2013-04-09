@@ -1,5 +1,8 @@
 from django.conf.urls import patterns, include, url
 from django.conf import settings
+from haystack.views import SearchView, search_view_factory
+from haystack.query import SearchQuerySet
+from haystack.forms import SearchForm,ModelSearchForm
 
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
@@ -15,8 +18,15 @@ urlpatterns = patterns('',
 
     # Uncomment the next line to enable the admin:
     url(r'^admin/', include(admin.site.urls)),
-    #url(r'^search/', include('haystack.urls')),
     url(r'^', include('story_database.urls')),
     url(r'^media/(?P<path>.*)$', 'django.views.static.serve', {'document_root':settings.MEDIA_ROOT}),
     url(r'^api/', include('story_api.urls')),
+)
+
+urlpatterns += patterns('haystack.views',
+    url(r'^search/$', search_view_factory(
+        view_class=SearchView,
+        template='story_database/search.html',
+        form_class=SearchForm,                                           
+        ),name='haystack_search'  )
 )

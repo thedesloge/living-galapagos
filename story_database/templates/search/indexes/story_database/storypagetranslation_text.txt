@@ -3,3 +3,4 @@
 {{ object.description }}
 {{ object.quote }}
 {{ object.quote_attribution }}
+{{ object.story_title }}

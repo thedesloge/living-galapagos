@@ -232,7 +232,7 @@ class FeaturedStoryItem(models.Model):
   
 class Menu(models.Model):
     name = models.CharField(max_length=100)
-    
+    category = models.ForeignKey(Category, verbose_name='* Menu Category Name', null=True, unique=True)
     def __unicode__(self):
         return self.name
  
