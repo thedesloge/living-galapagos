@@ -157,3 +157,7 @@ LOGGING = {
         },
     }
 }
+
+HAYSTACK_SITECONF = "livinggalapagos.settings.search_sites"
+HAYSTACK_SEARCH_ENGINE = 'whoosh'
+HAYSTACK_WHOOSH_PATH = '/Users/casey/temp/whoosh/gal'
