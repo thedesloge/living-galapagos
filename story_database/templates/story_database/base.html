@@ -40,12 +40,19 @@
   <script src="http://d3js.org/d3.v2.min.js " type="text/javascript"></script>  
   <script src="{{ STATIC_URL }}js/dylancode.js"></script>
   <script src="{{ STATIC_URL }}js/tinybox.js"></script>
+  <script src="{{ STATIC_URL }}js/jquery.foundation.tabs.js"></script>
   
   
   
   {% if not is_mobile %}
   	<script>
+	$(window).load(function() {
+		$('#featuredContentSlider').orbit({ fluid: '16x6', animation: 'fade', timer: 'false'});
+		$('#allContentSlider').orbit({ fluid: '16x6', animation: 'fade', timer: 'false'});
+	   });
+		
 		$(document).ready(function() {
+			
 			$('dl').toggle();
 			$('h2').bind('click', function(event) {
 				event.preventDefault();
@@ -65,7 +72,30 @@
 					$(this).videobackground('mute', {controlPosition: '.video-background'});
 				}
 			});
+			
+			buildMenu()
 		});
+		
+		function buildMenu() {
+			var openDiv;
+			function toggleDiv(divID) {
+				$(divID).slideToggle(300, function() {
+					openDiv = $(this).is(':visible') ? divID : null;
+				});
+			}
+			$(document).click(function(e) {
+				if (!$(e.target).closest(openDiv).length) {
+					toggleDiv(openDiv);
+				}
+			});
+			
+			$(".clicker").click(function(){
+			  toggleDiv('.stories-flyout-container');
+			});
+			$(".close-flyout").click(function(){
+			  toggleDiv('.stories-flyout-container');
+			});
+		}
 	</script>
 	{% endif %}
 </head>
@@ -86,12 +116,12 @@
                     	<ul class="topNav">
 				
 				{% if language == "en" %}
-					<li><a href="#">STORIES</a></li>	
+					<li><a href="#" class="clicker">STORIES</a></li>	
 					<li><a href="#">LEARN</a></li>
 					<li><a href="{{language}}/about/">ABOUT</a></li>
 					<li><a href="{{spanish_link}}">SPANISH</a></li>
 				{% else %}
-					<li><a href="#">HISTORIAS</a></li>
+					<li><a href="#" class="clicker">HISTORIAS</a></li>
 					<li><a href="#">APRENDER</a></li>
 					<li><a href="{{language}}/about/">SOBRE</a></li>
 					<li><a href="{{english_link}}">INGLES</a></li>
@@ -102,14 +132,413 @@
 			    
                         </ul>
                     </li>
-		
-		
-	
-
 	
             </div>
         </div> <!-- ////END LOGO AND NAV -->
+	
+	<div class="stories-flyout-container">
+    <div class="tabs-background">
+    	<div class="row">
+        	<div class="stories-inner-nav">
+                <div class="twelve columns">
+		<div class="menuFont">
+                    <dl class="tabs" style="display: none;">
+                        <dd class="active"><a href="#featured">FEATURED</a></dd>
+                        <dd><a href="#social">SOCIAL</a></dd>
+                        <dd><a href="#environmental">ENVIRONMENTAL</a></dd>
+                        <dd><a href="#economic">ECONOMIC</a></dd>
+                        <dd class="tabs-item-last"><a href="#all">ALL</a></dd>
+                     </dl>
+		</div>
+                     <a class="close-flyout">&#215;</a>
+                </div>
+                <!--end twelve columns-->
+            </div>
+            <!--end stories-inner-nav-->
+        </div>
+        <!--end row-->
+    </div>
+    <!--end tabs-background-->
+    <div class="row">
+                 <ul class="tabs-content">
+                    <li class="active" id="featuredTab">
+                        <div id="featuredContentSlider">
+                          <div>
+                          	<div class="row tabs-content-slider-row">
+                            	<div class="tabs-content-link">
+                                <a href="#"><img src="{{ STATIC_URL }}images/video-thumbnail01.png"/>
+                                <div class="tabs-image-caption">
+                                	<img src="{{ STATIC_URL }}images/icon.png"/>
+                                	<h4>TITLE OF STORY</h4>
+                                    <p>Subject Subhead</p></a>
+                                </div>
+                            	</div>
+                            	<div class="tabs-content-link">
+                                <a href="#"><img src="{{ STATIC_URL }}images/video-thumbnail02.png"/>
+                                    <div class="tabs-image-caption">
+                                	<img src="{{ STATIC_URL }}images/icon.png"/>
+                                	<h4>TITLE OF STORY</h4>
+                                    <p>Subject Subhead</p></a>
+                                </div>
+                            	</div>
+                            	<div class="tabs-content-link">
+                                <a href="#"><img src="{{ STATIC_URL }}images/video-thumbnail03.png"/>
+                                <div class="tabs-image-caption">
+                                	<img src="{{ STATIC_URL }}images/icon.png"/>
+                                	<h4>TITLE OF STORY</h4>
+                                    <p>Subject Subhead</p></a>
+                                </div>
+                            	</div>
+                            </div>
+                            <!--end row-->
+                            <div class="row tabs-content-slider-row">
+                            	<div class="tabs-content-link">
+                                <a href="#"><img src="{{ STATIC_URL }}images/video-thumbnail01.png"/>
+                                <div class="tabs-image-caption">
+                                	<img src="{{ STATIC_URL }}images/icon.png"/>
+                                	<h4>TITLE OF STORY</h4>
+                                    <p>Subject Subhead</p></a>
+                                </div>
+                            	</div>
+                            	<div class="tabs-content-link">
+                                    <a href="#"><img src="{{ STATIC_URL }}images/video-thumbnail02.png"/>
+                                    <div class="tabs-image-caption">
+                                	<img src="{{ STATIC_URL }}images/icon.png"/>
+                                	<h4>TITLE OF STORY</h4>
+                                    <p>Subject Subhead</p></a>
+                                </div>
+                            	</div>
+                            	<div class="tabs-content-link">
+                                <a href="#"><img src="{{ STATIC_URL }}images/video-thumbnail03.png"/>
+                                <div class="tabs-image-caption">
+                                	<img src="{{ STATIC_URL }}images/icon.png"/>
+                                	<h4>TITLE OF STORY</h4>
+                                    <p>Subject Subhead</p></a>
+                                </div>
+                            	</div>
+                            </div>
+                            <!--end row-->
+                          </div>
+                          <!--end Featured slider content 1-->
+                          <div>
+                            <div class="row tabs-content-slider-row">
+                            	<div class="tabs-content-link">
+                                <a href="#"><img src="{{ STATIC_URL }}images/video-thumbnail01.png"/>
+                                <div class="tabs-image-caption">
+                                	<img src="{{ STATIC_URL }}images/icon.png"/>
+                                	<h4>TITLE OF STORY</h4>
+                                    <p>Subject Subhead</p></a>
+                                </div>
+                            	</div>
+                            	<div class="tabs-content-link">
+                                <a href="#"><img src="{{ STATIC_URL }}images/video-thumbnail02.png"/>
+                                    <div class="tabs-image-caption">
+                                	<img src="{{ STATIC_URL }}images/icon.png"/>
+                                	<h4>TITLE OF STORY</h4>
+                                    <p>Subject Subhead</p></a>
+                                </div>
+                            	</div>
+                            	<div class="tabs-content-link">
+                                <a href="#"><img src="{{ STATIC_URL }}images/video-thumbnail03.png"/>
+                                <div class="tabs-image-caption">
+                                	<img src="{{ STATIC_URL }}images/icon.png"/>
+                                	<h4>TITLE OF STORY</h4>
+                                    <p>Subject Subhead</p></a>
+                                </div>
+                            	</div>
+                            </div>
+                            <!--end row-->
+                          </div>
+                          <!--end Featured slider content 2-->
+                        </div>
+                        <!--end featuredTab content-->
+                    </li>
+                    <!--end featuredTab-->
+                    <li id="socialTab">
+                    	<div class="tabs-static-content">
+                    	<div class="row tabs-content-slider-row">
+                            	<div class="tabs-content-link">
+                                <a href="#"><img src="{{ STATIC_URL }}images/video-thumbnail01.png"/>
+                                <div class="tabs-image-caption">
+                                	<img src="{{ STATIC_URL }}images/icon.png"/>
+                                	<h4>TITLE OF STORY</h4>
+                                    <p>Subject Subhead</p></a>
+                                </div>
+                            	</div>
+                            	<div class="tabs-content-link">
+                                <a href="#"><img src="{{ STATIC_URL }}images/video-thumbnail02.png"/>
+                                    <div class="tabs-image-caption">
+                                	<img src="{{ STATIC_URL }}images/icon.png"/>
+                                	<h4>TITLE OF STORY</h4>
+                                    <p>Subject Subhead</p></a>
+                                </div>
+                            	</div>
+                            	<div class="tabs-content-link">
+                                <a href="#"><img src="{{ STATIC_URL }}images/video-thumbnail03.png"/>
+                                <div class="tabs-image-caption">
+                                	<img src="{{ STATIC_URL }}images/icon.png"/>
+                                	<h4>TITLE OF STORY</h4>
+                                    <p>Subject Subhead</p></a>
+                                </div>
+                            	</div>
+                            </div>
+                            <!--end row-->
+                      <div class="row tabs-content-slider-row">
+                            	<div class="tabs-content-link">
+                                <a href="#"><img src="{{ STATIC_URL }}images/video-thumbnail01.png"/>
+                                <div class="tabs-image-caption">
+                                	<img src="{{ STATIC_URL }}images/icon.png"/>
+                                	<h4>TITLE OF STORY</h4>
+                                    <p>Subject Subhead</p></a>
+                                </div>
+                            	</div>
+                            </div>
+                            <!--end row-->
+                      </div>
+                      <!--end tabs-static-content-->
+                    </li>
+                    <!--end socialTab-->
+                    <li id="environmentalTab">
+                    <div class="tabs-static-content">
+                    	<div class="row tabs-content-slider-row">
+                            	<div class="tabs-content-link">
+                                <a href="#"><img src="{{ STATIC_URL }}images/video-thumbnail01.png"/>
+                                <div class="tabs-image-caption">
+                                	<img src="{{ STATIC_URL }}images/icon.png"/>
+                                	<h4>TITLE OF STORY</h4>
+                                    <p>Subject Subhead</p></a>
+                                </div>
+                            	</div>
+                            	<div class="tabs-content-link">
+                                <a href="#"><img src="{{ STATIC_URL }}images/video-thumbnail02.png"/>
+                                    <div class="tabs-image-caption">
+                                	<img src="{{ STATIC_URL }}images/icon.png"/>
+                                	<h4>TITLE OF STORY</h4>
+                                    <p>Subject Subhead</p></a>
+                                </div>
+                            	</div>
+                            	<div class="tabs-content-link">
+                                <a href="#"><img src="{{ STATIC_URL }}images/video-thumbnail03.png"/>
+                                <div class="tabs-image-caption">
+                                	<img src="{{ STATIC_URL }}images/icon.png"/>
+                                	<h4>TITLE OF STORY</h4>
+                                    <p>Subject Subhead</p></a>
+                                </div>
+                            	</div>
+                            </div>
+                            <!--end row-->
+                      <div class="row tabs-content-slider-row">
+                            	<div class="tabs-content-link">
+                                <a href="#"><img src="{{ STATIC_URL }}images/video-thumbnail01.png"/>
+                                <div class="tabs-image-caption">
+                                	<img src="{{ STATIC_URL }}images/icon.png"/>
+                                	<h4>TITLE OF STORY</h4>
+                                    <p>Subject Subhead</p></a>
+                                </div>
+                            	</div>
+                                <div class="tabs-content-link">
+                                <a href="#"><img src="{{ STATIC_URL }}images/video-thumbnail01.png"/>
+                                <div class="tabs-image-caption">
+                                	<img src="{{ STATIC_URL }}images/icon.png"/>
+                                	<h4>TITLE OF STORY</h4>
+                                    <p>Subject Subhead</p></a>
+                                </div>
+                            	</div>
+                            </div>
+                            <!--end row-->
+                      </div>
+                      <!--end tabs-static-content-->
+                    </li>
+                    <!--end environmentalTab-->
+                    <li id="economicTab">
+                    <div class="tabs-static-content">
+                    	<div class="row tabs-content-slider-row">
+                            	<div class="tabs-content-link">
+                                <a href="#"><img src="{{ STATIC_URL }}images/video-thumbnail01.png"/>
+                                <div class="tabs-image-caption">
+                                	<img src="{{ STATIC_URL }}images/icon.png"/>
+                                	<h4>TITLE OF STORY</h4>
+                                    <p>Subject Subhead</p></a>
+                                </div>
+                            	</div>
+                            	<div class="tabs-content-link">
+                                <a href="#"><img src="{{ STATIC_URL }}images/video-thumbnail02.png"/>
+                                    <div class="tabs-image-caption">
+                                	<img src="{{ STATIC_URL }}images/icon.png"/>
+                                	<h4>TITLE OF STORY</h4>
+                                    <p>Subject Subhead</p></a>
+                                </div>
+                            	</div>
+                            	<div class="tabs-content-link">
+                                <a href="#"><img src="{{ STATIC_URL }}images/video-thumbnail03.png"/>
+                                <div class="tabs-image-caption">
+                                	<img src="{{ STATIC_URL }}images/icon.png"/>
+                                	<h4>TITLE OF STORY</h4>
+                                    <p>Subject Subhead</p></a>
+                                </div>
+                            	</div>
+                            </div>
+                            <!--end row-->
+                      <div class="row tabs-content-slider-row">
+                            	<div class="tabs-content-link">
+                                <a href="#"><img src="{{ STATIC_URL }}images/video-thumbnail01.png"/>
+                                <div class="tabs-image-caption">
+                                	<img src="{{ STATIC_URL }}images/icon.png"/>
+                                	<h4>TITLE OF STORY</h4>
+                                    <p>Subject Subhead</p></a>
+                                </div>
+                            	</div>
+                                <div class="tabs-content-link">
+                                <a href="#"><img src="{{ STATIC_URL }}images/video-thumbnail03.png"/>
+                                <div class="tabs-image-caption">
+                                	<img src="{{ STATIC_URL }}images/icon.png"/>
+                                	<h4>TITLE OF STORY</h4>
+                                    <p>Subject Subhead</p></a>
+                                </div>
+                            	</div>
+                                <div class="tabs-content-link">
+                                <a href="#"><img src="{{ STATIC_URL }}images/video-thumbnail01.png"/>
+                                <div class="tabs-image-caption">
+                                	<img src="{{ STATIC_URL }}images/icon.png"/>
+                                	<h4>TITLE OF STORY</h4>
+                                    <p>Subject Subhead</p></a>
+                                </div>
+                            	</div>
+                            </div>
+                            <!--end row-->
+                      </div>
+                      <!--end tabs-static-content-->
+                    </li>
+                    <!--end economic Tab-->
+                    <li id="allTab">
+                    <div id="allContentSlider">
+                          <div>
+                          	<div class="row tabs-content-slider-row">
+                            	<div class="tabs-content-link">
+                                <a href="#"><img src="{{ STATIC_URL }}images/video-thumbnail01.png"/>
+                                <div class="tabs-image-caption">
+                                	<img src="{{ STATIC_URL }}images/icon.png"/>
+                                	<h4>TITLE OF STORY</h4>
+                                    <p>Subject Subhead</p></a>
+                                </div>
+                            	</div>
+                            	<div class="tabs-content-link">
+                                <a href="#"><img src="{{ STATIC_URL }}images/video-thumbnail02.png"/>
+                                    <div class="tabs-image-caption">
+                                	<img src="{{ STATIC_URL }}images/icon.png"/>
+                                	<h4>TITLE OF STORY</h4>
+                                    <p>Subject Subhead</p></a>
+                                </div>
+                            	</div>
+                            	<div class="tabs-content-link">
+                                <a href="#"><img src="{{ STATIC_URL }}images/video-thumbnail03.png"/>
+                                <div class="tabs-image-caption">
+                                	<img src="{{ STATIC_URL }}images/icon.png"/>
+                                	<h4>TITLE OF STORY</h4>
+                                    <p>Subject Subhead</p></a>
+                                </div>
+                            	</div>
+                            </div>
+                            <!--end row-->
+                            <div class="row tabs-content-slider-row">
+                            	<div class="tabs-content-link">
+                                <a href="#"><img src="{{ STATIC_URL }}images/video-thumbnail01.png"/>
+                                <div class="tabs-image-caption">
+                                	<img src="{{ STATIC_URL }}images/icon.png"/>
+                                	<h4>TITLE OF STORY</h4>
+                                    <p>Subject Subhead</p></a>
+                                </div>
+                            	</div>
+                            	<div class="tabs-content-link">
+                                    <a href="#"><img src="{{ STATIC_URL }}images/video-thumbnail02.png"/>
+                                    <div class="tabs-image-caption">
+                                	<img src="{{ STATIC_URL }}images/icon.png"/>
+                                	<h4>TITLE OF STORY</h4>
+                                    <p>Subject Subhead</p></a>
+                                </div>
+                            	</div>
+                            	<div class="tabs-content-link">
+                                <a href="#"><img src="{{ STATIC_URL }}images/video-thumbnail03.png"/>
+                                <div class="tabs-image-caption">
+                                	<img src="{{ STATIC_URL }}images/icon.png"/>
+                                	<h4>TITLE OF STORY</h4>
+                                    <p>Subject Subhead</p></a>
+                                </div>
+                            	</div>
+                            </div>
+                            <!--end row-->
+                          </div>
+                          <!--end all slider content 1-->
+                         <div>
+                          	<div class="row tabs-content-slider-row">
+                            	<div class="tabs-content-link">
+                                <a href="#"><img src="{{ STATIC_URL }}images/video-thumbnail01.png"/>
+                                <div class="tabs-image-caption">
+                                	<img src="{{ STATIC_URL }}images/icon.png"/>
+                                	<h4>TITLE OF STORY</h4>
+                                    <p>Subject Subhead</p></a>
+                                </div>
+                            	</div>
+                            	<div class="tabs-content-link">
+                                <a href="#"><img src="{{ STATIC_URL }}images/video-thumbnail02.png"/>
+                                    <div class="tabs-image-caption">
+                                	<img src="{{ STATIC_URL }}images/icon.png"/>
+                                	<h4>TITLE OF STORY</h4>
+                                    <p>Subject Subhead</p></a>
+                                </div>
+                            	</div>
+                            	<div class="tabs-content-link">
+                                <a href="#"><img src="{{ STATIC_URL }}images/video-thumbnail03.png"/>
+                                <div class="tabs-image-caption">
+                                	<img src="{{ STATIC_URL }}images/icon.png"/>
+                                	<h4>TITLE OF STORY</h4>
+                                    <p>Subject Subhead</p></a>
+                                </div>
+                            	</div>
+                            </div>
+                            <!--end row-->
+                            <div class="row tabs-content-slider-row">
+                            	<div class="tabs-content-link">
+                                <a href="#"><img src="{{ STATIC_URL }}images/video-thumbnail01.png"/>
+                                <div class="tabs-image-caption">
+                                	<img src="{{ STATIC_URL }}images/icon.png"/>
+                                	<h4>TITLE OF STORY</h4>
+                                    <p>Subject Subhead</p></a>
+                                </div>
+                            	</div>
+                            	<div class="tabs-content-link">
+                                <a href="#"><img src="{{ STATIC_URL }}images/video-thumbnail03.png"/>
+                                <div class="tabs-image-caption">
+                                	<img src="{{ STATIC_URL }}images/icon.png"/>
+                                	<h4>TITLE OF STORY</h4>
+                                    <p>Subject Subhead</p></a>
+                                </div>
+                            	</div>
+                                <div class="tabs-content-link">
+                                    <a href="#"><img src="{{ STATIC_URL }}images/video-thumbnail02.png"/>
+                                    <div class="tabs-image-caption">
+                                	<img src="{{ STATIC_URL }}images/icon.png"/>
+                                	<h4>TITLE OF STORY</h4>
+                                    <p>Subject Subhead</p></a>
+                                </div>
+                            	</div>
+                            </div>
+                            <!--end row-->
+                          </div>
+                          <!--end all slider content 2-->
+                        </div>
+                        <!--end allTab content-->
+                    </li>
+                    <!--end allTab-->
+                 </ul>
+              </div>
+
+  </div>
+  <!--end row-->
+</div>
+<!--end stories-flyout-container-->
 		</ul>
+	<div class="container">
     
         <!---phone top nav--->
 	
@@ -120,12 +549,12 @@
 		<div id="phoneTopNav">
 			<ul class="phoneULtop">
 				{% if language == "en" %}
-					<li><a href="#">STORIES</a></li>	
+					<li><a href="#" class="clicker">STORIES</a></li>	
 					<li><a href="#">LEARN</a></li>
 					<li><a href="{{language}}/about/">ABOUT</a></li>
 					<li><a href="{{spanish_link}}">SPANISH</a></li>
 				{% else %}
-					<li><a href="#">HISTORIAS</a></li>
+					<li><a href="#" class="clicker">HISTORIAS</a></li>
 					<li><a href="#">APRENDER</a></li>
 					<li><a href="{{language}}/about/">SOBRE</a></li>
 					<li><a href="{{english_link}}">INGLES</a></li>

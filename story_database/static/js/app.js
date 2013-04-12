@@ -111,6 +111,7 @@ $(document).ready(function () {
 				
 			  if($(this).css('display')=='none'){
 				console.log("if");
+				console.log("steven's log of this:" + $(this))
                                 
 			  }
 			});

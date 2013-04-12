@@ -27,6 +27,24 @@
 
 /*story text*/
 
+.menuFont{
+	font-family: Caviar Dreams;
+}
+
+.menuTitle{
+	font-family: Caviar Dreams;
+	font-size:15%;
+	display:inline;
+	color:#CCC;
+	position: relative;
+	top:20px;
+}
+
+.menuSub{
+	font-family: Caviar Dreams;
+	font-size:10%;
+}
+
 .storyBox {
 	margin-top: 9em;
 	padding: 7%;

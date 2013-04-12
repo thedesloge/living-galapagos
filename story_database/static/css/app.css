@@ -13,6 +13,220 @@
 /* -----------------------------------------
    Structure
 ----------------------------------------- */
+
+/* Artfully masterminded by ZURB  */
+
+/* -------------------------------------------------- 
+   Table of Contents
+-----------------------------------------------------
+:: Shared Styles
+:: Page Name 1
+:: Page Name 2
+*/
+
+
+/* -----------------------------------------
+   Shared Styles
+----------------------------------------- */
+
+h3 {
+	display:inline;
+	color:#CCC;
+	position: relative;
+	top:20px;
+}
+#top-nav-bar {
+	background:rgba(51,51,51,.70);
+	height:92px;
+}
+#top-nav-bar .nav-bar {
+	display:inline;
+	float:right;
+	background:none;
+	border:none;
+	opacity:1;
+	margin-top:20px;
+}
+#top-nav-bar .nav-bar li {
+	border:none;
+}
+.nav-bar > li {
+	-webkit-box-shadow: 1px 0 0 rgba(255, 255, 255, 0.2) inset;
+	-moz-box-shadow: 1px 0 0 rgba(255, 255, 255, 0.2) inset;
+	box-shadow: 1px 0 0 rgba(255, 255, 255, 0.2) inset;	
+}
+.nav-bar > li.nav-bar-last {
+	-webkit-box-shadow: none;
+	-moz-box-shadow: none;
+	box-shadow: 1px 0 0 rgba(255, 255, 255, 0.2) inset;
+}
+.nav-bar > li:hover {
+	background:none;
+}
+
+/* -----------------------------------------
+   STORIES flyout tray
+----------------------------------------- */
+/*Container-------------------------*/
+.stories-flyout-container {
+	z-index:100;
+	/*position:absolute;*/
+	display:none;
+	/*width:100%;*/
+	background:rgba(51,51,51,.85);
+}
+.close-flyout {
+	font-size: 3em;
+	line-height: .5; 
+	position: absolute; 
+	top: 8px; 
+	right: 11px; 
+	color: #aaa; 
+	text-shadow: 0 -1px 1px rgba(0, 0, 0, 0.6); 
+	font-weight: bold; 
+	cursor: pointer;
+}
+.close-flyout:hover {
+	color:#fff;	
+}
+/*Tabs for Stories flyout-----------------------*/
+.stories-inner-nav {
+	position:relative;
+	margin-left:0px;
+}
+.tabs-background {
+	background:rgba(51,51,51,.95);
+}
+.tabs {
+	border:none;
+	height:30px;
+	margin: 0 auto;
+	padding:2px 0px;
+	max-width:400px;
+}
+.tabs-content-row {
+	width:1200px;	
+}
+.tabs dd, .tabs dd.active {
+	margin:3px 0;
+}
+.tabs dd.active, .tabs li.active {
+	border:none;
+	background:none;
+}
+.tabs dd.active a, li.active a {
+	color:#ffffff;
+	background:none;
+	border:none;
+	font-weight:normal;
+}
+.tabs dd a, .tabs li a {
+	color:#999999;	
+	font-size:10px;
+	padding: 0 10px;
+	/*height: auto;*/
+	line-height: auto;
+}
+.tabs dd a, .tabs dd.active a {
+	background:none;
+}
+.tabs > dd {
+	-webkit-box-shadow: 1px 0 0 rgba(255, 255, 255, 0.2) inset;
+	-moz-box-shadow: 1px 0 0 rgba(255, 255, 255, 0.2) inset;
+	box-shadow: -1px 0 0 rgba(255, 255, 255, 0.2) inset;	
+}
+.tabs > dd.tabs-item-last {
+	-webkit-box-shadow: none;
+	-moz-box-shadow: none;
+	box-shadow: none;
+}
+.tabs dd:last {
+	border-right:none;
+}
+/*Styles for Stories tab content with 6+ thumbnails; Orbit*/
+.orbit, .orbit-wrapper {
+	padding:30px 0px;
+	min-height:310px;
+	max-width:1100px;
+	margin:0 auto;
+}
+.orbit-wrapper .slider-nav span.right {
+	background: url('../images/orbit-right-arrow.png') no-repeat;
+	height:100px;
+	width:54px;
+	right: 0
+}
+.orbit-wrapper .slider-nav span.left {
+	background: url('../images/orbit-left-arrow.png') no-repeat;
+	height:100px;
+	width:54px;
+	left: 0
+}
+.row.tabs-content-slider-row {
+	max-width: 905px;
+	max-height: 200px;
+	margin:0 auto;
+	padding-left: 6%;
+}
+.tabs-static-content {
+	padding: 30px 20px;	
+}
+/*.tabs-content-link {
+	max-width:295px;
+	display:inline-block;
+	max-width:305px;
+	max-height:206px;
+}*/
+
+.tabs-content-link {
+	display:inline-block;
+	width: 30%;
+	height: 30%;
+	margin:0;
+	padding:0;
+}
+
+/*.tabs-content-link img {
+	max-width:305px;
+	max-height:206px;
+	margin:0;
+	padding:0;
+}*/
+.tabs-image-caption {
+	background: rgba(26, 26, 26, 0.5);
+	max-width:295px;
+	max-height:70px;
+	position:relative;
+	top:-75px;
+}
+.tabs-image-caption img {
+	display:inline;
+	float:left;
+	padding:15px;
+}
+.tabs-image-caption h4 {
+	font-size: 18px;
+	color: #ffffff;
+	font-weight: normal;
+	padding: 15px 0 0px 5px;
+	margin: 0;
+}
+.tabs-image-caption p {
+	font-size:14px;
+	color: #ffffff;
+	font-weight:normal;
+	margin: 0 0 15px 0;	
+	padding-bottom:40px;
+}
+/* -----------------------------------------
+   Page Name 1
+----------------------------------------- */
+.body-container {
+	background: #fff;
+	height:900px;
+}
+
+
 .clear-float{
 	clear: both; 
 }
