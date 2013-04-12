@@ -5,9 +5,11 @@ from story_database.models import *
 from pprint import PrettyPrinter
 from django import forms
 from haystack.query import SearchQuerySet
+from django.conf import settings
 
-
+CURRENT_LANGUAGE = 'en'
 def home(request, language_code='en'):
+  CURRENT_LANGUAGE = language_code
   return render_to_response(
             'story_database/home.html',
             getLanguageForStory( getFeaturedStoryPage(), language_code, request, True ),
@@ -15,6 +17,7 @@ def home(request, language_code='en'):
         )
 
 def article_story_page(request, article_slug, language_code='en'):
+  CURRENT_LANGUAGE = language_code
   return render_to_response(
             'story_database/article.html',
             getLanguageForArticle( get_article_by_slug(request, article_slug), language_code, request ),
@@ -22,6 +25,7 @@ def article_story_page(request, article_slug, language_code='en'):
         )
 
 def learn(request, story_slug, language_code='en'):
+  CURRENT_LANGUAGE = language_code
   return render_to_response(
             'story_database/learn.html',
             getLanguageForStory( getStoryBySlug(request, story_slug), language_code, request, False ),
@@ -29,6 +33,7 @@ def learn(request, story_slug, language_code='en'):
         )
 
 def featured_story_page(request, story_slug, language_code='en'):
+  CURRENT_LANGUAGE = language_code
   return render_to_response(
             'story_database/featured.html',
             getLanguageForStory( getStoryBySlug(request, story_slug), language_code, request, False ),
@@ -36,6 +41,7 @@ def featured_story_page(request, story_slug, language_code='en'):
         )
 
 def about(request, language_code='en'):
+  CURRENT_LANGUAGE = language_code
   return render_to_response(
             'story_database/about.html',
             getLanguageForStory( getStoryBySlug(request, 'about'), language_code, request, False ),
@@ -44,6 +50,7 @@ def about(request, language_code='en'):
   
 
 def search(request, language_code='en'):
+  CURRENT_LANGUAGE = language_code
   if request.method == 'POST':
     form = SearchForm(request.POST)
     if form.is_valid():
@@ -83,6 +90,7 @@ def search(request, language_code='en'):
     return render_to_response('story_database/search.html', {'form':form, "filtered_list":story_list, "background_video":background_vid , "language":language_code}, context_instance=RequestContext(request))
 
 def search_map(request, language_code='en'):
+  CURRENT_LANGUAGE = language_code
   if request.method == 'POST':
     form = SearchForm(request.POST)
     if form.is_valid():
@@ -175,6 +183,7 @@ def getLanguageForStory(story, language, request, isFeatured):
   
   template_object = {}
   template_object["is_mobile"] = request.is_mobile
+  template_object['menu'] = get_menu(language)
   
   #Story Language Translated items
   try:
@@ -218,6 +227,7 @@ def getCategoryHeader(category_header, language):
 def getLanguageForArticle(article, language, request):
     template_object = {}
     template_object["is_mobile"] = request.is_mobile
+    template_object['menu'] = get_menu(language)
     template_object['language'] = language
     try:
         chapters = article.article_chapter.all()
@@ -323,8 +333,82 @@ def getStoriesInCategory(request, category, language):
         return {}
         pass
             
-def get_menu():
-    menu_all = Menu.objects.all();       
+def get_menu(language='en'):
+    menu_all = Menu.objects.all(); 
+    ret_val = {}
+    menu_slides = []
+    for menu in menu_all:
+        menu_slide = {}
+        try:
+            menu_slide['category'] =  menu.category.translations.get(language_code=language).translation
+            menu_slide['category_slug'] = menu.category.slug
+            menu_slide['menu_item_html'] = build_menu( menu_slide['category_slug'], menu.menuitem_set.all(), language )
+            
+            menu_slides.append( menu_slide )
+        except Category.DoesNotExist:
+            raise Http404
+        
+        
+        
+    ret_val['menu_slides'] = menu_slides
+    
+    return ret_val
+
+def build_menu(category, menu_items, language):
+    menu_string = []
+    menu_string.append( outer_start_div(category) )
+    
+    build_slides(menu_items, menu_string, language)
+    
+    menu_string.append( outer_end_div() )
+    return ''.join(menu_string)
+
+def build_slides(menu_items, menu_string, language):
+    
+    if len(menu_items) == 0 :
+        return menu_string.append("</div>")
+    else:
+        slide_items = menu_items[:5]
+        menu_string.append( make_slide(slide_items, language) )
+        
+        items_to_pass = menu_items[5:]
+        build_slides(items_to_pass, menu_string, language)
+        
+def make_slide(slide_items, language):
+    slide_html = ['<div>']
+    
+    make_row(slide_items[:3], slide_html, language)
+    make_row(slide_items[2:], slide_html, language)
+    
+    slide_html.append('</div>')
+    
+    return ''.join( slide_html )
+
+def make_row(row_items, slide_html, language):
+    if len(row_items) == 0:
+        return 
+    slide_html.append('<div class="row tabs-content-slider-row">')
+    
+    
+    for item in row_items:
+        slide_html.append('<div class="tabs-content-link">')
+        slide_html.append('<a href="/'+ language + '/' + item.page.slug + '"><img src="' +  item.page.thumbnail.url +'"/>')
+        slide_html.append('<div class="tabs-image-caption">')
+        slide_html.append('<img src="' + settings.STATIC_URL + 'images/icon.png"/>')
+        slide_html.append('<h4>' + item.page.translations.get(language_code=language).headline + '</h4>')
+        slide_html.append('<p>' + item.page.translations.get(language_code=language).subheadline + '</p></a>')
+        slide_html.append('</div>')
+        slide_html.append('</div>')
+    
+    slide_html.append('</div>')
+     
+ 
+def outer_start_div(category):
+    
+    return '<li class="active" id="' + category + 'Tab"><div id="' + category + 'ContentSlider">'  
+
+def outer_end_div():
+    return '</div></li>' 
 
 def getFilteredCategory(search, language_code, storyList):
     storyTrans = Story_Translation.objects.filter(language_code=language_code, parent__in=storyList)

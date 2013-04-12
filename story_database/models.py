@@ -245,7 +245,7 @@ class MenuItem(models.Model):
     position = models.PositiveSmallIntegerField("Position")
     
     def __unicode__(self):
-        self.name
+        return self.name
     
     class Meta:
         ordering = ['position']
