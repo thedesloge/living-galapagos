@@ -208,10 +208,11 @@ def getLanguageForStory(story, language, request, isFeatured):
 
 def getCategoryHeader(category_header, language):
   ret_val = {}
-  ret_val['title'] = category_header.translations.get(language_code=language).category_name
-  ret_val['description'] = category_header.translations.get(language_code=language).category_description
-  if category_header.background_image:
-    ret_val['background_image'] = category_header.background_image.url
+  if(category_header):
+      ret_val['title'] = category_header.translations.get(language_code=language).category_name
+      ret_val['description'] = category_header.translations.get(language_code=language).category_description
+      if category_header.background_image:
+          ret_val['background_image'] = category_header.background_image.url
   return ret_val
   
 def getLanguageForArticle(article, language, request):
@@ -322,20 +323,8 @@ def getStoriesInCategory(request, category, language):
         return {}
         pass
             
-        
-
-def getResearchList(category, language):
-  retVal = []
-  researchList = Research.objects.filter(category=category)
-
-  try:
-    for research in researchList:
-      researchTrans = Research_Translation.objects.get(parent=research, language_code=language)
-      retVal.append(researchTrans)
-  except Research_Translation.DoesNotExist:
-    retVal = []
-
-  return retVal
+def get_menu():
+    menu_all = Menu.objects.all();       
 
 def getFilteredCategory(search, language_code, storyList):
     storyTrans = Story_Translation.objects.filter(language_code=language_code, parent__in=storyList)
