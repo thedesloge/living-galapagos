@@ -24,11 +24,10 @@ def article_story_page(request, article_slug, language_code='en'):
             context_instance=RequestContext(request)
         )
 
-def learn(request, story_slug, language_code='en'):
-  CURRENT_LANGUAGE = language_code
+def learn(request):
   return render_to_response(
             'story_database/learn.html',
-            getLanguageForStory( getStoryBySlug(request, story_slug), language_code, request, False ),
+            {'language':'en'},
             context_instance=RequestContext(request)
         )
 
