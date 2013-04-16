@@ -5,7 +5,7 @@ HOSTS = {
     'dons_machine': 'Donaldo.local',
     #'dons_machine': 'mid-campus-03597.wireless.unc.edu',
     'prod': 'prod-server',
-    'dev': 'dev-server',
+    'dev': 'web302.webfaction.com',
     'steven_machine': 'cm077-03'
 }
 
