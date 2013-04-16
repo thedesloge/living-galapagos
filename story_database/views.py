@@ -274,7 +274,7 @@ def buildVideoObject(video):
     video_obj['description'] = video.description
     video_obj['subheadline'] = video.subheadline
     if video.poster_frame:
-        video_obj['poster_frame'] = video.poster_frame.url
+        video_obj['poster_frame'] = video.poster_frame.poster_frame.url
     video_obj['single_line_description'] = video.single_line_description
     if video.title_card:
         video_obj["title_card"] = video.title_card.url

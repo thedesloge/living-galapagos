@@ -102,7 +102,7 @@ class Video(TranslatableModel):
     
     def thumbnail_image(self):
         if self.thumbnail:
-            return '<img src="/media/%s" width="200px"/>' % self.poster_frame.url
+            return '<img src="%s" width="200px"/>' % self.poster_frame.url
         else:
             return 'None'
     thumbnail_image.allow_tags = True
@@ -129,7 +129,7 @@ class PosterFrame(models.Model):
     poster_frame = models.FileField(upload_to=get_poster_frame_path)
     
     def poster_frame_image(self):
-        return '<img src="/media/%s" width="200px"/>' % self.poster_frame.url
+        return '<img src="%s" width="200px"/>' % self.poster_frame.url
     poster_frame_image.allow_tags = True
     
     def __unicode__(self):
@@ -173,7 +173,7 @@ class Interactive(models.Model):
     
     def thumbnail_image(self):
         if self.thumbnail:
-            return '<img src="/media/%s" width="200px"/>' % self.thumbnail.url
+            return '<img src="%s" width="200px"/>' % self.thumbnail.url
         else:
             return 'None'
     thumbnail_image.allow_tags = True
@@ -265,7 +265,7 @@ class BackgroundVideo(models.Model):
     
     def fallback_image(self):
         if self.jpg_background:
-            return '<img src="/media/%s" width="200px"/>' % self.jpg_background.url
+            return '<img src="%s" width="200px"/>' % self.jpg_background.url
         else:
             return 'None'
     fallback_image.allow_tags = True
