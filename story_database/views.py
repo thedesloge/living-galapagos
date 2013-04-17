@@ -261,10 +261,7 @@ def getLanguageForArticle(article, language, request):
         template_object["chapters"] = chap_obj
         
         try:
-          if isFeatured:
-              template_object['background_video'] = BackgroundVideo.objects.get(category=Category.objects.get(name='cover'))
-          else:
-              template_object['background_video'] = BackgroundVideo.objects.get(category=story.category)
+          template_object['background_video'] = BackgroundVideo.objects.get(category=Category.objects.get(name='cover'))
         except BackgroundVideo.DoesNotExist:
           pass
         except Category.DoesNotExist:
