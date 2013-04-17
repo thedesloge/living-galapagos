@@ -26,6 +26,9 @@ class StoryCategoryHeader(TranslatableModel):
             category_name = models.CharField(max_length=255, verbose_name=u'* Category Name'),
             category_description = models.TextField(verbose_name=u'* Category Description')
             )
+      
+      def __unicode(self):
+          return self.name
 
 class Role(models.Model):
     title = models.CharField(max_length=100)

@@ -7,9 +7,7 @@ from django import forms
 from haystack.query import SearchQuerySet
 from django.conf import settings
 
-CURRENT_LANGUAGE = 'en'
 def home(request, language_code='en'):
-  CURRENT_LANGUAGE = language_code
   return render_to_response(
             'story_database/home.html',
             getLanguageForStory( getFeaturedStoryPage(), language_code, request, True ),
@@ -17,7 +15,6 @@ def home(request, language_code='en'):
         )
 
 def article_story_page(request, article_slug, language_code='en'):
-  CURRENT_LANGUAGE = language_code
   return render_to_response(
             'story_database/article.html',
             getLanguageForArticle( get_article_by_slug(request, article_slug), language_code, request ),
@@ -27,12 +24,11 @@ def article_story_page(request, article_slug, language_code='en'):
 def learn(request):
   return render_to_response(
             'story_database/learn.html',
-            {'language':'en'},
+            {'language':'en', 'menu': get_menu('en')},
             context_instance=RequestContext(request)
         )
 
 def featured_story_page(request, story_slug, language_code='en'):
-  CURRENT_LANGUAGE = language_code
   return render_to_response(
             'story_database/featured.html',
             getLanguageForStory( getStoryBySlug(request, story_slug), language_code, request, False ),
@@ -40,7 +36,6 @@ def featured_story_page(request, story_slug, language_code='en'):
         )
 
 def about(request, language_code='en'):
-  CURRENT_LANGUAGE = language_code
   return render_to_response(
             'story_database/about.html',
             getLanguageForStory( getStoryBySlug(request, 'about'), language_code, request, False ),
@@ -49,7 +44,6 @@ def about(request, language_code='en'):
   
 
 def search(request, language_code='en'):
-  CURRENT_LANGUAGE = language_code
   if request.method == 'POST':
     form = SearchForm(request.POST)
     if form.is_valid():
@@ -89,7 +83,6 @@ def search(request, language_code='en'):
     return render_to_response('story_database/search.html', {'form':form, "filtered_list":story_list, "background_video":background_vid , "language":language_code}, context_instance=RequestContext(request))
 
 def search_map(request, language_code='en'):
-  CURRENT_LANGUAGE = language_code
   if request.method == 'POST':
     form = SearchForm(request.POST)
     if form.is_valid():
@@ -202,16 +195,25 @@ def getLanguageForStory(story, language, request, isFeatured):
   #Story Page Related Stories
   template_object['related_stories'] = {}
   template_object['language'] = language
-  template_object['site_categories'] = Category.objects.all()
-  template_object['stories_in_category'] = getStoriesInCategory(request, story.category, language)
-  template_object['category_sea_stories'] = getStoriesInCategory(request, "category-sea", language)
-  template_object['category_land_stories'] = getStoriesInCategory(request, "category-land", language)
+  #template_object['site_categories'] = Category.objects.all()
+  #template_object['stories_in_category'] = getStoriesInCategory(request, story.category, language)
+  #template_object['category_sea_stories'] = getStoriesInCategory(request, "category-sea", language)
+  #template_object['category_land_stories'] = getStoriesInCategory(request, "category-land", language)
   template_object['english_link'] = getEnglishLink(request) 
   template_object['spanish_link'] = getSpanishLink(request)
-  template_object['resource_list'] = []
-  template_object['research_list'] = []
+  #template_object['resource_list'] = []
+  #template_object['research_list'] = []
   template_object['category_header'] = getCategoryHeader(story.story_category_header, language)
-    
+  try:
+      if isFeatured:
+          template_object['background_video'] = BackgroundVideo.objects.get(category=Category.objects.get(name='cover'))
+      else:
+          template_object['background_video'] = BackgroundVideo.objects.get(category=story.category)
+  except BackgroundVideo.DoesNotExist:
+    pass
+  except Category.DoesNotExist:
+    pass
+
   return template_object
 
 def getCategoryHeader(category_header, language):
@@ -257,6 +259,16 @@ def getLanguageForArticle(article, language, request):
                 
             chap_obj.append(chap)
         template_object["chapters"] = chap_obj
+        
+        try:
+          if isFeatured:
+              template_object['background_video'] = BackgroundVideo.objects.get(category=Category.objects.get(name='cover'))
+          else:
+              template_object['background_video'] = BackgroundVideo.objects.get(category=story.category)
+        except BackgroundVideo.DoesNotExist:
+          pass
+        except Category.DoesNotExist:
+          pass
     
     except ArticlePage.DoesNotExist:
         pass
@@ -336,12 +348,12 @@ def get_menu(language='en'):
     menu_all = Menu.objects.all(); 
     ret_val = {}
     menu_slides = []
-    for menu in menu_all:
+    for index, menu in enumerate(menu_all):
         menu_slide = {}
         try:
             menu_slide['category'] =  menu.category.translations.get(language_code=language).translation
             menu_slide['category_slug'] = menu.category.slug
-            menu_slide['menu_item_html'] = build_menu( menu_slide['category_slug'], menu.menuitem_set.all(), language )
+            menu_slide['menu_item_html'] = build_menu( menu_slide['category_slug'], menu.menuitem_set.all().order_by('-position'), language, index==0 )
             
             menu_slides.append( menu_slide )
         except Category.DoesNotExist:
@@ -353,9 +365,9 @@ def get_menu(language='en'):
     
     return ret_val
 
-def build_menu(category, menu_items, language):
+def build_menu(category, menu_items, language, active=False):
     menu_string = []
-    menu_string.append( outer_start_div(category) )
+    menu_string.append( outer_start_div(category, active) )
     
     build_slides(menu_items, menu_string, language)
     
@@ -402,12 +414,14 @@ def make_row(row_items, slide_html, language):
     slide_html.append('</div>')
      
  
-def outer_start_div(category):
-    
-    return '<li class="active" id="' + category + 'Tab"><div id="' + category + 'ContentSlider">'  
+def outer_start_div(category, active=False):
+    if active:
+        return '<li class="active" id="' + category + 'Tab"><div id="' + category + 'ContentSlider">'
+    else:
+        return '<li id="' + category + 'Tab"><div id="' + category + 'ContentSlider">'  
 
 def outer_end_div():
-    return '</div></li>' 
+    return '' 
 
 def getFilteredCategory(search, language_code, storyList):
     storyTrans = Story_Translation.objects.filter(language_code=language_code, parent__in=storyList)
