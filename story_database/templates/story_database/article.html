@@ -30,7 +30,17 @@
 		    {% for chapter in chapters %}
 			<div class="invisible"><h4><a name="chapter{{chapter.id }}"></a></h4></div>
 			
-			<div class="panoHead"><img src="{{chapter.pano_head}}" height="300"></img>
+			<div class="panoHead">
+			    <video width="100%" loop autoplay>
+				<source src="{{chapter.pano_head.h264}}" type="video/mp4">
+				<source src="{{chapter.pano_head.ogg}}" type="video/ogg">
+				<p>If you are reading this, it is because your browser does not support the HTML5 video element.</p>
+			    </video>
+			    
+			    
+			    
+			    
+			    <img src="{{chapter.pano_head}}" height="300"></img>
 			</div>  
 			<div class="textHeadArt">{{chapter.headline}}</div>
 			<div class="textSubHeadArt">{{chapter.subheadline}}</div>
