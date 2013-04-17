@@ -336,12 +336,12 @@ def get_menu(language='en'):
     menu_all = Menu.objects.all(); 
     ret_val = {}
     menu_slides = []
-    for menu in menu_all:
+    for index, menu in enumerate(menu_all):
         menu_slide = {}
         try:
             menu_slide['category'] =  menu.category.translations.get(language_code=language).translation
             menu_slide['category_slug'] = menu.category.slug
-            menu_slide['menu_item_html'] = build_menu( menu_slide['category_slug'], menu.menuitem_set.all(), language )
+            menu_slide['menu_item_html'] = build_menu( menu_slide['category_slug'], menu.menuitem_set.all().order_by('-position'), language, index==0 )
             
             menu_slides.append( menu_slide )
         except Category.DoesNotExist:
@@ -353,9 +353,9 @@ def get_menu(language='en'):
     
     return ret_val
 
-def build_menu(category, menu_items, language):
+def build_menu(category, menu_items, language, active=False):
     menu_string = []
-    menu_string.append( outer_start_div(category) )
+    menu_string.append( outer_start_div(category, active) )
     
     build_slides(menu_items, menu_string, language)
     
@@ -402,12 +402,14 @@ def make_row(row_items, slide_html, language):
     slide_html.append('</div>')
      
  
-def outer_start_div(category):
-    
-    return '<li class="active" id="' + category + 'Tab"><div id="' + category + 'ContentSlider">'  
+def outer_start_div(category, active=False):
+    if active:
+        return '<li class="active" id="' + category + 'Tab"><div id="' + category + 'ContentSlider">'
+    else:
+        return '<li id="' + category + 'Tab"><div id="' + category + 'ContentSlider">'  
 
 def outer_end_div():
-    return '</div></li>' 
+    return '' 
 
 def getFilteredCategory(search, language_code, storyList):
     storyTrans = Story_Translation.objects.filter(language_code=language_code, parent__in=storyList)
