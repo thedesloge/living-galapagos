@@ -7,9 +7,7 @@ from django import forms
 from haystack.query import SearchQuerySet
 from django.conf import settings
 
-CURRENT_LANGUAGE = 'en'
 def home(request, language_code='en'):
-  CURRENT_LANGUAGE = language_code
   return render_to_response(
             'story_database/home.html',
             getLanguageForStory( getFeaturedStoryPage(), language_code, request, True ),
@@ -17,7 +15,6 @@ def home(request, language_code='en'):
         )
 
 def article_story_page(request, article_slug, language_code='en'):
-  CURRENT_LANGUAGE = language_code
   return render_to_response(
             'story_database/article.html',
             getLanguageForArticle( get_article_by_slug(request, article_slug), language_code, request ),
@@ -32,7 +29,6 @@ def learn(request):
         )
 
 def featured_story_page(request, story_slug, language_code='en'):
-  CURRENT_LANGUAGE = language_code
   return render_to_response(
             'story_database/featured.html',
             getLanguageForStory( getStoryBySlug(request, story_slug), language_code, request, False ),
@@ -40,7 +36,6 @@ def featured_story_page(request, story_slug, language_code='en'):
         )
 
 def about(request, language_code='en'):
-  CURRENT_LANGUAGE = language_code
   return render_to_response(
             'story_database/about.html',
             getLanguageForStory( getStoryBySlug(request, 'about'), language_code, request, False ),
@@ -49,7 +44,6 @@ def about(request, language_code='en'):
   
 
 def search(request, language_code='en'):
-  CURRENT_LANGUAGE = language_code
   if request.method == 'POST':
     form = SearchForm(request.POST)
     if form.is_valid():
@@ -89,7 +83,6 @@ def search(request, language_code='en'):
     return render_to_response('story_database/search.html', {'form':form, "filtered_list":story_list, "background_video":background_vid , "language":language_code}, context_instance=RequestContext(request))
 
 def search_map(request, language_code='en'):
-  CURRENT_LANGUAGE = language_code
   if request.method == 'POST':
     form = SearchForm(request.POST)
     if form.is_valid():
@@ -202,16 +195,25 @@ def getLanguageForStory(story, language, request, isFeatured):
   #Story Page Related Stories
   template_object['related_stories'] = {}
   template_object['language'] = language
-  template_object['site_categories'] = Category.objects.all()
-  template_object['stories_in_category'] = getStoriesInCategory(request, story.category, language)
-  template_object['category_sea_stories'] = getStoriesInCategory(request, "category-sea", language)
-  template_object['category_land_stories'] = getStoriesInCategory(request, "category-land", language)
+  #template_object['site_categories'] = Category.objects.all()
+  #template_object['stories_in_category'] = getStoriesInCategory(request, story.category, language)
+  #template_object['category_sea_stories'] = getStoriesInCategory(request, "category-sea", language)
+  #template_object['category_land_stories'] = getStoriesInCategory(request, "category-land", language)
   template_object['english_link'] = getEnglishLink(request) 
   template_object['spanish_link'] = getSpanishLink(request)
-  template_object['resource_list'] = []
-  template_object['research_list'] = []
+  #template_object['resource_list'] = []
+  #template_object['research_list'] = []
   template_object['category_header'] = getCategoryHeader(story.story_category_header, language)
-    
+  try:
+      if isFeatured:
+          template_object['background_video'] = BackgroundVideo.objects.get(category=Category.objects.get(name='cover'))
+      else:
+          template_object['background_video'] = BackgroundVideo.objects.get(category=story.category)
+  except BackgroundVideo.DoesNotExist:
+    pass
+  except Category.DoesNotExist:
+    pass
+
   return template_object
 
 def getCategoryHeader(category_header, language):
@@ -257,6 +259,16 @@ def getLanguageForArticle(article, language, request):
                 
             chap_obj.append(chap)
         template_object["chapters"] = chap_obj
+        
+        try:
+          if isFeatured:
+              template_object['background_video'] = BackgroundVideo.objects.get(category=Category.objects.get(name='cover'))
+          else:
+              template_object['background_video'] = BackgroundVideo.objects.get(category=story.category)
+        except BackgroundVideo.DoesNotExist:
+          pass
+        except Category.DoesNotExist:
+          pass
     
     except ArticlePage.DoesNotExist:
         pass
