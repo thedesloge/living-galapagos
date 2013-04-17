@@ -9,7 +9,7 @@ ADMINS = (
 
 MANAGERS = ADMINS
 
-
+FORCE_SCRIPT_NAME = ''
 
 DATABASES = {
     'default': {

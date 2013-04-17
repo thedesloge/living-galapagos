@@ -107,21 +107,23 @@
         	<div class="twelve columns phone-five">
             	<ul id="header-ul">
                 	<li id="logo-li">
+                	<a href="/{{language}}">
 						<div class="logo-background"/>
-                		<div class="logo"><a href="/{{language}}"><img src="{{ STATIC_URL }}images/logo.png"/></a></div>
+                		<div class="logo"><img src="{{ STATIC_URL }}images/logo.png" /></div>
+                		</a>
                		</li>
                 	<li id="top-nav-li">
                     	<ul class="topNav">
 				
 				{% if language == "en" %}
 					<li><a href="#" class="clicker">STORIES</a></li>	
-					<li><a href="learn/">LEARN</a></li>
-					<li><a href="{{language}}/about/">ABOUT</a></li>
+					<li><a href="{{ FORCE_SCRIPT_NAME }}/learn/">LEARN</a></li>
+					<li><a href="{{ FORCE_SCRIPT_NAME }}/{{language}}/about/">ABOUT</a></li>
 					<li><a href="{{spanish_link}}">SPANISH</a></li>
 				{% else %}
 					<li><a href="#" class="clicker">HISTORIAS</a></li>
 					<!--<li><a href="#">APRENDER</a></li>-->
-					<li><a href="{{language}}/about/">SOBRE</a></li>
+					<li><a href="{{ FORCE_SCRIPT_NAME }}/{{language}}/about/">SOBRE</a></li>
 					<li><a href="{{english_link}}">INGLES</a></li>
 					<!--<li><a href="{{spanish_link}}">ESPA&#209;OL</a></li>-->
 				{% endif %}

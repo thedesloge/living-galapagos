@@ -27,7 +27,7 @@ def article_story_page(request, article_slug, language_code='en'):
 def learn(request):
   return render_to_response(
             'story_database/learn.html',
-            {'language':'en'},
+            {'language':'en', 'menu': get_menu('en')},
             context_instance=RequestContext(request)
         )
 
