@@ -117,8 +117,13 @@
 				
 				{% if language == "en" %}
 					<li><a href="#" class="clicker">STORIES</a></li>	
+<<<<<<< HEAD
+					<li><a href="/learn/">LEARN</a></li>
+					<li><a href="{{language}}/about/">ABOUT</a></li>
+=======
 					<li><a href="{{ FORCE_SCRIPT_NAME }}/learn/">LEARN</a></li>
 					<li><a href="{{ FORCE_SCRIPT_NAME }}/{{language}}/about/">ABOUT</a></li>
+>>>>>>> 15361a631351510464dd62371324a1cbcb00433e
 					<li><a href="{{spanish_link}}">SPANISH</a></li>
 				{% else %}
 					<li><a href="#" class="clicker">HISTORIAS</a></li>
@@ -291,15 +296,15 @@
         		<div class="footerNav hide-on-phones show-on-tablets">
 				<ul>
 				
-					<li><a href="http://www.facebook.com">FACEBOOK</a></li>
-					<li><a href="http://www.twitter.com">TWITTER</a></li>
+					<li><a href="https://www.facebook.com/LivingGalapagos" target="blank">FACEBOOK</a></li>
+					<li><a href="https://twitter.com/livinggalapagos" target="blank">TWITTER</a></li>
 				
 				{% if language == "en" %}
-					<li><a href="#">ISSUES</a></li>
+					<!--<li><a href="#">ISSUES</a></li>-->
 					<li><a href="{{language}}/about/">ABOUT</a></li>
 					<li><a href="{{spanish_link}}">SPANISH</a></li>
 				{% else %}
-					<li><a href="#">TEMAS</a></li>
+					<!--<li><a href="#">TEMAS</a></li>-->
 					<li><a href="{{language}}/about/">SOBRE</a></li>
 					<li><a href="{{english_link}}">INGLES</a></li>
 					<!--<li><a href="{{spanish_link}}">ESPA&#209;OL</a></li>-->

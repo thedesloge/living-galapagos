@@ -269,6 +269,26 @@ text-transform:uppercase;
 	font-family:Caviar Dreams;
 	color: #F6F3EE 
 }
+.reportHeadText{
+	font-family:Caviar Dreams;
+	color: #fff;
+	font-size: 3.3em;
+	text-align: center;
+	padding-top: 70px;
+	padding-left: 10%;
+	position: absolute;
+	z-index: 10;
+	
+}
+
+.reportBodyText{
+	font-family:Caviar Dreams;
+	color: #fff;
+	font-size: 2em;
+	text-align: left;
+	padding-top: 110px;
+	padding-left: 10%;
+}
 
 /*search styles*/
 #filterBox {
