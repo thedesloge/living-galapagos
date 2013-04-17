@@ -347,16 +347,34 @@ padding-left: .9em;
 
 }
 
+.reportArticleBox {
+	
+	padding: 40px 7% 20px 3em;
+	
+	overflow: scroll;
+	
+}
+
 #honeycomb {
 margin: 1em 0em 1em 0em;
 }
 
 .reportInfo{
-	background-color: red;
-	height: 20px;
-	width: 400px;
-	position: relative;
-	z-index: -1;
+	background-image: url('../images/report.png');
+	height: 193px;
+	width: 290px;
+	float: left;
+	position: static;
+	z-index:0;
+	margin-bottom: 20px;
+	margin-top: 20px;
+	overflow:scroll;
+	
+}
+
+.fixedWidth{
+	width: 600px;
+	height: 505px;
 }
 
 .scroll{

@@ -223,6 +223,7 @@
 	.row .four 		{ width: 30.37%; }
 	.row .five 		{ width: 39.1%; }
 	.row .six 		{ width: 47.8%; }
+	.row .sixStatic 	{ width: 330px; }
 	.row .seven 	{ width: 56.5%; }
 	.row .sevenHalf 	{ width: 60.5%; }
 	.row .eight 	{ width: 65.2%; }

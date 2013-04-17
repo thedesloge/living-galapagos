@@ -1,0 +1,115 @@
+/* This is the css for the main index file */
+
+body{
+      margin:0;
+      background-color: #373737;
+  }
+  
+  @font-face
+  {
+  font-family: CaviarDreams;
+  src: url('../Fonts/CaviarDreams.ttf')
+  }
+
+  @font-face
+  {
+  font-family: CaviarDreams_Bold;
+  src: url('../Fonts/CaviarDreams_Bold.ttf')
+  }
+
+  @font-face
+  {
+  font-family: museosans;
+  src: url('../Fonts/museosans.ttf')
+  }
+
+  @font-face
+  {
+  font-family: museo-slab;
+  src: url('../Fonts/museo-slab.otf')
+  }
+
+  @font-face
+  {
+  font-family: qdark;
+  src: url('../Fonts/qhyts__.ttf')
+  }
+
+  h1 {
+    font-family: qdark, sans-serif;
+    font-size: 3.2em;
+      color: #29221c;
+      line-height: 1em;
+  }
+
+  h2 {
+    font-family: museo-slab, serif;
+  }
+
+  a{
+    text-decoration: none;
+  }
+  
+  p{
+    font-family: museosans;
+    font-size: .9em;
+    margin-right: .3em;
+    line-height: 1.7em;
+  }
+  
+  .footerLeft{
+    font-family: CaviarDreams;
+    font-size: 1em;
+    color: #373737;
+  }
+
+  .footerRight{
+    font-family: CaviarDreams;
+    font-size: 1em;
+    color: #C9BDA3;
+  }
+  .center{
+    text-align:center;
+  }
+
+  .nav{
+      height:30px;
+      padding-top:20px;
+  }
+  
+  .nav ul{
+      float:center;
+      display:inline;
+
+  }
+  
+  .nav li{
+      display:inline;
+      
+  }
+
+  .tan-box{
+      background-color:#d4c7ab;
+      margin-bottom:20px;
+  }
+
+  ul{
+    font-family: museosans, sans-serif;
+  }
+
+  li{
+    margin-right: 10px;
+    margin-left: 10px;
+  }
+
+  .spacer{
+      margin-top:1em;
+      
+  }
+  
+  .container{
+      width:1170px;
+      margin-left:auto;
+      margin-right:auto;
+      margin-bottom: 80px;
+  }
