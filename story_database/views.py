@@ -255,26 +255,30 @@ def getLanguageForArticle(article, language, request):
             
             
             if chapter.pano_head:
-                chap['pano_head'] = chapter.pano_head.url
+                chap['pano_head'] = construct_pano_urls( chapter.pano_head.url )
                 
             chap_obj.append(chap)
         template_object["chapters"] = chap_obj
         
         try:
-          if isFeatured:
-              template_object['background_video'] = BackgroundVideo.objects.get(category=Category.objects.get(name='cover'))
-          else:
-              template_object['background_video'] = BackgroundVideo.objects.get(category=story.category)
+          template_object['background_video'] = BackgroundVideo.objects.get(category=Category.objects.get(name='cover'))
         except BackgroundVideo.DoesNotExist:
           pass
         except Category.DoesNotExist:
           pass
     
     except ArticlePage.DoesNotExist:
-        pass
+        raise Http404
+    
     return template_object
 
-
+def construct_pano_urls( pano_url ):
+    ret_val = {}
+    
+    ret_val['h264'] = settings.STATIC_URL + "chapterHeads/Iguanas.m4v"
+    ret_val['ogv'] =  settings.STATIC_URL + "chapterHeads/Iguanas.ogv"
+    ret_val['png'] = settings.STATIC_URL + "chapterHeads/Iguanas.png"
+    return ret_val
 
 def buildVideoObject(video):
     video_obj = {}
