@@ -191,18 +191,12 @@ def getLanguageForStory(story, language, request, isFeatured):
   #Story Page video
   template_object['video'] = buildVideoObject(Video.objects.language(language).get(id=story.video.id))
   #Get Interactives
-  template_object['related_content_list'] = getInteractivedForStory(story, language)
+  template_object['related_content_list'] = getInteractivesForStory(story, language)
   #Story Page Related Stories
   template_object['related_stories'] = {}
   template_object['language'] = language
-  #template_object['site_categories'] = Category.objects.all()
-  #template_object['stories_in_category'] = getStoriesInCategory(request, story.category, language)
-  #template_object['category_sea_stories'] = getStoriesInCategory(request, "category-sea", language)
-  #template_object['category_land_stories'] = getStoriesInCategory(request, "category-land", language)
   template_object['english_link'] = getEnglishLink(request) 
   template_object['spanish_link'] = getSpanishLink(request)
-  #template_object['resource_list'] = []
-  #template_object['research_list'] = []
   template_object['category_header'] = getCategoryHeader(story.story_category_header, language)
   try:
       if isFeatured:
@@ -250,10 +244,7 @@ def getLanguageForArticle(article, language, request):
                 videos.append(buildVideoObject(vid))
                 
             chap['videos'] = videos
-            #chap['vimeo_id'] = vid.vimeo_id
         
-            
-            
             if chapter.pano_head:
                 chap['pano_head'] = construct_pano_urls( chapter.pano_head.url )
                 
@@ -296,7 +287,7 @@ def buildVideoObject(video):
     
     return video_obj
 
-def getInteractivedForStory(story, language):
+def getInteractivesForStory(story, language):
     list = story.interactives.all()
     
     interactive_list = []

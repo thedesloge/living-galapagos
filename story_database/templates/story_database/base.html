@@ -219,66 +219,6 @@
 		
 {% endblock %}
 		
-        <div class="body-row row hide-on-phones"> <!------------R-BAR------------>
-            {% if resource_list|length > 1 %}
-        	<div class="six columns"><!------------RESOURCES AREA------------>
-                
-				<div class="row"><!-- Create Text Above Resources -->
-                	<div class="twelve columns">
-                    	<div class="divNav">RESOURCES</div>
-                    </div>
-                </div><!-- End Text Above Resources -->
-                
-                 <div class="row" id="resources-box"><!--Create Resources box-->
-                    {% for resource in resource_list %}
-                    {% if forloop.counter < 4 %}
-                    <div class="row" id="top-resources"><!-- Create Top Resources Row -->
-                        <div class="three columns">
-                        <a href="{{resource.url}}">
-                            <img src="{{resource.resource_image.url}}"/>
-                        </a>
-                        </div>
-                                                 
-                    </div><!-- Ends Top Resources Row -->
-                    {% else %}
-                    <div class="row" id="bottom-resources"><!-- Create Bottom Resources Row -->
-                        <div class="three columns">
-                        <a href="{{resource.url}}">
-                            <img src="{{resource.resource_image.url}}"/>
-                        </a>
-                        </div>
-                                                      
-                    </div>
-                    {% endif %}
-                    {% endfor %}
-                    <!-- Ends Bottom Resources Row -->
-                </div><!--End Resources box-->
-
-            </div> <!------------//// END RESEARCH AREA------------>
-            {% endif %}
-            
-            {% if research_list|length > 1 %}
-        	<div class="six columns"><!------------RELATED RESEARCH AREA------------>
-            
-				<div class="row"><!-- Create Text Above Research -->
-                <div class="divNav">RESEARCH</div>
-                	<div class="twelve columns">
-                    </div>
-                </div><!-- End Text Above Research -->
-	        <div class="row"><!--Create Research Box-->
-                	{% for research in research_list %}
-                    <div class="twelve columns" id="research-box">
-                    	<div class="researchTitle">{{research.title}}</div>
-                        <div class="institute">{{research.institute}}</div>
-                        <div class="researchP">{{research.short_description}}</div>
-                    </div> {% endfor %}
-                </div><!--End Research Box-->
-                
-            </div><!--////END RELATED RESEARCH AREA-->
-           {% endif %}
-            
-        </div><!--////END R-BAR-->
-    
 </div> <!-- ////END CONTAINER -->
 {% if not is_mobile %}
     <div class="footer hide-on-tables hide-on-phones" id="footer"><!------------FOOTER AREA------------>
