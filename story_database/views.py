@@ -252,7 +252,7 @@ def getLanguageForArticle(article, language, request):
         template_object["chapters"] = chap_obj
         
         try:
-          template_object['background_video'] = BackgroundVideo.objects.get(category=Category.objects.get(name='cover'))
+          template_object['background_video'] = BackgroundVideo.objects.get(category=Category.objects.get(slug='articles'))
         except BackgroundVideo.DoesNotExist:
           pass
         except Category.DoesNotExist:
