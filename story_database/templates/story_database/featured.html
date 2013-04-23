@@ -132,7 +132,7 @@
 			{% for related_content in related_content_list %}
              	 
                     	 <div onclick="TINY.box.show({iframe:'{{ related_content.link }}',boxid:'frameless',animate:true, width:1200, height:675, fixed:false})">
-                    	 <img src="http://localhost:8000/media/{{related_content.thumbnail.url}}" width="100%"/>
+                    	 <img src="{{related_content.thumbnail.url}}" width="100%"/>
                     	 <div class="sidebar-text">
                     	 	<div class="sidebarBoxTitle">{{related_content.headline}}</div>
                          	<div class="sidebarBoxP">{{related_content.description}}</div>
