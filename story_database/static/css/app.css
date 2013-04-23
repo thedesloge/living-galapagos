@@ -64,6 +64,17 @@ h3 {
 	background:none;
 }
 
+.artRight{
+	float:right;
+	display: inline;
+	clear: both;
+}
+
+.artLeft{
+	float:left;
+	display: inline;
+	clear: both;
+}
 /* -----------------------------------------
    STORIES flyout tray
 ----------------------------------------- */
