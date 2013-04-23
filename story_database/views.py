@@ -200,7 +200,7 @@ def getLanguageForStory(story, language, request, isFeatured):
   template_object['category_header'] = getCategoryHeader(story.story_category_header, language)
   try:
       if isFeatured:
-          template_object['background_video'] = BackgroundVideo.objects.get(category=Category.objects.get(name='cover'))
+          template_object['background_video'] = BackgroundVideo.objects.get(category=Category.objects.get(slug='cover'))
       else:
           template_object['background_video'] = BackgroundVideo.objects.get(category=story.category)
   except BackgroundVideo.DoesNotExist:
@@ -252,7 +252,7 @@ def getLanguageForArticle(article, language, request):
         template_object["chapters"] = chap_obj
         
         try:
-          template_object['background_video'] = BackgroundVideo.objects.get(category=Category.objects.get(name='cover'))
+          template_object['background_video'] = BackgroundVideo.objects.get(category=Category.objects.get(slug='articles'))
         except BackgroundVideo.DoesNotExist:
           pass
         except Category.DoesNotExist:
@@ -349,16 +349,35 @@ def get_menu(language='en'):
             menu_slide['category'] =  menu.category.translations.get(language_code=language).translation
             menu_slide['category_slug'] = menu.category.slug
             menu_slide['menu_item_html'] = build_menu( menu_slide['category_slug'], menu.menuitem_set.all().order_by('-position'), language, index==0 )
+            print menu_slide['category'] + " html: ", menu_slide['menu_item_html']
             
             menu_slides.append( menu_slide )
         except Category.DoesNotExist:
             raise Http404
         
-        
-        
+    menu_slides.append({'category': 'articles', 'category_slug':'articles', 'menu_item_html':get_article_menu_html(language)})
     ret_val['menu_slides'] = menu_slides
     
     return ret_val
+
+def get_article_menu_html(language='en'):
+    articles = ArticlePage.objects.all()
+    ret_val = []
+    ret_val.append(outer_start_div('articles'))
+    ret_val.append('<div class="row tabs-content-slider-row">')
+    for article in articles:
+        ret_val.append('<div class="tabs-content-link">')
+        ret_val.append('<a href="/'+ language + '/article' + article.slug + '"><img src="http://placehold.it/350x150"/></a>')
+        ret_val.append('<div class="tabs-image-caption">')
+        ret_val.append('<img src="' + settings.STATIC_URL + 'images/icon.png"/>')
+        ret_val.append('<h4>' + article.translation.get(language_code=language).title + '</h4>')
+        #slide_html.append('<p>' + item.page.translations.get(language_code=language).subheadline + '</p></a>')
+        ret_val.append('</div>')
+        ret_val.append('</div>')
+        ret_val.append('</div>')
+        
+    ret_val.append('</div></li>')
+    return ''.join(ret_val)
 
 def build_menu(category, menu_items, language, active=False):
     menu_string = []
@@ -399,9 +418,9 @@ def make_row(row_items, slide_html, language):
     for item in row_items:
         slide_html.append('<div class="tabs-content-link">')
         if item.page.thumbnail:
-            slide_html.append('<a href="/'+ language + '/' + item.page.slug + '"><img src="' +  item.page.thumbnail.url +'"/>')
+            slide_html.append('<a href="/'+ language + '/' + item.page.slug + '"><img src="' +  item.page.thumbnail.url +'"/></a>')
         else:
-            slide_html.append('<a href="/'+ language + '/' + item.page.slug + '"><img src="http://placehold.it/350x150"/>')
+            slide_html.append('<a href="/'+ language + '/' + item.page.slug + '"><img src="http://placehold.it/350x150"/></a>')
             
         slide_html.append('<div class="tabs-image-caption">')
         slide_html.append('<img src="' + settings.STATIC_URL + 'images/icon.png"/>')
