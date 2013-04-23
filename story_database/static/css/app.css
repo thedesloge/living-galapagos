@@ -194,8 +194,8 @@ h3 {
 }*/
 .tabs-image-caption {
 	background: rgba(26, 26, 26, 0.5);
-	max-width:295px;
-	max-height:70px;
+	width:92%;
+	height:70px;
 	position:relative;
 	top:-75px;
 }
