@@ -147,6 +147,8 @@
                     	{% if not forloop.last %}
                     	    {% if forloop.counter0 == 0 %}
                     		<dd ><a href="#{{ menu_slide.category_slug|lower }}">{{ menu_slide.category|upper }}</a></dd>
+                    		{% else %}
+                    		<dd ><a href="#{{ menu_slide.category_slug|lower }}">{{ menu_slide.category|upper }}</a></dd>
                     		{% endif %}
                     	{% else %}
                     		<dd class="tabs-item-last"><a href="#{{ menu_slide.category_slug|lower }}">{{ menu_slide.category|upper }}</a></dd>
