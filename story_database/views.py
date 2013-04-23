@@ -266,9 +266,9 @@ def getLanguageForArticle(article, language, request):
 def construct_pano_urls( pano_url ):
     filename = pano_url.split('/')[-1]
     ret_val = {}
-    ret_val['h264'] = settings.STATIC_URL + "/chapterHeads/" + filename[:len(filename)-4] + ".m4v"
-    ret_val['ogg'] =  settings.STATIC_URL + "/chapterHeads/" + filename[:len(filename)-4] +".ogg"
-    ret_val['png'] = settings.STATIC_URL + "/chapterHeads/" + filename[:len(filename)-4] +".png"
+    ret_val['h264'] = settings.STATIC_URL + "chapterHeads/" + filename[:len(filename)-4] + ".m4v"
+    ret_val['ogg'] =  settings.STATIC_URL + "chapterHeads/" + filename[:len(filename)-4] +".ogg"
+    ret_val['png'] = settings.STATIC_URL + "chapterHeads/" + filename[:len(filename)-4] +".png"
     return ret_val
 
 def buildVideoObject(video):
