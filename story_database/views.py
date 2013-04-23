@@ -397,11 +397,15 @@ def make_row(row_items, slide_html, language):
     
     for item in row_items:
         slide_html.append('<div class="tabs-content-link">')
-        slide_html.append('<a href="/'+ language + '/' + item.page.slug + '"><img src="' +  item.page.thumbnail.url +'"/>')
+        if item.page.thumbnail:
+            slide_html.append('<a href="/'+ language + '/' + item.page.slug + '"><img src="' +  item.page.thumbnail.url +'"/>')
+        else:
+            slide_html.append('<a href="/'+ language + '/' + item.page.slug + '"><img src="http://placehold.it/350x150"/>')
+            
         slide_html.append('<div class="tabs-image-caption">')
         slide_html.append('<img src="' + settings.STATIC_URL + 'images/icon.png"/>')
         slide_html.append('<h4>' + item.page.translations.get(language_code=language).headline + '</h4>')
-        slide_html.append('<p>' + item.page.translations.get(language_code=language).subheadline + '</p></a>')
+        #slide_html.append('<p>' + item.page.translations.get(language_code=language).subheadline + '</p></a>')
         slide_html.append('</div>')
         slide_html.append('</div>')
     
