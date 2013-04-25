@@ -1,6 +1,7 @@
 /* Foundation v2.1.5 http://foundation.zurb.com */
 $(document).ready(function () {
 	console.log("doc ready")
+	$('#flex-video').css({'visibility':'visible'});
 	/* Use this js doc for all application specific JS */
 
 	/* TABS --------------------------------- */

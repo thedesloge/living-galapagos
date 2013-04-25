@@ -25,14 +25,14 @@
 			});
 			
 			if($('#homePlayBtn')){
-				$('#flex-video').css({'visibility':'hidden'});
+				
 				$('#homePlayBtn').click(function(){
 					$('#player_1').css({'width':'100%', 'height':'100%'});
 					$('#flex-video').css({'visibility':'visible'});
 					$('#homePlayBtn').hide();
 					froogaloop.api('play');
 				})
-			}
+                }
 			
 			//lists active div for sliding decisions
 			//var activeDiv="#scroll-cat1";

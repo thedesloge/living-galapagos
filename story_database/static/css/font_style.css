@@ -88,7 +88,7 @@ overflow:auto;
 .textHeadArt {
 	font-family:qhytsdakx;
 	font-size: 4.1em;
-	color: #BAAD9B;
+	color: #fff;
 	line-height: 1em;
 	margin-left: .85em;
 	position:relative;
@@ -136,6 +136,14 @@ overflow:auto;
 	
 }
 
+.artSubs {
+	font-family:museo-sans-500;
+	font-size:1.7em;
+	color:#a9a8a6;
+	line-height:1.3em;
+	padding-bottom: .8em;
+	
+}
 
 .textSubHeadVideo {
 	font-family:museo-sans-500;
