@@ -539,12 +539,6 @@ background-image: url("http://reinhardt.jomc.unc.edu/static/images/nav_bg.png");
 
 
 .centerbtn{
-position: absolute;
-left: 40%;
-top: 38%;
-width: 130px;
-height: 130px;
-z-index:100;
 	
 }
 
