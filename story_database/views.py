@@ -297,7 +297,7 @@ def getInteractivesForStory(story, language):
             interactive_list.append(interactive)
         elif not interactive.is_spanish and language == 'en': 
             interactive_list.append(interactive)
-    
+    print "interactive list: ", interactive_list[0].infographic_files.url
     return interactive_list
     
 
