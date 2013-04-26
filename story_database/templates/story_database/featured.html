@@ -104,12 +104,18 @@
 		</div>-->  <!-- End Text Above Div -->
 	<div class="row"> <!-- Content Box -->
 	<div class="twelve columns" id="more-box">
-			
 			<span class="holder">
+			{% if language == "en" %}
+			 <a href="{{ FORCE_SCRIPT_NAME }}/learn/"/>
+			 {% endif %}
 			<div class="info-background"><img class="cat-img" src="{{category_header.background_image}}"></img>
 			<div class="textCatHead">{{category_header.title}}</div>
 			<div class="textCatSubHead">{{category_header.description}}</div>
-			</div></span>
+			</div>
+			{% if language == "en" %}
+			 </a>
+			 {% endif %}
+			</span>
 			
 		
 		<div class="row">
@@ -131,18 +137,20 @@
 			<div class="textSubHead">RELATED CONTENT</div>
 			{% for related_content in related_content_list %}
              	 
-                    	 <div onclick="TINY.box.show({iframe:'{{ related_content.link }}',boxid:'frameless',animate:true, width:1200, height:675, fixed:false})">
-                    	 <img src="{{related_content.thumbnail.url}}" width="100%"/>
-                    	 <div class="sidebar-text">
-                    	 	<div class="sidebarBoxTitle">{{related_content.headline}}</div>
-                         	<div class="sidebarBoxP">{{related_content.description}}</div>
-			 </div>   	
-                    </div>
-                </div> <!-- End Sidebar One -->
+              <div style="cursor:pointer;" onclick="TINY.box.show({iframe:'{{ related_content.infographic_files.url }}',boxid:'frameless',animate:true, width:1200, height:675, fixed:false})">
+				<img src="{{related_content.thumbnail.url}}" width="100%"/>
+                <div class="sidebar-text">
+                  <div class="sidebarBoxTitle">{{related_content.headline}}</div>
+                  <div class="sidebarBoxP">{{related_content.description}}</div>
+		 		</div>   	
+              </div>
+              
+              <div style="height:25px; width:100%;"></div>
+               {% endfor %}
 		</div><!-- end three columns -->
 		
 		</div>
-                {% endfor %}
+                
 		</div> 
 	</div>
 </div>

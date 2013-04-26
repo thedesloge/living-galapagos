@@ -24,7 +24,7 @@ def article_story_page(request, article_slug, language_code='en'):
 def learn(request):
   return render_to_response(
             'story_database/learn.html',
-            {'language':'en', 'menu': get_menu('en')},
+            {'language':'en', 'menu': get_menu('en'), 'background_video': get_learn_background_video()},
             context_instance=RequestContext(request)
         )
 
@@ -176,20 +176,24 @@ def getLanguageForStory(story, language, request, isFeatured):
   template_object = {}
   template_object["is_mobile"] = request.is_mobile
   template_object['menu'] = get_menu(language)
-  
   #Story Language Translated items
+  print "story: ", story, " language: ", language
   try:
       story_translation = story.translations.get(language_code=language)
   except StoryPageTranslation.DoesNotExist:
       raise Http404
   
+  template_object['FORCE_SCRIPT_NAME'] = settings.FORCE_SCRIPT_NAME
   template_object['headline'] = story_translation.headline
   template_object['description'] = story_translation.description
   template_object['quote'] = story_translation.quote
   template_object['quote_attribution'] = story_translation.quote_attribution
   
   #Story Page video
-  template_object['video'] = buildVideoObject(Video.objects.language(language).get(id=story.video.id))
+  try:
+      template_object['video'] = buildVideoObject(Video.objects.language(language).get(id=story.video.id))
+  except Video.DoesNotExist:
+      pass
   #Get Interactives
   template_object['related_content_list'] = getInteractivesForStory(story, language)
   #Story Page Related Stories
@@ -197,16 +201,19 @@ def getLanguageForStory(story, language, request, isFeatured):
   template_object['language'] = language
   template_object['english_link'] = getEnglishLink(request) 
   template_object['spanish_link'] = getSpanishLink(request)
-  template_object['category_header'] = getCategoryHeader(story.story_category_header, language)
+      
   try:
+      template_object['category_header'] = getCategoryHeader(story.story_category_header, language)
       if isFeatured:
           template_object['background_video'] = BackgroundVideo.objects.get(category=Category.objects.get(slug='cover'))
       else:
           template_object['background_video'] = BackgroundVideo.objects.get(category=story.category)
   except BackgroundVideo.DoesNotExist:
-    pass
+      pass
   except Category.DoesNotExist:
-    pass
+      pass
+  except StoryCategoryHeaderTranslation.DoesNotExist:
+      pass
 
   return template_object
 
@@ -352,9 +359,11 @@ def get_menu(language='en'):
             
             menu_slides.append( menu_slide )
         except Category.DoesNotExist:
-            raise Http404
-        
-    menu_slides.append({'category': 'articles', 'category_slug':'articles', 'menu_item_html':get_article_menu_html(language)})
+            pass
+    try:    
+        menu_slides.append({'category': 'articles', 'category_slug':'articles', 'menu_item_html':get_article_menu_html(language)})
+    except ArticlePageTranslation.DoesNotExist:
+        pass
     ret_val['menu_slides'] = menu_slides
     
     return ret_val
@@ -441,6 +450,14 @@ def outer_start_div(category, active=False):
 
 def outer_end_div():
     return '' 
+
+def get_learn_background_video():
+    try:
+        return BackgroundVideo.objects.get(category=Category.objects.get(slug='learn'))
+    except BackgroundVideo.DoesNotExist:
+        return {}
+    except Category.DoesNotExist:
+        return {}
 
 def getFilteredCategory(search, language_code, storyList):
     storyTrans = Story_Translation.objects.filter(language_code=language_code, parent__in=storyList)

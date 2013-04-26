@@ -3,13 +3,13 @@ body{background:#eee;margin:0;padding:0}
 
 @font-face{
 font-family:headline;
-src: url("../Fonts/museosans_500.ttf");
+src: url("../Fonts/museosans_500.otf");
 
 }
 
 @font-face{
 font-family:bodyFont;
-src: url("../Fonts/museosans_300-webfont.ttf");
+src: url("../Fonts/museosans_300.ttf");
 
 }
 
