@@ -324,7 +324,7 @@ div.scroll {position: absolute; left: -100%; width: 92%; padding: 0% 4% 30px;}
 div.scroll span {margin-left: 5%;}
 div.menu-hover {text-transform: capitalize; }
 div.menu-img a:hover div.menu-hover, div.menu-hover:hover {text-transform:capitalize; display: table-cell; vertical-align: middle; border: 3px solid #d1c8b9; padding: 0px;}
-div#videotext {position: absolute; top: 0; bottom: 0; cursor: pointer;}
+div#videotext {background-image: url('http://reinhardt.jomc.unc.edu/media/uploads/title-cards/2012/09/26/home4.png'); background-repeat: no-repeat; position: absolute; top: 0; bottom: 0; cursor: pointer;}
 img.textimg {width: 92%; position: absolute; bottom: 0;}
 div.menu-img {position: relative; margin: 5%;}
 div.menu-hover {position: absolute; top: 0; bottom: 0; right: 0; left: 0; background-image:url("http://reinhardt.jomc.unc.edu/static/images/nav_bg.png"); display: none;}
@@ -538,12 +538,20 @@ background-image: url("http://reinhardt.jomc.unc.edu/static/images/nav_bg.png");
 
 
 
+.centerbtn{
+position: absolute;
+left: 40%;
+top: 38%;
+width: 130px;
+height: 130px;
+z-index:100;
+	
+}
+
+
+
+
 #homePlayBtn{
-	width:130px;
-	height:100px;
-	position:absolute;
-	top:38%;
-	left:46%;
 	z-index:100;
 	
 }
