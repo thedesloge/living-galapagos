@@ -29,9 +29,9 @@
             
 		<div class="row"><!-- Creates row so nav/icon div doesn't go over cream color -->
 			<div class="twelve columns phone-four" id="vidrow2">
-				<div id="homePlayBtn" ><img src="{{ STATIC_URL }}images/play.png"></div>
-				<span class="leftbtn"><img src="http://reinhardt.jomc.unc.edu/media/uploads/title-cards/2012/09/26/home4.png">
-</span><span class="centerbtn" style= "position: absolute; left: 40%; top: 38%; width: 130px; height: 130px; z-index:100;"><img src="/static/images/play.png"></span>
+				
+				<span class="leftbtn"><img src="{{ STATIC_URL }}images/INTRO_Title_Card.png" /></span>
+				<span id="homePlayBtn" ><img src="{{ STATIC_URL }}images/play.png" /></span>
 				<div class="row hide-on-phones">
 					<div class="twelve columns" id="icons-div-home">
 					</div>
@@ -106,7 +106,7 @@
 			</div></span>
 		
 		<div class="row">
-		<div class="eight columns">
+		<div class="twelve columns">
 		<div class="storyBox">
 			<div class="textHead">{{headline}}</div>
 			<div class="textSubHead">{{subheadline}}</div>
@@ -119,7 +119,7 @@
 			
 			</div>
 		</div>
-		<div class="four columns">
+		<!--<div class="four columns">
 		<div class="contentBox">
 			<div class="textSubHead">RELATED CONTENT</div>
 			{% for related_content in related_content_list %}
@@ -130,8 +130,8 @@
                     	 	<div class="sidebarBoxTitle">{{related_content.headline}}</div>
                          	<div class="sidebarBoxP">{{related_content.description}}</div>
 			 </div>   	
-                    </div>
-                </div> <!-- End Sidebar One -->
+			</div>
+                </div> 
 		</div><!-- end three columns -->
 		
 		</div>

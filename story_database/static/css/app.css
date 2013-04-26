@@ -64,6 +64,12 @@ h3 {
 	background:none;
 }
 
+.leftbtn{
+	margin-left: 2.5%;
+	position: absolute;
+	z-index: 101;
+}
+
 .artRight{
 	float:right;
 	display: inline;
@@ -548,7 +554,7 @@ background-image: url("http://reinhardt.jomc.unc.edu/static/images/nav_bg.png");
 
 #homePlayBtn{
 position: absolute;
-left: 40%;
+left: 45%;
 top: 38%;
 width: 130px;
 height: 130px;
