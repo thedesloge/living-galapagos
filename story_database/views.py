@@ -411,7 +411,7 @@ def make_slide(slide_items, language):
     slide_html = ['<div>']
     
     make_row(slide_items[:3], slide_html, language)
-    make_row(slide_items[2:], slide_html, language)
+    make_row(slide_items[3:], slide_html, language)
     
     slide_html.append('</div>')
     
