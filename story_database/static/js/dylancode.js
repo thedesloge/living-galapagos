@@ -27,7 +27,7 @@
 			if($('#homePlayBtn')){
 				
 				$('#homePlayBtn').click(function(){
-					$('#player_1').css({'width':'100%', 'height':'100%'});
+					//$('#player_1').css({'width':'100%', 'height':'100%'});
 					$('#flex-video').css({'visibility':'visible'});
 					$('#homePlayBtn').hide();
 					froogaloop.api('play');
@@ -261,7 +261,7 @@
                                 $(".arrow-yes").toggleClass("hide");
                                 $(".arrow-no").toggleClass("hide");
                                 if($('#homePlayBtn')){
-                                	$('#player_1').css({'width':'0', 'height':'0'});
+                                	$('#player_1').css({'width':'100%', 'height':'100%'});
                                 	$('#homePlayBtn').show();
                                         
                                 	//$(".dim").css("display", "none");

@@ -182,7 +182,7 @@ def getLanguageForStory(story, language, request, isFeatured):
       story_translation = story.translations.get(language_code=language)
   except StoryPageTranslation.DoesNotExist:
       raise Http404
-  
+  template_object['FORCE_SCRIPT_NAME'] = settings.FORCE_SCRIPT_NAME
   template_object['headline'] = story_translation.headline
   template_object['description'] = story_translation.description
   template_object['quote'] = story_translation.quote
