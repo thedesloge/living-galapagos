@@ -182,7 +182,7 @@ def getLanguageForStory(story, language, request, isFeatured):
       story_translation = story.translations.get(language_code=language)
   except StoryPageTranslation.DoesNotExist:
       raise Http404
-  
+  template_object['FORCE_SCRIPT_NAME'] = settings.FORCE_SCRIPT_NAME
   template_object['headline'] = story_translation.headline
   template_object['description'] = story_translation.description
   template_object['quote'] = story_translation.quote
@@ -297,7 +297,7 @@ def getInteractivesForStory(story, language):
             interactive_list.append(interactive)
         elif not interactive.is_spanish and language == 'en': 
             interactive_list.append(interactive)
-    print "interactive list: ", interactive_list[0].infographic_files.url
+    
     return interactive_list
     
 
