@@ -9,13 +9,13 @@
 
 @font-face{
 font-family:username;
-src: url("../Fonts/museosans_500.ttf");
+src: url("../Fonts/museosans_500.otf");
 
 }
 
 @font-face{
 font-family:bodyFont;
-src: url("../Fonts/museosans_300-webfont.ttf");
+src: url("../Fonts/museosans_300.ttf");
 /*src: url("http://livinggalapagos.org/static/Fonts/museosans_300.woff");*/
 
 }
