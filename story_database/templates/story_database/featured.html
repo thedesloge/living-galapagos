@@ -104,17 +104,19 @@
 		</div>-->  <!-- End Text Above Div -->
 	<div class="row"> <!-- Content Box -->
 	<div class="twelve columns" id="more-box">
-			{% if language == 'en' %}
-			 <a href="{{ FORCE_SCRIPT_NAME }}/learn/"/>
-			 {%endif%}
 			<span class="holder">
+			{% if language == "en" %}
+			 <a href="{{ FORCE_SCRIPT_NAME }}/learn/"/>
+			 {% endif %}
 			<div class="info-background"><img class="cat-img" src="{{category_header.background_image}}"></img>
 			<div class="textCatHead">{{category_header.title}}</div>
 			<div class="textCatSubHead">{{category_header.description}}</div>
-			</div></span>
-			{% if language == 'en' %}
+			</div>
+			{% if language == "en" %}
 			 </a>
-			 {%endif%}
+			 {% endif %}
+			</span>
+			
 		
 		<div class="row">
 		<div class="eight columns">
