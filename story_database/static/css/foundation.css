@@ -572,18 +572,21 @@
 	-------------------------------------------------- */
 
   dl.sub-nav {
-  	display: block;
+  	display: inline-block;
     width: auto;
     overflow: hidden;
     margin: -4px 0 18px -9px;
     padding-top: 4px;
+    clear: both;
   }
 
   dl.sub-nav dt, dl.sub-nav dd {
     float: left;
-    display: inline;
+    display: inline-block;
     margin-left: 9px;
     margin-bottom: 4px;
+    overflow: hidden;
+    clear: both;
   }
 
   dl.sub-nav dt {
@@ -1327,7 +1330,7 @@ ul.orbit-bullets li.active.has-thumb {
 .tabs.contained { margin-bottom: 0; margin-left: 0; }
 .tabs dt, .tabs li.section-title { color: #b3b3b3; cursor: default; display: block; float: left; font-size: 12px; height: 40px; line-height: 40px; padding: 0; padding-right: 9px; padding-left: 20px; font-weight: normal; width: auto; text-transform: uppercase; }
 .tabs dt:first-child, .tabs li.section-title:first-child { padding: 0; padding-right: 9px; }
-.tabs dd, .tabs li { display: block; float: left; padding: 0; margin: 0; }
+.tabs dd, .tabs li { display: inline-block; float: left; padding: 0; margin: 0; }
 .tabs dd a, .tabs li a { color: #6f6f6f; display: block; font-size: 14px; height: 40px; line-height: 40px; padding: 0px 23.8px; }
 .tabs dd a:focus, .tabs li a:focus { font-weight: bold; color: #2ba6cb; }
 .tabs dd.active, .tabs li.active { border-top: 3px solid #2ba6cb; margin-top: -3px; }
