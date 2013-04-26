@@ -1,0 +1,298 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Learn Slider</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+      
+   <link rel="stylesheet" href="../css/style.css" />
+   <link rel="stylesheet" href="../css/styleCarousel.css" />
+   <link rel="stylesheet" type="text/css" href="../css/skinsLearn/tango/skin.css" />
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+    <script type="text/javascript" src="../js/jquery.aw-showcase.js"></script>
+    <script type="text/javascript" src="../js/jquery.jcarousel.js"></script>
+    
+    <script type="text/javascript">
+        $(document).ready(function()
+{
+  
+  console.log("document ready");
+  $("#showcase").awShowcase(
+  {
+    content_width:      1200,
+    content_height:     675,
+    fit_to_parent:      false,
+    auto:         false,
+    interval:       15000,
+    continuous:       false,
+    loading:        true,
+    tooltip_width:      200,
+    tooltip_icon_width:   32,
+    tooltip_icon_height:  32,
+    tooltip_offsetx:    18,
+    tooltip_offsety:    0,
+    arrows:         true,
+    buttons:        true,
+    btn_numbers:      true,
+    keybord_keys:     true,
+    mousetrace:       false, /* Trace x and y coordinates for the mouse */
+    pauseonover:      true,
+    stoponclick:      true,
+    transition:       'hslide', /* hslide/vslide/fade */
+    transition_delay:   0,
+    transition_speed:   500,
+    show_caption:     'onload', /* onload/onhover/show */
+    thumbnails:       false,
+    thumbnails_position:  'outside-last', /* outside-last/outside-first/inside-last/inside-first */
+    thumbnails_direction: 'vertical', /* vertical/horizontal */
+    thumbnails_slidex:    1, /* 0 = auto / 1 = slide one thumbnail / 2 = slide two thumbnails / etc. */
+    dynamic_height:     false, /* For dynamic height to work in webkit you need to set the width and height of images in the source. Usually works to only set the dimension of the first slide in the showcase. */
+    speed_change:     true, /* Set to true to prevent users from swithing more then one slide at once. */
+    viewline:       false, /* If set to true content_width, thumbnails, transition and dynamic_height will be disabled. As for dynamic height you need to set the width and height of images in the source. */
+    custom_function:    null /* Define a custom function that runs on content change */
+    
+  });
+  
+   
+
+});
+    </script>   
+      
+
+    <!-- Le styles -->
+    
+    <!-- Uncomment next line  for regular bootstrap styles -->
+    <!--<link href="css/bootstrap.css" rel="stylesheet"> -->
+    
+    <!-- Place all your styles in app.css -->
+    <link href="../css/learnapp.css" rel="stylesheet">
+    <link href="../css/learn-bootstrap-responsive.css" rel="stylesheet">
+
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- Fav and touch icons -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/ico/apple-touch-icon-114-precomposed.png">
+      <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/ico/apple-touch-icon-72-precomposed.png">
+                    <link rel="apple-touch-icon-precomposed" href="/ico/apple-touch-icon-57-precomposed.png">
+                                   <link rel="shortcut icon" href="/ico/favicon.png">
+  </head>
+
+  
+
+  <body>
+  
+
+ 
+        
+
+  <!-------------- code for slider -->  
+  <div style="width: 1200px; height: 675px; margin: auto;">
+  <div id="showcase" class="showcase">
+    <!-- overview, slide #1, with caption -->
+    <div class="showcase-slide"><a name="sustainability">
+      <!-- Put the slide content in a div with the class .showcase-content -->
+      <div class="showcase-content">
+        <div class="showcase-content-wrapper">
+          <img src="/static/images/Learnimages/learnSliderBG.png" alt="01" />
+        </div>
+        <!-- Put the caption content in a div with the class .showcase-caption -->
+        <div class="showcase-caption">
+          <span class="text">
+          <h1>Island Sustainability</h1>
+          <p>A paradox exists on the Galapagos Islands. Hundreds of thousands of tourists come to the islands annually,
+          hoping to see Darwin's land. In their quest for a glimpse of the islands' iconic species and a sense of unique
+          isolation, tourists increase the human impact on the islands by driving development. Tourists' very presence changes
+          the islands into something other than what attracts visitors in the first place. As the tourism industry grows,
+          it propels the expansion of the local population. The resilience of the islands, their capacity to meet human
+          demands and the islands' future all remain unclear. The sustainability of the islands' identity in the midst of
+          its current situation is questionable.</p>
+        </span>
+        <span class="image1">
+          <img src="/static/images/Learnimages/Sustainability.png" />
+        </span>
+        </div>
+        
+        <div class="carousel">
+          <span class="left"><span class="footerLeft">BACK: THE HUMAN DIMENSION</span></span>
+          <span class="icons">
+          <img src="/static/images/Learnimages/icon1b.png" width="40px"; />
+          <img src="/static/images/Learnimages/icon2.png" width="42px"; />
+          <img src="/static/images/Learnimages/icon3.png" width="42px"; />
+          <img src="/static/images/Learnimages/icon4.png" width="42px"; />
+          <img src="/static/images/Learnimages/icon5.png" width="42px"; />
+        </span>
+          <span class="right"><span class="footerRight">NEXT: SOCIAL & ECOLOGICAL CHANGE</span></span>
+        </div>
+        
+      </div></a>
+    </div>
+    <!-- overview, slide #2, with caption -->
+    <div class="showcase-slide">
+      <!-- Put the slide content in a div with the class .showcase-content. -->
+      <div class="showcase-content">
+        <div class="showcase-content-wrapper">
+          <a name="social"><img src="/static/images/Learnimages/learnSliderBG.png" alt="02" /></a>
+        </div>
+        <!-- Put the caption content in a div with the class .showcase-caption -->
+        <div class="showcase-caption">
+          <span class="text">
+          <h1>Social & Ecological Change</h1>
+          <p>With an increase in population has come social and ecological change in the Galapagos Islands. Rural
+          to urban migration occurs more frequently as economic activity grows in urban areas. Although 97 percent
+          of the Galapagos is set aside as the Galapagos National Park, land swapping has occurred recently between
+          National Park plots and areas allotted for human use. Tourism-driven development has resulted in large
+          amounts of construction. Invasive species have come to the islands, both via tourists themselves and on
+          cargo ships bringing supplies to the island. Invasive species compete with native species for resources,
+          threatening the biodiversity of the islands. The full impact of increased development on the environment
+          remains unknown.</p>
+        </span>
+        <span class="image1">
+          <img src="/static/images/Learnimages/Change.png" />
+        </span>
+        </div>
+        
+        <div class="carousel">
+          <span class="left"><span class="footerLeft">BACK: ISLAND SUSTAINABILITY</span></span>
+          <span class="icons">
+          <img src="/static/images/Learnimages/icon1.png" width="42px"; />
+          <img src="/static/images/Learnimages/icon3b.png" width="40px"; />
+          <img src="/static/images/Learnimages/icon3.png" width="42px"; />
+          <img src="/static/images/Learnimages/icon4.png" width="42px"; />
+          <img src="/static/images/Learnimages/icon5.png" width="42px"; />
+        </span>
+          <span class="right"><span class="footerRight">NEXT: FRAGILE ENVIRONMENTS</span></span>
+        </div>
+        
+      </div>
+    </div>
+    <!-- overview, slide #3, with caption -->
+    <div class="showcase-slide"><a name="enviro"></a>
+      <!-- Put the slide content in a div with the class .showcase-content. -->
+      <div class="showcase-content">
+        <div class="showcase-content-wrapper">
+          <img src="/static/images/Learnimages/learnSliderBG.png" alt="03" />
+        </div>
+        <!-- Put the caption content in a div with the class .showcase-caption -->
+        <div class="showcase-caption">
+          <span class="text">
+          <h1>Fragile Environments</h1>
+          <p>Because the Galapagos Islands are volcanic, they are missing many of the geological features that
+          support human habitation. Instead of fresh groundwater, the islands have freshwater lagoons protected
+          from the sea by narrow stretches of sand or mangrove forest. Construction of docks and other manmade
+          structures, along with pollution, have threatened this fragile water system and the plants and animals
+          that call mangroves and lagoons home. Grasses and other plants from the highlands of the Galapagos are
+          threatened by invasive species that have adapted in more competitive environments. These plants, such as
+          guava and raspberry, can replace or outshade native ferns and mosses, which are some of the most integral
+          species in highland ecosystems.</p>
+        </span>
+        <span class="image">
+          <img src="/static/images/Learnimages/Enviros.png" />
+        </span>
+        </div>
+        
+        <div class="carousel">
+          <span class="left"><span class="footerLeft">BACK: SOCIAL & ECOLOGICAL CHANGE</span></span>
+          <span class="icons">
+          <img src="/static/images/Learnimages/icon1.png" width="42px"; />
+          <img src="/static/images/Learnimages/icon2.png" width="42px"; />
+          <img src="/static/images/Learnimages/icon5b.png" width="40px"; />
+          <img src="/static/images/Learnimages/icon4.png" width="42px"; />
+          <img src="/static/images/Learnimages/icon5.png" width="42px"; />
+        </span>
+          <span class="right"><span class="footerRight">NEXT: BIODIVERSITY</span></span>
+        </div>
+        
+      </div>
+    </div>
+    <!-- overview, slide #4, with caption -->
+    <div class="showcase-slide"><a name="bio"></a>
+      <!-- Put the slide content in a div with the class .showcase-content. -->
+      <div class="showcase-content">
+        <img src="/static/images/Learnimages/learnSliderBG.png" alt="04" />
+      </div>
+      <!-- Put the caption content in a div with the class .showcase-caption -->
+      <div class="showcase-caption">
+          <span class="text">
+          <h1>Biodiversity</h1>
+          <p>The Galapagos Islands boasts some of the highest numbers of endemic species, or plants and animals
+          found only on the Galapagos. The islands receive nearly 200,000 annual visitors, who come mainly for
+          the islands' isolated environment and the its quirky, unique plants and animals. Galapagos biodiversity
+          is considered an unbalanced ecosystem in terms of species diversity due to its remoteness. Island species
+          were able to adapt and thrive in a strange environment, at times bereft of predators or other challenges
+          found in continental ecosystems.<br />
+          With a change in global climate, El Ni&#241;o events will become more intense, thus further affecting plant
+          and animals species dependent on sea level and temperature.</p>
+        </span>
+        <span class="image1">
+          <img src="/static/images/Learnimages/Biodiversity.png" />
+        </span>
+        </div>
+      
+      <div class="carousel">
+          <span class="left"><span class="footerLeft">BACK: FRAGILE ENVIRONMENTS</span></span>
+          <span class="icons">
+          <img src="/static/images/Learnimages/icon1.png" width="42px"; />
+          <img src="/static/images/Learnimages/icon2.png" width="42px"; />
+          <img src="/static/images/Learnimages/icon3.png" width="42px"; />
+          <img src="/static/images/Learnimages/icon2b.png" width="40px"; />
+          <img src="/static/images/Learnimages/icon5.png" width="42px"; />
+        </span>
+          <span class="right"><span class="footerRight">NEXT: THE HUMAN DIMENSION</span></span>
+        </div>
+      
+    </div>
+    <!-- overview, slide #5, with caption -->
+    <div class="showcase-slide"><a name="human"></a>
+      <!-- Put the slide content in a div with the class .showcase-content. -->
+      <div class="showcase-content">
+        <div class="showcase-content-wrapper">
+          <img src="/static/images/Learnimages/learnSliderBG.png" alt="05" />
+        </div>
+        <!-- Put the caption content in a div with the class .showcase-caption -->
+        <div class="showcase-caption">
+          <span class="text">
+          <h1>The Human Dimension</h1>
+          <p>A local population inhabits four of the Galapagos Islands, although the Galapagos has no indigenous
+          population. Fishing, agriculture and tourism drive the economy. The expanding tourism industry attracts
+          many of the islands' residents, leading to changes in occupation. It also draws in migrants from mainland
+          Ecuador and other countries. In response, a law passed in 1998 limits and regulates migration.
+          Infrastructure has not kept up with the increasing human demand, leading to a heavy dependence on
+          imported resources, poor water and electrical infrastructure, and social issues such as health care
+          and education. Limited licenses in the tourism and fishing sectors have led to illegal activity and overfishing.</p>
+        </span>
+        <span class="image1">
+          <img src="/static/images/Learnimages/Human.png" />
+        </span>
+        </div>
+        
+        <div class="carousel">
+          <span class="left"><span class="footerLeft">BACK: BIODIVERSITY</span></span>
+          <span class="icons">
+          <img src="/static/images/Learnimages/icon1.png" width="42px"; />
+          <img src="/static/images/Learnimages/icon2.png" width="42px"; />
+          <img src="/static/images/Learnimages/icon3.png" width="42px"; />
+          <img src="/static/images/Learnimages/icon4.png" width="42px"; />
+          <img src="/static/images/Learnimages/icon4b.png" width="40px"; />
+        </span>
+          <span class="right"><span class="footerRight">NEXT: ISLAND SUSTAINABILITY</span></span>
+        </div>
+        
+      </div>
+    </div>
+    
+    
+  </div>
+</div>
+<!-------------- end code for slider -->  
+
+
+
+  </body>
+</html>

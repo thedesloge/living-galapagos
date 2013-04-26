@@ -1,0 +1,403 @@
+@charset "UTF-8";
+
+
+/*fonts*/
+@font-face {
+	font-family: Caviar Dreams;
+	src:url(http://livinggalapagos.org/static/Fonts/CaviarDreams.ttf);
+	
+}
+
+@font-face {
+	font-family: qhytsdakx;
+	src:url(http://livinggalapagos.org/static/Fonts/qhyts__.ttf);
+	text-transform:uppercase;
+	
+}
+
+@font-face {
+	font-family: museo-sans-300;
+	src:url(http://livinggalapagos.org/static/Fonts/museosans_300.ttf);	
+}
+@font-face {
+	font-family: museo-sans-500;
+	src:url(http://livinggalapagos.org/static/Fonts/museo500-regular.otf)	
+}
+
+
+/*story text*/
+
+.menuFont{
+	font-family: Caviar Dreams;
+}
+
+.menuTitle{
+	font-family: Caviar Dreams;
+	font-size:15%;
+	display:inline;
+	color:#CCC;
+	position: relative;
+	top:20px;
+}
+
+.menuSub{
+	font-family: Caviar Dreams;
+	font-size:10%;
+}
+
+.storyBox {
+	margin-top: 9em;
+	padding: 7%;
+	-moz-column-width: 22em;
+-webkit-column-width: 22em;
+-moz-column-gap: 4em;
+-webkit-column-gap:4em;
+overflow:auto;
+}
+
+.articleBox {
+	
+	padding: 40px 7% 20px 3em;
+	
+}
+.articleBoxText {
+	
+	padding: 11px 0% 0% 0%;
+	
+	
+}
+
+.articleBoxThin {
+	
+	padding: 40px 7% 20px 3em;
+	
+}
+
+.contentBox {
+	padding: 14em 4em;
+	
+}
+
+.textHead {
+	font-family:qhytsdakx;
+	font-size: 4.1em;
+	color: #29221c;
+	line-height: 1em;
+}
+
+.textHeadArt {
+	font-family:qhytsdakx;
+	font-size: 4.1em;
+	color: #fff;
+	line-height: 1em;
+	margin-left: .85em;
+	position:relative;
+	z-index:1;
+	margin-top: 6.6%;
+}
+
+.textSubHeadArt {
+	font-family:museo-sans-500;
+	font-size:1.1em;
+	color:#29221c;
+	line-height:1.3em;
+	padding-bottom: .75em;
+	margin-left: 3.3em;
+	position:relative;
+}
+
+.textCatHead {
+	font-family:museo-sans-500;
+	font-size:1.6em;
+	color:#EAE5D7;
+	line-height:1.3em;
+	padding-bottom: .4em;
+	margin-top: -8%;
+	padding-left: 4.8%;
+	
+}
+
+.textCatSubHead {
+	font-family:museo-sans-500;
+	font-size:1.1em;
+	color:#EAE5D7;
+	line-height:1.3em;
+	padding-bottom: .8em;
+	padding-left: 4.8%;
+	
+}
+
+.textSubHead {
+	font-family:museo-sans-500;
+	font-size:1.1em;
+	color:#a9a8a6;
+	line-height:1.3em;
+	padding-bottom: .8em;
+	
+}
+
+.artSubs {
+	font-family:museo-sans-500;
+	font-size:1.7em;
+	color:#a9a8a6;
+	line-height:1.3em;
+	padding-bottom: .8em;
+	
+}
+
+.textSubHeadVideo {
+	font-family:museo-sans-500;
+	font-size:1.1em;
+	color:#A89E88;
+	line-height:1.3em;
+	padding-top: .9em;
+}
+
+.chapter {
+	font-family:Caviar Dreams;
+	font-size:1.1em;
+	color:#A89E88;
+	padding-left: .45em;
+	padding-right: .45em;
+}
+
+.textP {
+	font-family: museo-sans-300;
+	font-size:1.1em;
+	color: #29221c; 
+	line-height:1.7em;
+}
+
+.artTextHolder{
+	margin-left:3.6em;
+	margin-right:3.6em;
+	margin-top: 18%;
+	position: relative;
+}
+
+.textPArt p{
+	font-family: museo-sans-300;
+	font-size:1.1em;
+	color: #29221c;
+	line-height:1.7em;
+	
+}
+
+.textP p{
+	font-family: museo-sans-300;
+	font-size:1.1em;
+	color: #29221c; 
+	line-height:1.7em;
+}
+
+.pullQuote {	
+	font-family:museo-sans-500;
+	font-size: 1.5em;
+	color:#4fa7a9;
+	padding: .5em 0em;
+	text-align:center;
+	line-height:1.3em;
+}
+
+
+/*sidebar boxes*/
+
+.sidebarBoxTitle {
+	font-family: qhytsdakx;
+	font-size: 2.4em;
+	color: #29221c;
+	line-height:1.1em;	
+	
+}
+
+.sidebarBoxP {
+	font-family: museo-sans-500;
+	font-size:1em;
+	color: #a9a8a6;	
+	line-height:1.2em;
+}
+
+/*related research*/
+
+.researchTitle {
+	font-family:qhytsdakx;
+	font-size: 2em;
+	color:#29221c;
+	line-height:1em;
+text-transform:uppercase;
+}
+
+.institute {
+	font-family:museo-sans-500;
+	font-size: 1.2em;
+	color:#dfe3d5;
+	line-height:1em;	
+}
+
+.researchP, #research-box a {
+	font-family:museo-sans-300;
+	font-size: 1em;
+	color:#29221c;	
+}
+
+
+
+/*nav text*/
+
+
+
+.topNav, .topNav a, .topNav a:hover, .topNav a:focus{
+	font-family:Caviar Dreams;
+	font-size: 1.2em;
+	color:#F6F3EE;	
+	line-height:1.3em;
+	display: inline;
+	text-shadow: 2px 2px 2px #000;
+}
+
+.divNav {
+	font-family:Caviar Dreams;
+	font-size: 1.5em;
+	line-height: 2.2em;
+	color:#373737;	
+	/*text-shadow: 2px 2px 2px #000;*/
+}
+
+.footerNav, .footerNav a, .footerNav a:hover, .footerNav a:focus {
+	font-family:museo-sans-500;
+	line-height:9.5em;
+	font-size: 1em;
+	color:#F6F3EE;	
+	display: inline;
+
+	text-transform:uppercase;
+}
+
+.menu-hover p {
+	font-family:Caviar Dreams;
+	color: #F6F3EE 
+}
+.reportHeadText{
+	font-family:Caviar Dreams;
+	color: #92836F;
+	font-size: 2em;
+	text-align: center;
+	padding-top: 70px;
+	padding-left: 10%;
+	position: absolute;
+	z-index: 10;
+	
+}
+
+.reportBodyText{
+	font-family:Caviar Dreams;
+	color: #92836F;
+	font-size: 2em;
+	text-align: left;
+	padding-top: 110px;
+	padding-left: 10%;
+}
+
+/*search styles*/
+#filterBox {
+	width:100%;
+	height: 200px;
+	background-color:fff;
+	padding: 1.75em 0em;
+	
+}
+
+#filterStories h1 {
+	font-family:Caviar Dreams;
+	font-size:1.4em;
+	color:#f6f3ee;
+	font-weight:normal;
+	line-height:.8em;
+}
+
+#filterStories h2 {
+	font-family:museo-sans-300;
+	font-size: 1em;
+	color:#f6f3ee;
+	font-weight:normal;
+	line-height:1.3em;
+	margin-top:1em;
+}
+
+#filterStories h3 {
+	font-family:museo-sans-500;
+	font-size: 1.2em;
+	color:#F6F3EE;
+	font-weight:normal;
+	line-height:1.2em;
+	margin-top:1em;
+}
+
+.gridItem {
+	margin-top: .5em;
+height: 280px;
+width: 85%;
+background: white;
+padding: 7.5%;
+-moz-box-shadow: 0 0 13px #000;
+-webkit-box-shadow: 0 0 13px #000;
+box-shadow: 0 0 13px #000;
+margin-bottom: 17px;
+margin-right: 4em;
+float: left;
+	
+}
+
+.gridItemTitle {
+	font-family:qhytsdakx;
+	font-size:2.5em;
+	line-height:1em;
+	margin-bottom:.3em;
+}
+
+.gridItemDescription {
+	font-family:museo-sans-300;
+	font-size:1em;
+	line-height:1.3em;
+}
+
+#toggleSearch {
+	font-family:Caviar Dreams;
+
+	color:#fff;	
+}
+
+#toggleSearch a, #toggleSearch a:visited, #toggleSearch a:active {
+	font-family:Caviar Dreams;
+
+	color:#fff;	
+}
+#toggleSearch a:hover {text-decoration:underline;font-family:Caviar Dreams;
+	
+	color:#fff;	
+}
+
+#search_cat {
+	padding-left:6%;
+	width:15%
+}
+
+#filter_button{
+	text-transform:uppercase;
+	font-family:Caviar Dreams;
+	font-size:2em;
+}
+
+/*logo*/
+
+.logo {
+	position: absolute;
+	left: 4%;
+	bottom: 0px;
+/* 	padding-top:7.2em; */
+/* 	padding-right:0.5em;  */
+/* 	float:right;  */
+	width: 82%; 	
+}
+
+
