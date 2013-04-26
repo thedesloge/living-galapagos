@@ -24,7 +24,7 @@ def article_story_page(request, article_slug, language_code='en'):
 def learn(request):
   return render_to_response(
             'story_database/learn.html',
-            {'language':'en', 'menu': get_menu('en')},
+            {'language':'en', 'menu': get_menu('en'), 'background_video': get_learn_background_video()},
             context_instance=RequestContext(request)
         )
 
@@ -441,6 +441,14 @@ def outer_start_div(category, active=False):
 
 def outer_end_div():
     return '' 
+
+def get_learn_background_video():
+    try:
+        return BackgroundVideo.objects.get(category=Category.objects.get(slug='learn'))
+    except BackgroundVideo.DoesNotExist:
+        return {}
+    except Category.DoesNotExist:
+        return {}
 
 def getFilteredCategory(search, language_code, storyList):
     storyTrans = Story_Translation.objects.filter(language_code=language_code, parent__in=storyList)
