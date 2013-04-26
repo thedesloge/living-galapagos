@@ -5,11 +5,17 @@ html,body,div,span,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acron
 /*#d4c7ab is the color of the background of the whole page, currently*/
 /*#dfdfdf is the color of the background behind the quiz, the leftover space???*/
 
+@font-face
+  {
+  font-family: CaviarDreams;
+  src: url('../Fonts/CaviarDreams.ttf')
+  }
+
 body
 {
 	background-color: #fff;
 	color: #4DA7A8;
-	font-family: Century Gothic, Arial;
+	font-family: CaviarDreams;
 	font-size: 12px;
 	line-height: 1.5;
 	margin-top: 20px;
@@ -29,11 +35,7 @@ body
 	margin-right: 55px;
 }
 
-@font-face
-  {
-  font-family: CaviarDreams;
-  src: url('../fonts/CaviarDreams.ttf')
-  }
+
 
 a
 {
@@ -124,7 +126,7 @@ h2
 	
 	.showcase-arrow-previous
 	{
-		background: url('../images/arrowPrev.png');
+		background: url('../images/Learnimages/arrowPrev.png');
 		position: absolute;
 		z-index: 111;
 		left: 10px;
@@ -133,7 +135,7 @@ h2
 	
 	.showcase-arrow-next
 	{
-		background: url('../images/arrowNext.png');
+		background: url('../images/Learnimages/arrowNext.png');
 		right: 10px;
 		z-index: 111;
 		background-position: -31px 0;

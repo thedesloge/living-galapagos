@@ -20,13 +20,13 @@ body{
   @font-face
   {
   font-family: museosans;
-  src: url('../Fonts/museosans.ttf')
+  src: url('../Fonts/museo300-regular.otf')
   }
 
   @font-face
   {
   font-family: museo-slab;
-  src: url('../Fonts/museo-slab.otf')
+  src: url('../Fonts/Museo_Slab_500.otf')
   }
 
   @font-face
@@ -51,7 +51,7 @@ body{
   }
   
   p{
-    font-family: museosans;
+    
     font-size: .9em;
     margin-right: .3em;
     line-height: 1.7em;
