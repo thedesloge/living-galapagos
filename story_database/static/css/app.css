@@ -191,6 +191,14 @@ h3 {
 	padding-left: 6%;
 	background-size: contain;
 }
+
+.row.tabs-content-slider-row-art {
+	max-width: 905px;
+	max-height: 200px;
+	margin:auto;
+	padding-left: 6%;
+	background-size: contain;
+}
 .tabs-static-content {
 	padding: 30px 20px;	
 }
@@ -210,6 +218,15 @@ h3 {
 	clear: both;
 }
 
+.tabs-content-link-art {
+	display: inline-block;
+	/*width: 30%;
+	height: 30%;*/
+	margin:0;
+	padding:0;
+	clear: both;
+}
+
 /*.tabs-content-link img {
 	max-width:305px;
 	max-height:206px;
@@ -224,6 +241,8 @@ h3 {
 	top:-85px;
 	clear: both;
 }
+
+
 
 .tabs-image-caption-height {
 	height:90px;
