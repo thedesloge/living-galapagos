@@ -642,10 +642,11 @@ a:focus {
 p {
   font-family:bodyFont;
   font-style:normal;
-    font-size: 21px;
-    margin-left: 150px;
-    margin-right: 150px;
+    font-size: 16px;
+    margin-left: 20px;
+    text-align: left;
   line-height:1.7em;
+  width: 97%;
 }
 
 .lead {
