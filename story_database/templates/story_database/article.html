@@ -15,15 +15,14 @@
 	<div class="twelve columns">
 	    <div id="article-more-box">
 		{% for chapter in chapters %}
-			<a href="#chapter{{chapter.id }}"><span class="chapter">CHAPTER {{ forloop.counter }} </span></a><span class="chapter">|</span>
-                                     
+			<a href="#chapter{{chapter.id }}"><span class="chapter">CHAPTER {{ forloop.counter }} {% if not forloop.last %}</span></a><span class="chapter"> |</span>{% endif %}                        
 	     {% endfor %}
 	     
 	     
 			
 			
-			<span class="chapter">{{article.headline}}</span>
-	<div class="textHead">{{headline}}</div>
+			<!--<span class="chapter">{{article.headline}}</span>
+	<div class="textHead">{{headline}}</div>-->
 	
 		
 		<div class="articleBoxText">
@@ -39,7 +38,7 @@
 			    
 			    
 			</div>  
-			<div class="textHeadArt">{{chapter.headline}}</div>
+			<div class="textHeadArt">{{chapter.headline| safe | escape | linebreaks}}</div>
 			<!--<div class="textSubHeadArt">{{chapter.subheadline}}</div>-->
 			
 		<!--</div>
