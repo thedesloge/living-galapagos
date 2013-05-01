@@ -65,9 +65,19 @@ h3 {
 }
 
 .leftbtn{
-	margin-left: 2.5%;
+	margin-left: 7%;
 	position: absolute;
-	z-index: 101;
+	z-index: 100;
+	bottom: 10%;
+}
+
+@media screen and (max-width:768px) {
+.leftbtn{
+	margin-left: 3%;
+	position: absolute;
+	z-index: 100;
+	bottom: 10%;
+}
 }
 
 .artRight{
@@ -499,8 +509,11 @@ box-shadow: 0 0 13px #000;}
 	display: inline;
 	clear: both;
 	background-size: contain;
+	width: 60%;
 	
 }
+
+
 
 .article_interactive_img_left{
 	float: left;
@@ -573,7 +586,7 @@ background-image: url("http://reinhardt.jomc.unc.edu/static/images/nav_bg.png");
 
 #homePlayBtn{
 position: absolute;
-left: 45%;
+left: 42%;
 top: 38%;
 width: 130px;
 height: 130px;
