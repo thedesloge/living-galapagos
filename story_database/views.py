@@ -375,7 +375,7 @@ def get_article_menu_html(language='en'):
     ret_val.append('<div class="row tabs-content-slider-row">')
     for article in articles:
         ret_val.append('<div class="tabs-content-link">')
-        ret_val.append('<a href="/'+ language + '/article' + article.slug + '"><img src="http://placehold.it/350x150"/></a>')
+        ret_val.append('<a href="' + settings.FORCE_SCRIPT_NAME + '/'+ language + '/article' + article.slug + '"><img src="http://placehold.it/350x150"/></a>')
         ret_val.append('<div class="tabs-image-caption">')
         ret_val.append('<img src="' + settings.STATIC_URL + 'images/icon.png"/>')
         ret_val.append('<h4>' + article.translation.get(language_code=language).title + '</h4>')
