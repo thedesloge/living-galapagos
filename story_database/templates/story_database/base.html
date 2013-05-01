@@ -119,12 +119,12 @@
 					<li><a href="#" class="clicker">STORIES</a></li>	
 					<li><a href="{{ FORCE_SCRIPT_NAME }}/learn/">LEARN</a></li>
 					<li><a href="{{ FORCE_SCRIPT_NAME }}/{{language}}/about/">ABOUT</a></li>
-					<li><a href="{{spanish_link}}">SPANISH</a></li>
+					<li><a href="{{ FORCE_SCRIPT_NAME }}/{{spanish_link}}">SPANISH</a></li>
 				{% else %}
 					<li><a href="#" class="clicker">HISTORIAS</a></li>
 					<!--<li><a href="#">APRENDER</a></li>-->
 					<li><a href="{{ FORCE_SCRIPT_NAME }}/{{language}}/about/">SOBRE</a></li>
-					<li><a href="{{english_link}}">INGLES</a></li>
+					<li><a href="{{ FORCE_SCRIPT_NAME }}/{{english_link}}">INGLES</a></li>
 					<!--<li><a href="{{spanish_link}}">ESPA&#209;OL</a></li>-->
 				{% endif %}
 					<li style="border:none;"><a href="http://livinggalapagos.org/blog">BLOG</a></li>
@@ -186,20 +186,20 @@
 	
 	<div class="row show-on-phones">
 		<div class="phone-four" id="phoneLogo">
-			<a href="/{{language}}"><img src="http://reinhardt.jomc.unc.edu/static/images/logo.png" /></a>
+			<a href="{{ FORCE_SCRIPT_NAME }}/{{language}}"><img src="http://reinhardt.jomc.unc.edu/static/images/logo.png" /></a>
 		
 		<div id="phoneTopNav">
 			<ul class="phoneULtop">
 				{% if language == "en" %}
 					<li><a href="#" class="clicker">STORIES</a></li>	
 					<li><a href="#">LEARN</a></li>
-					<li><a href="{{language}}/about/">ABOUT</a></li>
-					<li><a href="{{spanish_link}}">SPANISH</a></li>
+					<li><a href="{{ FORCE_SCRIPT_NAME }}/{{language}}/about/">ABOUT</a></li>
+					<li><a href="{{ FORCE_SCRIPT_NAME }}/{{spanish_link}}">SPANISH</a></li>
 				{% else %}
 					<li><a href="#" class="clicker">HISTORIAS</a></li>
 					<!--<li><a href="#">APRENDER</a></li>-->
-					<li><a href="{{language}}/about/">SOBRE</a></li>
-					<li><a href="{{english_link}}">INGLES</a></li>
+					<li><a href="{{ FORCE_SCRIPT_NAME }}/{{language}}/about/">SOBRE</a></li>
+					<li><a href="{{ FORCE_SCRIPT_NAME }}/{{english_link}}">INGLES</a></li>
 					<!--<li><a href="{{spanish_link}}">ESPA&#209;OL</a></li>-->
 				{% endif %}
 					<li style="border:none;"><a href="http://livinggalapagos.org/blog">BLOG</a></li>  
@@ -239,12 +239,12 @@
 				
 				{% if language == "en" %}
 					<!--<li><a href="#">ISSUES</a></li>-->
-					<li><a href="{{language}}/about/">ABOUT</a></li>
-					<li><a href="{{spanish_link}}">SPANISH</a></li>
+					<li><a href="{{ FORCE_SCRIPT_NAME }}/{{language}}/about/">ABOUT</a></li>
+					<li><a href="{{ FORCE_SCRIPT_NAME }}/{{spanish_link}}">SPANISH</a></li>
 				{% else %}
 					<!--<li><a href="#">TEMAS</a></li>-->
-					<li><a href="{{language}}/about/">SOBRE</a></li>
-					<li><a href="{{english_link}}">INGLES</a></li>
+					<li><a href="{{ FORCE_SCRIPT_NAME }}/{{language}}/about/">SOBRE</a></li>
+					<li><a href="{{ FORCE_SCRIPT_NAME }}/{{english_link}}">INGLES</a></li>
 					<!--<li><a href="{{spanish_link}}">ESPA&#209;OL</a></li>-->
 				{% endif %}
 					<li style="border:none;"><a href="http://livinggalapagos.org/blog">BLOG</a></li>
