@@ -380,9 +380,9 @@ def get_article_menu_html(language='en'):
         ret_val.append('<img src="' + settings.STATIC_URL + 'images/icon.png"/>')
         ret_val.append('<h4>' + article.translation.get(language_code=language).title + '</h4>')
         #slide_html.append('<p>' + item.page.translations.get(language_code=language).subheadline + '</p></a>')
+        ret_val.append('</div></a>')
         ret_val.append('</div>')
-        ret_val.append('</div>')
-        ret_val.append('</div>')
+        #ret_val.append('</div>')
         
     ret_val.append('</div></li>')
     return ''.join(ret_val)
@@ -430,13 +430,13 @@ def make_row(row_items, slide_html, language):
         else:
             slide_html.append('<a href="/'+ language + '/' + item.page.slug + '"><img src="http://placehold.it/350x150"/></a>')
             
-        slide_html.append('<div class="tabs-image-caption">')
+        slide_html.append('<a href="/'+ language + '/' + item.page.slug + '"><div class="tabs-image-caption">')
         #slide_html.append('<img src="' + settings.STATIC_URL + 'images/icon.png"/>')
         slide_html.append('<div class="tabs-image-caption-height">')
         slide_html.append('<h4>' + item.page.translations.get(language_code=language).headline + '</h4>')
         #slide_html.append('<p>' + item.page.translations.get(language_code=language).subheadline + '</p></a>')
         slide_html.append('</div>')
-        slide_html.append('</div>')
+        slide_html.append('</div></a>')
         slide_html.append('</div>')
     
     slide_html.append('</div>')

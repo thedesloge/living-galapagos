@@ -27,6 +27,10 @@
 
 /*story text*/
 
+.black {
+	color: #000;
+}
+
 .menuFont{
 	font-family: Caviar Dreams;
 }
@@ -156,6 +160,13 @@ overflow:auto;
 .chapter {
 	font-family:Caviar Dreams;
 	font-size:1.1em;
+	color:#A89E88;
+	padding-left: .45em;
+	padding-right: .45em;
+}
+
+.chapterPipe {
+	font-family:Caviar Dreams;
 	color:#A89E88;
 	padding-left: .45em;
 	padding-right: .45em;

@@ -223,6 +223,7 @@
                             froogaloop.addEvent('play', function(data) {
 								if (!isPlaying){
 									$(".dim").css("display","block");
+                                                                        $(".leftbtn").toggleClass("hide");
 									//$(".dim").animate({ opacity: "1.0" }, 800);;
 									isPlaying = true;
 									//makePause(false);
@@ -242,12 +243,15 @@
 								$(".dim").animate({ opacity: "0.0" }, 800, function() {
 									$(".dim").css("display","none");
 								});
+                                                                
+                                                                
 							}
 						}
 
                         function onPause() {
                             froogaloop.addEvent('pause', function(data) {
 								slideOpen();
+                                $(".leftbtn").toggleClass("hide");
                                 console.log('pause event');
 								makePause(true);
                             });
@@ -263,6 +267,7 @@
                                 if($('#homePlayBtn')){
                                 	$('#player_1').css({'width':'100%', 'height':'100%'});
                                 	$('#homePlayBtn').show();
+                                        $(".leftbtn").show();
                                         
                                 	//$(".dim").css("display", "none");
                     			}

@@ -64,6 +64,22 @@ h3 {
 	background:none;
 }
 
+.leftbtn{
+	margin-left: 7%;
+	position: absolute;
+	z-index: 100;
+	bottom: 10%;
+}
+
+@media screen and (max-width:768px) {
+.leftbtn{
+	margin-left: 3%;
+	position: absolute;
+	z-index: 100;
+	bottom: 10%;
+}
+}
+
 .artRight{
 	float:right;
 	display: inline;
@@ -185,6 +201,14 @@ h3 {
 	padding-left: 6%;
 	background-size: contain;
 }
+
+.row.tabs-content-slider-row-art {
+	max-width: 905px;
+	max-height: 200px;
+	margin:auto;
+	padding-left: 6%;
+	background-size: contain;
+}
 .tabs-static-content {
 	padding: 30px 20px;	
 }
@@ -204,6 +228,15 @@ h3 {
 	clear: both;
 }
 
+.tabs-content-link-art {
+	display: inline-block;
+	/*width: 30%;
+	height: 30%;*/
+	margin:0;
+	padding:0;
+	clear: both;
+}
+
 /*.tabs-content-link img {
 	max-width:305px;
 	max-height:206px;
@@ -218,6 +251,8 @@ h3 {
 	top:-85px;
 	clear: both;
 }
+
+
 
 .tabs-image-caption-height {
 	height:90px;
@@ -474,8 +509,11 @@ box-shadow: 0 0 13px #000;}
 	display: inline;
 	clear: both;
 	background-size: contain;
+	/*width: 60%; can be added for when resizing the page*/
 	
 }
+
+
 
 .article_interactive_img_left{
 	float: left;
@@ -548,7 +586,7 @@ background-image: url("http://reinhardt.jomc.unc.edu/static/images/nav_bg.png");
 
 #homePlayBtn{
 position: absolute;
-left: 40%;
+left: 42%;
 top: 38%;
 width: 130px;
 height: 130px;
