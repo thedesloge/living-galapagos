@@ -45,7 +45,7 @@
   	<script>
 	$(window).load(function() {
 		{% for menuslides in menu.menu_slides %}
-			$('#{{ menuslides.category_slug }}ContentSlider').orbit({ fluid: '16x6', animation: 'fade', timer: 'false'});
+			$('#{{ menuslides.category_slug }}ContentSlider').orbit({ fluid: '16x6', animation: 'horizontal-slide', timer: 'false'});
 		{% endfor %}
 	   });
 		
