@@ -84,7 +84,7 @@ class ZipStorage(FileSystemStorage):
           raise
       else:
         break
-    
+    print full_path
     html_filename = "";
     if zipfile.is_zipfile(full_path):
       
