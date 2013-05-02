@@ -31,7 +31,13 @@
 			<div class="twelve columns phone-four" id="vidrow2">
 				
 				
-				<span class="leftbtn"><img src="{{ STATIC_URL }}images/IntroVid.png" /></span>
+				<span class="leftbtn">
+					{% if language == "en" %}
+					<img src="{{ STATIC_URL }}images/IntroVid.png" />
+					{% else %}
+					<img src="{{ STATIC_URL }}images/Spanish_IntroVid.png" />
+					{% endif %}
+				</span>
 				
 				<span id="homePlayBtn" ><img src="{{ STATIC_URL }}images/play.png" /></span>
 				<div class="row hide-on-phones">
