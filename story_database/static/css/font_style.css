@@ -98,6 +98,7 @@ overflow:auto;
 	position:relative;
 	z-index:1;
 	margin-top: 6.6%;
+	text-shadow: 2px 2px #999;
 }
 
 .textSubHeadArt {
