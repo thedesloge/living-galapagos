@@ -118,12 +118,18 @@ src: url('../Fonts/museosans_500.otf');
   color: #ffffff;
 }
 .lv_title_caption_slider { position: relative; float:left; overflow-y: hidden;}
-.lv_title_caption_slide { position: relative; float: left; top: 0; left: 0; padding: 15px 0 7px 0; }
+.lv_title_caption_slide { position: relative; float: left; top: 0; left: 0; margin-top: 10px; padding: 10px 0 7px 5px;  background-color:#000; border-radius:4px; opacity: .70;}
 .lv_title { font-weight: bold; }
-.lv_title, .lv_caption {
+.lv_title{
   float: left;
   clear: both;
   color: #ffffff;
+}
+.lv_caption {
+  float: left;
+  clear: both;
+  color: #ffffff;
+ 
 }
 
 .lv_update_queue {
