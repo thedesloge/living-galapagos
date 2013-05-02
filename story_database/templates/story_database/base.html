@@ -107,10 +107,11 @@
         	<div class="twelve columns phone-five">
             	<ul id="header-ul">
                 	<li id="logo-li">
-                	<a href="/{{language}}">
+                	
 						<div class="logo-background"/>
-                		<div class="logo"><img src="{{ STATIC_URL }}images/logo.png" /></div>
-                		</a>
+                		<div class="logo"><a href="/{{language}}"><img src="{{ STATIC_URL }}images/logo.png" /></a></div>
+                		
+				
                		</li>
                 	<li id="top-nav-li">
                     	<ul class="topNav">
@@ -127,7 +128,7 @@
 					<li><a href="{{ FORCE_SCRIPT_NAME }}/{{english_link}}">INGLES</a></li>
 					<!--<li><a href="{{spanish_link}}">ESPA&#209;OL</a></li>-->
 				{% endif %}
-					<li style="border:none;"><a href="http://livinggalapagos.org/blog">BLOG</a></li>
+					<li style="border:none;"><a href="http://livinggalapagos.web2.jomc.unc.edu/blog/">BLOG</a></li>
                             
 			    
                         </ul>
