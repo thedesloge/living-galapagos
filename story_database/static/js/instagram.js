@@ -6,7 +6,7 @@ $(function() {
 			type: "GET",
 			dataType: "jsonp",
 			cache: false,
-			url: "https://api.instagram.com/v1/tags/galapagos/media/recent?access_token=14360956.acda25dbd8cf4623a8d1c7b5452f4ec5",
+			url: "https://api.instagram.com/v1/tags/galapagos/media/recent?access_token=14360956.f59def8.e74b2cfb7e7e42ceab31d26683567365",
 			
 				
 			
