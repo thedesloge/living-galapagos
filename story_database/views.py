@@ -355,7 +355,7 @@ def get_menu(language='en'):
         try:
             menu_slide['category'] =  menu.category.translations.get(language_code=language).translation
             menu_slide['category_slug'] = menu.category.slug
-            menu_slide['menu_item_html'] = build_menu( menu_slide['category_slug'], menu.menuitem_set.all().order_by('-position'), language, index==0 )
+            menu_slide['menu_item_html'] = build_menu( menu_slide['category_slug'], menu.menuitem_set.all().order_by('position'), language, index==0 )
             
             menu_slides.append( menu_slide )
         except Category.DoesNotExist:
