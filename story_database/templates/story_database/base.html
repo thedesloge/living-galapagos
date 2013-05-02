@@ -63,7 +63,7 @@
 				videoSource: ['{{ background_video.h264_background.url }}',
 					'{{ background_video.ogg_background.url }}'], 
 				controlPosition: '.video-background',
-				poster: 'http://reinhardt.jomc.unc.edu/media/uploads/background-video/jpg/BG_Pelican_Sunset.jpg',
+				poster: '{{ background_video.jpg_background.url }}',
 				loop: 'true',  
 				resize: 'true',
 				loadedCallback: function() {
