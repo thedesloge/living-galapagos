@@ -405,10 +405,10 @@ def build_slides(menu_items, menu_string, language):
     if len(menu_items) == 0 :
         return menu_string.append("</div>")
     else:
-        slide_items = menu_items[:5]
+        slide_items = menu_items[:6]
         menu_string.append( make_slide(slide_items, language) )
         
-        items_to_pass = menu_items[5:]
+        items_to_pass = menu_items[6:]
         build_slides(items_to_pass, menu_string, language)
         
 def make_slide(slide_items, language):
