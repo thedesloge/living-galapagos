@@ -156,14 +156,14 @@ h3 {
 	background:none;
 }
 .tabs dd.active a, li.active a {
-	color:#ffffff;
+	color:#88BF1A;
 	background:none;
 	border:none;
 	font-weight:normal;
 }
 .tabs dd a, .tabs li a {
 	color:#fff;	
-	font-size:10px;
+	font-size:12px;
 	padding: 0 10px;
 	/*height: auto;*/
 	line-height: auto;
