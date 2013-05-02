@@ -360,8 +360,8 @@ def get_menu(language='en'):
             menu_slides.append( menu_slide )
         except Category.DoesNotExist:
             pass
-    try:    
-        menu_slides.append({'category': 'articles', 'category_slug':'articles', 'menu_item_html':get_article_menu_html(language)})
+    try: 
+        menu_slides.insert(len(menu_slides) - 1, {'category': 'articles', 'category_slug':'articles', 'menu_item_html':get_article_menu_html(language)})
     except ArticlePageTranslation.DoesNotExist:
         pass
     ret_val['menu_slides'] = menu_slides
