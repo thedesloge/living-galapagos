@@ -361,7 +361,16 @@ def get_menu(language='en'):
         except Category.DoesNotExist:
             pass
     try: 
+        copy = menu_slides[:]
+        tSlide = None
+        for slide in copy:
+            if slide['category_slug'] == 'archive':
+                tSlide = slide
+                menu_slides.remove(slide)
+        
+        menu_slides.append(tSlide)    
         menu_slides.insert(len(menu_slides) - 1, {'category': 'articles', 'category_slug':'articles', 'menu_item_html':get_article_menu_html(language)})
+        
     except ArticlePageTranslation.DoesNotExist:
         pass
     ret_val['menu_slides'] = menu_slides
