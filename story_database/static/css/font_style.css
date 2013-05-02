@@ -4,24 +4,24 @@
 /*fonts*/
 @font-face {
 	font-family: Caviar Dreams;
-	src:url(http://livinggalapagos.org/static/Fonts/CaviarDreams.ttf);
+	src:url(../Fonts/CaviarDreams.ttf);
 	
 }
 
 @font-face {
 	font-family: qhytsdakx;
-	src:url(http://livinggalapagos.org/static/Fonts/qhyts__.ttf);
+	src:url(../Fonts/qhyts__.ttf);
 	text-transform:uppercase;
 	
 }
 
 @font-face {
 	font-family: museo-sans-300;
-	src:url(http://livinggalapagos.org/static/Fonts/museosans_300.ttf);	
+	src:url(../Fonts/museosans_300.ttf);	
 }
 @font-face {
 	font-family: museo-sans-500;
-	src:url(http://livinggalapagos.org/static/Fonts/museo500-regular.otf)	
+	src:url(../Fonts/museo500-regular.otf)	
 }
 
 
