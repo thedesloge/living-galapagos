@@ -256,7 +256,7 @@ def getLanguageForArticle(article, language, request):
                 chap['pano_head'] = construct_pano_urls( chapter.pano_head.url )
                 
             chap_obj.append(chap)
-        template_object["chapters"] = chap_obj
+        template_object["chapters"] = sorted(chap_obj, key=lambda k: k['subheadline'])
         
         try:
           template_object['background_video'] = BackgroundVideo.objects.get(category=Category.objects.get(slug='articles'))
