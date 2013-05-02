@@ -96,6 +96,42 @@
 		}
 	</script>
 	{% endif %}
+	
+	{% if is_mobile %}
+  	<script>
+	$(window).load(function() {
+		{% for menuslides in menu.menu_slides %}
+			$('#{{ menuslides.category_slug }}ContentSlider').orbit({ fluid: '16x6', animation: 'fade', timer: 'false'});
+		{% endfor %}
+	   });
+		
+		$(document).ready(function() {
+			
+			buildMenu()
+		});
+		
+		function buildMenu() {
+			var openDiv;
+			function toggleDiv(divID) {
+				$(divID).slideToggle(300, function() {
+					openDiv = $(this).is(':visible') ? divID : null;
+				});
+			}
+			$(document).click(function(e) {
+				if (!$(e.target).closest(openDiv).length) {
+					toggleDiv(openDiv);
+				}
+			});
+			
+			$(".clicker").click(function(){
+			  toggleDiv('.stories-flyout-container');
+			});
+			$(".close-flyout").click(function(){
+			  toggleDiv('.stories-flyout-container');
+			});
+		}
+	</script>
+	{% endif %}
 </head>
 <body>
 {% block background-image-fallback %}
