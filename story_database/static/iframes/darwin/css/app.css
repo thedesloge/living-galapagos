@@ -1,0 +1,99 @@
+body{
+      margin:0;
+  }
+@font-face{
+      font-family: museo-sans;
+      src: url('fonts/exljbrisMuseoSans500.otf'),
+      url('fonts/exljbrisMuseoSans500.eot');
+      }
+@font-face{
+      font-family: caviar-dreams;
+      src: url('fonts/CaviarDreams.ttf'),
+      url('fonts/CaviarDreams.eot');
+      }
+@font-face{
+      font-family: caviar-dreams-bold;
+      src: url('fonts/CaviarDreams_Bold.ttf'),
+      url('fonts/CaviarDreams_Bold.eot');
+      }
+@font-face{
+      font-family: mexkan;
+      src: url('fonts/mexican_knappett.ttf'),
+      url('fonts/mexican_knappett.eot');
+      }
+.island {
+      font-family: mexkan;
+      font-size: 3em;
+}
+h1 {
+      font-family: caviar-dreams-bold;
+      font-size: 3em;
+      margin-bottom: 20px;
+}
+h3, p {
+      font-family: museo-sans;
+}
+a {color: inherit;
+	font-weight:bold;
+	text-decoration:none;
+}
+a:hover {text-decoration:underline;
+}
+  #nav{
+      font-family: caviar-dreams-bold;
+      font-size: 1.2em;
+      height:50px;
+      background-color: #EAE5D7;
+  }
+  
+  #nav ul{
+      float:right;
+      display:inline;
+	  margin-top: 15px;
+	  margin-right: 15px;
+
+  }
+  
+  #nav li{
+      display:inline;
+	  padding: 5px;
+	  color: #29221C;
+      
+  }
+  .gray-box{
+      background-color:#999;
+  }
+  
+  .spacer{
+      margin-top:1.5em;
+      
+  }
+  
+  .container{
+      width:1170px;
+      margin-left:auto;
+      margin-right:auto;
+  }
+
+  
+  #footer {
+      font-family: caviar-dreams-bold;
+      font-size: 1.4em;
+      height:30px;
+      position:absolute;
+      width:100%;
+      margin-top: 50px;
+  }
+  #footer ul{
+      float:right;
+      display:inline;
+      margin-top: 15px;
+      margin-right: 15px;
+      margin-bottom: 15px;
+
+  }
+  
+  #footer li{
+      display:inline;
+      padding: 5px;
+      color: #29221C;
