@@ -1,0 +1,63 @@
+// Setup your quiz text and questions here
+
+// NOTE: pay attention to commas, IE struggles with those bad boys
+
+var quizJSON = {
+    "info": {
+        "name":    "Know Your Invasives!",
+        "main":    "<p>Combating invasive species is one of the biggest challenges facing the Galapagos Islands. Whether they were brought by humans or arrived to the islands accidentally by air or sea, invasive species threaten the already vulnerable natural ecosystem in the Galapagos. Although 95% of the islands' native species remain intact, a growing number invasive species threatens their environment.</p></br><p>Knowledge is the first step in protecting native species from invasives. Can you spot the invasive species?</p>",
+        "results": "<h5>Learn More</h5><p>Etiam scelerisque, nunc ac egestas consequat, odio nibh euismod nulla, eget auctor orci nibh vel nisi. Aliquam erat volutpat. Mauris vel neque sit amet nunc gravida congue sed sit amet purus.</p>",
+        "level1":  "Jeopardy Ready",
+        "level2":  "Jeopardy Contender",
+        "level3":  "Jeopardy Amateur",
+        "level4":  "Jeopardy Newb",
+        "level5":  "Stay in school, kid..." // no comma here
+    },
+    "questions": [
+        { // Question 1
+            "q": "Which animal is invasive: a goat or an iguana?",
+            "a": [
+                {"option": "<div class='click image'><img src='images/goat.png'/></div>",      "correct": true},
+                {"option": "<div class='click image'><img src='images/iguana.png'/></div>",     "correct": false} // no comma here
+            ],
+            "correct": "<p><span>Right, it's invasive!</span>Goats elminate vegetation on the Galapagos, causing erosion and displacing native fauna.</p>",
+            "incorrect": "<p><span>Nope - it's native!</span>Marine iguanas are the only oceangoing lizard in the world, and they can only be found in the Galapagos.</p>" // no comma here
+        },
+        { // Question 2
+            "q": "Which is invasive: sealions or guava?",
+            "a": [
+                {"option": "<div class='click image'><img src='images/sealion.png'/></div>",    "correct": false},
+                {"option": "<div class='click image'><img src='images/guava.png'/></div>",   "correct": true} // no comma here
+            ],
+            "correct": "<p><span>Nice job!</span>Guava is an invasive plant that threatens native vegetation in the Galapagos.</p>",
+            "incorrect": "<p><span>Fail.</span> Sorry. You lose. It actually rains approximately 32 times a year in Michigan.</p>" // no comma here
+        },
+        { // Question 3
+            "q": "Which animal is invasive: a tortoise or a rat?",
+            "a": [
+                {"option": "<div class='click image'><img src='images/tortoise.png'/></div>",        "correct": false},
+                {"option": "<div class='click image'><img src='images/rat.png'/></div>",   "correct": true} // no comma here
+            ],
+            "correct": "<p><span>It's invasive!</span>Rats were most likely brought to the Galapagos on pirate ships in the late 17th century. They carry a lot of diseases and threaten species of mice that are native to the Galapgos.</p>",
+            "incorrect": "<p><span>Sorry, it's native!</span>Galapagos tortoises are one of two groups of giant tortoises left in the world. After being exploited by humans and introduced to invasive species, many are endagered or extinct.</p>" // no comma here
+        },
+        { // Question 4
+            "q": "Which is invasive: penguins or blackberries?",
+            "a": [
+                {"option": "<div class='click image'><img src='images/penguin.png'/></div>",    "correct": false},
+                {"option": "<div class='click image'><img src='images/raspberries.png'/></div>",     "correct": true} // no comma here
+            ],
+            "correct": "<p><span>Right!</span>Blackberries are an invasive species. They make farming difficult and compete with other native plant species.</p>",
+            "incorrect": "<p><span>ERRRR!</span> What planet Earth are <em>you</em> living on?!?</p>" // no comma here
+        },
+        { // Question 5
+            "q": "Which animal is invasive: a cat or a donkey?",
+            "a": [
+                {"option": "<div class='click image'><img src='images/cat.png'/></div>",   "correct": true},
+                {"option": "<div class='click image'><img src='images/donkey.png'/></div>",  "correct": true} // no comma here
+            ],
+            "correct": "<p><span>Both are correct!</span>Feral cats became a huge problem on the island of Baltra, where they preyed on native marine iguanas. Donkeys were introduced by humans but soon reverted back to their wild state, causing visible damage to the ecosystem.</p>",
+            "incorrect": "<p><span>Both are correct!</span>Feral cats became a huge problem on the island of Baltra, where they preyed on native marine iguanas. Donkeys were introduced by humans but soon reverted back to their wild state, causing visible damage to the ecosystem.</p>" // no comma here
+        } // no comma here
+    ]
+};
