@@ -473,7 +473,7 @@ def get_force_path():
   if settings.FORCE_SCRIPT_NAME == '':
     return ""
   else:
-    return "/" + settings.FORCE_SCRIPT_NAME
+    return settings.FORCE_SCRIPT_NAME
 
 
   
