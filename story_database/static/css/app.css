@@ -29,6 +29,15 @@
    Shared Styles
 ----------------------------------------- */
 
+.leftColumn{
+	width:25%;
+	height:100%;
+	background-color: #000;
+	opacity: .25;
+	position: absolute;
+	z-index: 99;
+}
+
 h3 {
 	display:inline;
 	color:#CCC;
