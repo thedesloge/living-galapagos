@@ -254,10 +254,10 @@ h3 {
 }*/
 .tabs-image-caption {
 	background: rgba(26, 26, 26, 0.5);
-	width:94%;
-	height:80px;
+	width:94.5%;
+	height:45px;
 	position:relative;
-	top:-85px;
+	top:-50px;
 	clear: both;
 }
 
