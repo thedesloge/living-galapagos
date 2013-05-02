@@ -376,9 +376,9 @@ def get_article_menu_html(language='en'):
     for article in articles:
         ret_val.append('<div class="tabs-content-link">')
         if article.thumbnail:
-          ret_val.append('<a href="' + get_force_path() + '/'+ language + '/article' + article.slug + '"><img src="' +  article.thumbnail.url +'"/>')
+          ret_val.append('<a href="' + get_force_path() + '/'+ language + '/article/' + article.slug + '"><img src="' +  article.thumbnail.url +'"/>')
         else:
-          ret_val.append('<a href="' + get_force_path() + '/'+ language + '/article' + article.slug + '"><img src="http://placehold.it/350x150"/></a>')
+          ret_val.append('<a href="' + get_force_path() + '/'+ language + '/article/' + article.slug + '"><img src="http://placehold.it/350x150"/></a>')
 
         ret_val.append('<div class="tabs-image-caption">')
         #ret_val.append('<img src="' + settings.STATIC_URL + 'images/icon.png"/>')
