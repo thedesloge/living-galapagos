@@ -96,6 +96,42 @@
 		}
 	</script>
 	{% endif %}
+	
+	{% if is_mobile %}
+  	<script>
+	$(window).load(function() {
+		{% for menuslides in menu.menu_slides %}
+			$('#{{ menuslides.category_slug }}ContentSlider').orbit({ fluid: '16x6', animation: 'fade', timer: 'false'});
+		{% endfor %}
+	   });
+		
+		$(document).ready(function() {
+			
+			buildMenu()
+		});
+		
+		function buildMenu() {
+			var openDiv;
+			function toggleDiv(divID) {
+				$(divID).slideToggle(300, function() {
+					openDiv = $(this).is(':visible') ? divID : null;
+				});
+			}
+			$(document).click(function(e) {
+				if (!$(e.target).closest(openDiv).length) {
+					toggleDiv(openDiv);
+				}
+			});
+			
+			$(".clicker").click(function(){
+			  toggleDiv('.stories-flyout-container');
+			});
+			$(".close-flyout").click(function(){
+			  toggleDiv('.stories-flyout-container');
+			});
+		}
+	</script>
+	{% endif %}
 </head>
 <body>
 {% block background-image-fallback %}
@@ -195,7 +231,7 @@
 			<ul class="phoneULtop">
 				{% if language == "en" %}
 					<li><a href="#" class="clicker">STORIES</a></li>	
-					<li><a href="#">LEARN</a></li>
+					<li><a href="{{ FORCE_SCRIPT_NAME }}/learn/">LEARN</a></li>
 					<li><a href="{{ FORCE_SCRIPT_NAME }}/{{language}}/about/">ABOUT</a></li>
 					<!--<li><a href="{{ FORCE_SCRIPT_NAME }}/{{spanish_link}}">SPANISH</a></li>-->
 					<li><a href="http://livinggalapagos.org/{{spanish_link}}">ESPANOL</a></li>
@@ -207,7 +243,7 @@
 					<li><a href="http://livinggalapagos.org/{{english_link}}">ENGLISH</a></li>
 					<!--<li><a href="{{spanish_link}}">ESPA&#209;OL</a></li>-->
 				{% endif %}
-					<li style="border:none;"><a href="http://livinggalapagos.org/blog">BLOG</a></li>  
+					<li style="border:none;"><a href="http://livinggalapagos.web2.jomc.unc.edu/blog/">BLOG</a></li>  
 			</ul>
 		</div>
 		
@@ -252,7 +288,7 @@
 					<li><a href="{{ FORCE_SCRIPT_NAME }}/{{english_link}}">INGLES</a></li>
 					<!--<li><a href="{{spanish_link}}">ESPA&#209;OL</a></li>-->
 				{% endif %}
-					<li style="border:none;"><a href="http://livinggalapagos.org/blog">BLOG</a></li>
+					<li style="border:none;"><a href="http://livinggalapagos.web2.jomc.unc.edu/blog/">BLOG</a></li>
 					<!--<li style="border:none;"><a href="/{{language}}">LIVING GALAPAGOS  &#169; 2013</a></li>-->
 				</ul>
 			</div>

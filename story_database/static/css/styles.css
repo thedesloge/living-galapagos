@@ -1,3 +1,4 @@
 .tabs dd a.active, li.active a{
-  color: #ffffff;
+  color: #88BF1A;
+  text-decoration: underline;
 }

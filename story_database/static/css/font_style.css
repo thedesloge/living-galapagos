@@ -117,10 +117,12 @@ overflow:auto;
 	color:#EAE5D7;
 	line-height:1.3em;
 	padding-bottom: .4em;
-	margin-top: -8%;
+	margin-top: -8.5%;
 	padding-left: 4.8%;
 	
 }
+
+
 
 .textCatSubHead {
 	font-family:museo-sans-500;
@@ -131,6 +133,30 @@ overflow:auto;
 	padding-left: 4.8%;
 	
 }
+
+@media screen and (max-width:1000px) {
+
+.textCatHead {
+	font-family:museo-sans-500;
+	font-size:16px;
+	color:#EAE5D7;
+	line-height:1.3em;
+	padding-bottom: .4em;
+	margin-top: -10%;
+	padding-left: 4.8%;
+	
+}
+.textCatSubHead {
+	font-family:museo-sans-500;
+	font-size: 14px;
+	color:#EAE5D7;
+	line-height:1.3em;
+	padding-bottom: .8em;
+	padding-left: 4.8%;
+	
+}
+}
+
 
 .textSubHead {
 	font-family:museo-sans-500;
