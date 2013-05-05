@@ -368,7 +368,7 @@ def get_menu(language='en'):
                 tSlide = slide
                 menu_slides.remove(slide)
         
-        menu_slides.append(tSlide)    
+        #menu_slides.append(tSlide)    
         menu_slides.insert(len(menu_slides) - 1, {'category': 'articles', 'category_slug':'articles', 'menu_item_html':get_article_menu_html(language)})
         
     except ArticlePageTranslation.DoesNotExist:
