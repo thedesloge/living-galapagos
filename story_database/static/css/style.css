@@ -35,7 +35,11 @@ body
 	margin-right: 55px;
 }
 
-
+.image1{
+	float:left;
+	margin-left: 1.5em;
+	margin-top: 1.5em;
+}
 
 a
 {
@@ -195,6 +199,7 @@ h2
 		.text{
 			float:left;
 			width:45%;
+			margin-top:20px;
 		}
 		
 		.image{
@@ -228,7 +233,7 @@ h2
 	{
 		clear: both;
 		margin-top: -35px;
-		margin-left: 30em;
+		margin-left: 37em;
 		position: absolute;
 		z-index: 11;
 		color: #000;
