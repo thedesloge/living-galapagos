@@ -248,7 +248,7 @@ JTA_I18N.addResourceBundle('jTweetsAnywhere', 'en',
 			 * The name of a user's list where the tweet feed is generated from. The special
 			 * list name 'favorites' can be used to display a user's favorited tweets.
 			 */
-			list: 'galapagos',
+			list: null,
 
 			/**
 			 * A single search param string or an array of search params, to be used in
@@ -258,7 +258,7 @@ JTA_I18N.addResourceBundle('jTweetsAnywhere', 'en',
 			 *
 			 * Sample: 'q=twitter' or ['q=twitter', 'geocode=48.856667,2.350833,30km']
 			 */
-			searchParams: [null],
+			searchParams: ['q=galapagos', 'q=livinggalapagos', 'q=livinggalapagos13'],
 
 			/**
 			 * The number of tweets shown in the tweet feed. If this param is 0, no feed
