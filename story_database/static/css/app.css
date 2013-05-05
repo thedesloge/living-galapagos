@@ -423,7 +423,7 @@ padding-left: .9em;
 
 .reportArticleBox {
 	
-	padding: 40px 7% 2px 3em;
+	padding: 40px 7% 3px 3em;
 	
 	overflow: scroll;
 	
@@ -702,7 +702,10 @@ icons-div-home ul{
 	.three.mobile-three.columns.end { float:none;}	
 }
 
-
+.twitPad{
+	position:absolute;
+	left: -5%;
+}
 /* -----------------------------------------
    Pseudo Classes
 ----------------------------------------- */
