@@ -208,7 +208,7 @@ def getLanguageForStory(story, language, request, isFeatured):
           template_object['background_video'] = BackgroundVideo.objects.get(category=Category.objects.get(slug='cover'))
       else:
           template_object['background_video'] = BackgroundVideo.objects.get(category=story.category)
-  except BackgroundVideo.DoesNotExist:
+  except BackgroundVideo.DoesNotExist: 
       pass
   except Category.DoesNotExist:
       pass
