@@ -37,7 +37,7 @@ body{
 
   h1 {
     font-family: qdark, sans-serif;
-    font-size: 3.2em;
+    font-size: 4em;
       color: #29221c;
       line-height: 1em;
   }
@@ -52,20 +52,20 @@ body{
   
   p{
     
-    font-size: .9em;
+    font-size: 1.15em;
     margin-right: .3em;
     line-height: 1.7em;
   }
   
   .footerLeft{
     font-family: CaviarDreams;
-    font-size: 1em;
+    font-size: 1.3em;
     color: #373737;
   }
 
   .footerRight{
     font-family: CaviarDreams;
-    font-size: 1em;
+    font-size: 1.3em;
     color: #C9BDA3;
   }
   .center{
@@ -95,11 +95,15 @@ body{
 
   ul{
     font-family: museosans, sans-serif;
+    margin-top: 20px;
   }
 
   li{
     margin-right: 10px;
-    margin-left: 10px;
+    margin-left: 0px;
+    list-style: none;
+    padding-top: 5px;
+    font-size: 1.3em;
   }
 
   .spacer{

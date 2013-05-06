@@ -5,7 +5,6 @@ html, body {
 }
 
 body {
-    font: 100.01% "Trebuchet MS", Trebuchet, Tahoma, Verdana, Arial, sans-serif;
     color: #333;
     padding: 0;
 }
@@ -14,11 +13,11 @@ body * {
     line-height:1.22em;
 }
 
-h1, h2, h3, h4, h5, h6 {
+/*h1, h2, h3, h4, h5, h6 {
     font-family: Georgia, "Times New Roman", Times, serif;
     color:#4088b8;
     clear: both;
-}
+}*/
 
 h1 {
 }
@@ -34,6 +33,7 @@ h3 {
 h4 {
     color: #333;
     margin-bottom: -10px;
+    font-size: 1.4em;
 }
 
 p {

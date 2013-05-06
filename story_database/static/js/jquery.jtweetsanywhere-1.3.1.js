@@ -242,7 +242,7 @@ JTA_I18N.addResourceBundle('jTweetsAnywhere', 'en',
 			 *
 			 * Sample: 'tbillenstein' or ['twitterapi', '...', '...']
 			 */
-			username: 'livinggalapagos',
+			username: 'caseymmiller',
 
 			/**
 			 * The name of a user's list where the tweet feed is generated from. The special
@@ -258,7 +258,7 @@ JTA_I18N.addResourceBundle('jTweetsAnywhere', 'en',
 			 *
 			 * Sample: 'q=twitter' or ['q=twitter', 'geocode=48.856667,2.350833,30km']
 			 */
-			searchParams: ['q=galapagos', 'q=livinggalapagos', 'q=livinggalapagos13', 'q=livinggalapagos2013'],
+			searchParams: ['q=galapagos', 'q=livinggalapagos', 'q=livinggalapagos13'],
 
 			/**
 			 * The number of tweets shown in the tweet feed. If this param is 0, no feed
