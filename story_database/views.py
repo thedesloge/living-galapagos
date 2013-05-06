@@ -457,7 +457,7 @@ def make_row(row_items, slide_html, language):
  
 def outer_start_div(category, active=False):
     if active:
-        return '<li class="active" id="' + category + 'Tab"><div id="' + category + 'ContentSlider">'
+        return '<li class="active" style="display: list-item;" id="' + category + 'Tab"><div id="' + category + 'ContentSlider">'
     else:
         return '<li id="' + category + 'Tab"><div id="' + category + 'ContentSlider">'  
 
