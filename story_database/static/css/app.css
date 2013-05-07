@@ -445,9 +445,40 @@ margin: 1em 0em 1em 0em;
 	
 }
 
+.invasiveGameInfo{
+	background-image: url('../images/invasiveBox.png');
+	height: 177px;
+	width: 278px;
+	float: left;
+	position: static;
+	z-index:0;
+	margin-bottom: 20px;
+	margin-top: 20px;
+	margin-left:7px;
+	
+}
+
+.cookieGameInfo{
+	/*background-image: url('../images/invasiveBox.png');*/
+	height: 177px;
+	width: 278px;
+	float: left;
+	position: static;
+	z-index:0;
+	margin-bottom: 20px;
+	margin-top: 20px;
+	margin-left:7px;
+	
+}
+
 .fixedWidth{
+	width: 1200px;
+	height: 210px;
+}
+
+.fixedWidthGame{
 	width: 600px;
-	height: 505px;
+	height: 240px;
 }
 
 .scroll{
