@@ -330,13 +330,14 @@ text-transform:uppercase;
 .gameHeadText{
 	font-family:Caviar Dreams;
 	color: #9BBC6C;
-	font-size: 2em;
+	font-size: 1.8em;
 	text-align: center;
 	padding-top: 210px;
 	line-height: 1em;
 	padding-left: 5px;
 	position: absolute;
 	z-index: 10;
+	cursor:pointer;
 	
 }
 

@@ -34,7 +34,7 @@ src: url("../Fonts/museosans_300.ttf");
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fff', endColorstr='#fff',GradientType=0 ); /* IE6-9 */
     background: linear-gradient(top, #fff 0%,#fff 100%); /* W3C */
     height: 60px;
-    padding: 10px;
+    padding: 30px 10px 30px 2px;
 }
 .post_results ul li:hover{
     background: #f4f4f4;

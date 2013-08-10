@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="en"> <!--<![endif]-->
+
+<!--Project by Casey, Matt, Colleen, and Katheryn -->
+<head>
+	<meta charset="utf-8" />
+
+	<!-- Set the viewport width to device width for mobile -->
+	<meta name="viewport" content="width=device-width" />
+	<title>Galapagos Comparison</title>
+	
+	<!-- Included CSS Files -->
+	<link rel="stylesheet" href="../css/font_style.css">
+        <link rel="stylesheet" href="../css/app.css">
+        
+	<link rel="stylesheet" href="../css/foundation.css">
+	
+       <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js" type="text/javascript"></script>
+        <!-- Included JS Files -->
+        <script src="../js/modernizr.foundation1.js"></script>
+	
+       <script src="../js/jquery.foundation.accordion.js"></script>
+</head>    
+        
+<body>
+	<div class="container"> <!-- container -->
+        
+        <!--before content-->
+            
+        <div class="row">
+	<div class="twelve columns">
+		<!--<span id="top-cream-bar" >
+			
+		</span>-->
+                
+        <div id="info-box">
+            <div class="textHead">Galapagos Comparison</div>
+            <div class="textPHead">Located in the Pacific Ocean off the coast of Ecuador, the Galapagos Islands is known for its
+            rich biodiversity that inspired Charles Darwin's theory of evolution.  The volcanic archipelago consists of 18 main
+            islands and is one of the few places on Earth that has remained largely untouched by human inhabitants, as 97% is national park. 
+        	<br /><br />
+            Curious to how the Galapagos compares to your state?  Simply select your state from the drop-down menu below and see how the
+            Galapagos stacks up with regard to biodiversity, economics, education, weather and health. 
+            
+                <select class="selectState">
+                    <option id="default">-- SELECT YOUR STATE --</option>
+                    
+                </select>
+            </div>
+        </div>
+
+        <ul class="accordion">
+            <li class="active">
+                <div class="title">
+                    <span class="iconSpace"><img src="../images/sun.png" height="38px" width="38px"/></span><span class="textHeadAccordion">Weather</span>
+                </div>
+                <div class="content">
+                    <div class="textP">While the Galapagos is located on the Equator, the Humboldt Current carries cooler water to
+                    the islands, translating to a moist, often rainy, climate.  In addition to frequent rain and high humidity, the
+                    Galapagos is often affected by El Nino events, which occur every 3-7 years and are associated with warm water
+                    temperatures, a depletion of nutrients in the water and a rise in the sea level.  For most years, the cooler season,
+                    which is referred to as garua, runs from June to November, while the warm season stretches from December to May.
+                    Because the islands vary in altitude, location and terrain, the weather varies across locations as well. 
+                    <br /><br />
+                    Similarly, because the United States has such varied landscapes and regions, the climate and weather varies substantially.
+                    While certain states frequently receive snow and rain, others are characterized by extensive dry seasons and excessive heat.</div>
+
+                    <!--split column for info display -->      
+                    <div class="row">
+                        <div class="six columns">
+                            <div id="state-name" class="textHeadLoc"></div>
+                            <div id="state-weather" class="textP">
+                                <h4>Average Rainfall Per Year</h4>
+                                <span class ="textItems"><span id="state-rainfall"></span>" </span><span id="state-rainfall_text" ></span>
+                                <h4>Average Temperature</h4>
+                                <span class ="textItems"><span id="state-temperature"></span>&deg;F</span>               
+                                <h4>Average Humidity Level</h4>
+                                <span class ="textItems"><span id="state-humidity"></span>%</span>
+                            </div>
+                        </div>
+                        <div class="six columns">
+                            
+                            <div class="textHeadLoc">Galapagos</div>
+                            <div class="textP">
+                                <h4>Average Rainfall Per Year</h4>
+                                <span class ="textItems">22.55" <img src="../images/rainy.png" width="90px"/></span>
+                                <h4>Average Temperature</h4>
+                                <span class ="textItems">77.7&deg;F</span> 
+                                <h4>Average Humidity Level</h4>
+                                <span class ="textItems">83.5%</span>
+                            </div>
+                          
+                        </div>
+                    </div> <!-- end split column row -->
+                </div>
+            </li>
+            <li>
+                <div class="title">
+                    <span class="iconSpace"><img src="../images/leaf.png" height="38px" width="38px"/></span><span class="textHeadAccordion">Biodiversity</span>
+                </div>
+                <div class="content">
+                    <div class="textP">Lauded for being a "natural laboratory", the Galapagos Islands is home to some of the highest
+                    levels of endemism in the world.  80% of land birds, 97% of reptiles and land mammals, 20% of marine species,
+                    and more than 30% of plants found on the islands are endemic and are considered some of the most valuable assets
+                    of the islands.  However, due to exponential growth of residents, vehicles and ships, the Ecuadorian Government
+                    issued Presidential Decree N 270 in April 2007, declaring that the Galapagos Archipelago is at risk and its conservation
+                    is a national priority.  The Galapagos Report of 2009-2010 reiterated the government's sentiment, concluding: 
+                    <br /><br />
+                    "Galapagos is not a paradise separate from the rest of the world.  It is a constellation of very fragile ecosystems
+                    that now requires special care and attention to ensure that the forces of globalization do not overcome its capacity
+                    to assimilate, adapt, and recuperate from natural and human-made disturbances." (Tapia, et. al, p.12)
+                    <br /><br />
+                    The United States, on the other hand, only has 27.08% of its land marked as nationally protected area.  Despite the
+                    disparity in percentages, the United States also faces conservation issues.  In fact, the Nature Conservancy concluded
+                    that in one of every four states, more than 10% of native species are at risk. </div>
+
+                    <!--split column for info display -->      
+                    <div class="row">
+                        <div class="six columns">
+                            <div id="state-name" class="textHeadLoc"></div>
+                            <div class="textP">
+                                <h4>Protected Land</h4>
+                                <span id="state-protected_land_image"></span>
+                                <div id="state-protected-percentage" class="landNum"></div>
+                                <h4>Birds in Region</h4>
+                                <span class="textSubHead" id="state-birds_in_region_text"></span>
+                                <div id="state-birds_in_region" class="nest birdNum"></div>
+                                <div class="textP" style="font-size:.8em; line-height:1.1.em;">*The number of bird species in a specific region 
+                                has been deemed a useful measure of biodiversity.  The variation across the states can be attributed to the findings 
+                                from the 2011 State of the Birds report, which outlined 11 habitats for more than 800 bird species in the continental 
+                                U.S., Hawaii and U.S. oceans.  The habitats include the following: aridlands, grasslands, forests, arctic & alpine, wetlands, 
+                                coasts, oceans, Hawaii, other islands, urban and upland game.  The number of birds per state correlates with the number of birds 
+                                in the habitat in which the majority of the state's land falls.  </div>
+                            </div>
+                        </div>
+                        <div class="six columns">
+                            
+                            <div class="textHeadLoc">Galapagos</div>
+                            <div class="textP">
+                                <h4>Protected Land</h4>
+                                <span class="graphSpace"></span><img src="../images/galapagosFinal.png" width="70%"/>
+                                <div class="graphSpace"></div>
+                                <div class ="landNum">97%</div>
+                                <h4>Birds in Region</h4>
+                                <span class="textSubHead" ></span>
+                                <div class="nest birdNum ">168</div>
+                            </div>
+                           
+                        </div>
+                    </div> <!-- end split column row -->
+                </div>
+            </li>
+            <li>
+                <div class="title">
+                    <span class="spacer"><img src="../images/dollar.png" width="25px" /></span><span class="textHeadAccordion">Economics</span>
+                </div>
+                <div class="content">
+                    <div class="textP">As it becomes an increasingly popular vacation destination, the Galapagos relies heavily on
+                    tourism, which comprises 53% of its revenue.  Many of the most successful residents are those who own souvenir
+                    shops close to the shore near cruise ship docks and the Charles Darwin Research Station.  In a survey conducted
+                    by the Charles Darwin Foundation in 2009 of 100 business owners in Puerto Ayora - the largest city in the Galapagos -
+                    the general consensus was made that employers would rather hire employees from the mainland rather than individuals
+                    native to the Galapagos because "local workers charge more and don't work well."  (Villarreal & Grenier, p. 115).
+                    In general, researchers and academics alike have concluded that the Galapagos economy still has much room for improvement
+                    and growth.  As one researcher articulates: 
+                    <br /><br />
+                    "There appears to be no integration of the industry, its employees, and its economic trajectory into a long - term
+                    vision that values sustainable and island-appropriate development." (Villarreal & Grenier, pg. 120)
+                    <br /><br />
+                    While the Galapagos relies almost entirely on one industry to generate revenues and jobs for its residents, the United
+                    States offers more variety, generating significant revenues from numerous industries, including finance, insurance,
+                    real estate, retail trade, educational services and manufacturing.  The United States also generates significantly
+                    larger revenues than the Galapagos and boasts a higher median household income. </div>
+
+                    <!--split column for info display -->      
+                    <div class="row">
+                            <div class="six columns">
+                            <div id="state-name" class="textHeadLoc"></div>
+                            <div class="textP">
+                                <h4>Revenue</h4>
+                                <span class ="textItems">$<span id="state-revenue"></span></span>
+                                <h4>Average Household Income</h4>
+                                <span class ="textItems">$<span id="state-income"></span>
+                                <span id="state-income_text"></span></span>
+                                <h4>Industry Breakdown</h4>
+                                <img src="../images/galapagosGraphs/statesLegend.png" />
+                                <span id="state-industry"></span>
+                            </div>
+                        </div>
+                        <div class="six columns">
+                            
+                            <div class="textHeadLoc">Galapagos</div>
+                            <div class="textP">
+                                <h4>Revenue</h4>
+                                <span class ="textItems">$185,000,000</span>
+                                <h4>Average Household Income</h4>
+                                <span class ="textItems">$2,586
+                                <img src="../images/home1.png" width="60px" /></span>
+                                <h4>Industry Breakdown</h4>
+                                <img src="../images/galapagosGraphs/legend.png" height="38px"/>
+                                <div class="graphSpace">
+                                    <img src="../images/galapagosGraphs/galapagosNew.png" />
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div> <!-- end split column row -->
+                </div>
+            </li>
+            <li>
+                <div class="title">
+                    <span class="iconSpace"><img src="../images/pencil.png" height="38px" width="38px"/></span><span class="textHeadAccordion">Education</span>
+                </div>
+                <div class="content">
+                    <div class="textP">The United States (99%) and the Galapagos (98.7%) boast similarly high levels of literary and
+                    low student-teacher ratios.  However, the numbers do not accurately paint the full picture of the education system
+                    in the Galapagos.  Currently, there are only 20 educational institutions in the Galapagos serving roughly 5,200
+                    primary and secondary students.  Many problems have plagued the education system on the islands, including a weak
+                    teacher base, weak school infrastructure, and the absence of a voice in civil society addressing the educational
+                    needs and coordinating progressive initiatives.  In this regard, the Galapagos is far behind the United States in
+                    education and could gain from reforming its current system.</div>
+
+                    <!--split column for info display -->      
+                    <div class="row">
+                        <div class="six columns">
+                            <div id="state-name" class="textHeadLoc"></div>
+                            <div class="textP">
+                                <h4>Student/Teacher Ratio</h4>
+                                <span id="state-teacher-image"></span>
+                                <span id="state-student-image"></span>
+                                <div class ="textItems" id="state-student_teacher_text"></div>
+                                <!--<div id="images"></div>-->
+                                <h4>Average Teacher Salary</h4>
+                                <span class ="textItems">$<span id="state-teacher_salary"></span></span>
+                                <h4>Literacy Rate</h4>
+                                <span class ="textItems"><span id="state-literacy_rate"></span>%</span>
+                            </div>
+                        </div>
+                        <div class="six columns">
+                            
+                            <div class="textHeadLoc">Galapagos</div>
+                            <div class="textP">
+                                <h4>Student/Teacher Ratio</h4>
+                                <div id="student_teacher_ratio">
+                                    <img src="../images/bluePerson.png" width="80px"/><span style="font-size:48px;"></span> 
+                                    <span id="imagesB"></span>
+                                </div>    
+                                <div class ="textItems">1:14</div>
+                                <script> //generate student images
+                                    studentNumB=(parseFloat('14'));
+                                    for (i=0; i<studentNumB; i++) {
+                                    $("#imagesB").append("<img src='../images/greenPerson.png' width='25px' margin='0' padding='0' />")
+                                    };
+                                </script>
+                                <h4>Average Teacher Salary</h4>
+                                <span class ="textItems">$130.25</span>
+                                <h4>Literacy Rate</h4>
+                                <span class ="textItems">84%</span>
+                            </div>
+                           
+                        </div>
+                    </div> <!-- end split column row -->
+                </div>
+            </li>
+            <li>
+                <div class="title">
+                    <span class="iconSpace"><img src="../images/health.png" height="32px" width="38px"/></span><span class="textHeadAccordion">Health</span>
+                </div>
+                <div class="content">
+                    <div class="textP">Some of the largest discrepancies in the quality of life in the Galapagos and in the United States
+                    stem from the disparities in the quality of health care.  Ecuador offers free public health care to its citizens, which
+                    explains why the Galapagos allocates a much larger percentage of its budget to health care needs.  However, it is important to
+                    note that while the states set aside a smaller portion of their budgets to health care, they spend significantly more on health
+                    expenditures.  Accordingly, the United States boasts numerous doctors, advanced equipment, and clean facilities, while the Galapagos
+                    lacks all three elements.  In a 2009-2010 report on the economic and social state of the Galapagos, researchers discovered:  
+                    <br /><br />
+                    "Most of those surveyed agreed that they do not trust doctors working in Galapagos, and that 'any illness more serious
+                    than a cold should be treated on the mainland.' All agreed that health care in Galapagos is poor and more should be done
+                    to attract doctors and specialists to the islands." (Villarreal & Grenier, p. 118)</div>
+
+                    <!--split column for info display -->      
+                    <div class="row">
+                        <div class="six columns">
+                            <div id="state-name" class="textHeadLoc"></div>
+                            <div class="textP">
+                                <h4>Percent of Budget Allocated</h4>
+                                <span class ="textItems"><span id="state-health_budget"></span>%</span>
+                                <div class ="textItems" id="state-health_budget_text" ></div>
+                                <h4>Health Expenditure</h4>
+                                <span class ="textItems">$<span id="state-health_expenditure"></span> million</span>
+                            </div>
+                        </div>
+                        <div class="six columns">
+                            
+                            <div class="textHeadLoc">Galapagos</div>
+                            <div class="textP">
+                                <h4>Percent of Budget Allocated</h4>
+                                <span class ="textItems">32.5%</span>
+                                <!--{{specificGalapagos.health_budget_text}}-->
+                                <div class ="textItems"><img src="../images/pie/galapagosHealth.png" width="100%"/></div>
+                                <h4>Health Expenditure</h4>
+                                <span class ="textItems">$3.03 million</span>
+                            </div>
+                          
+                        </div>
+                    </div> <!-- end split column row -->
+                </div>
+            </li>         
+        </ul>
+    </div>
+</div>
+            
+        <!-- after content-->
+        
+		<div id="myModal" class="reveal-modal">
+			<div class="textHeadLoc">Bibliography</div>
+			<div class="textP">
+				<ul>
+					<li>Alaska Climate Research Center. (2012). The climate of Alaska for 2012. Retrieved from <a href="http://climate.gi.alaska.edu/Statewide/2012/annual.html">http://climate.gi.alaska.edu/Statewide/2012/annual.html</a>.</li> 
+					
+					<li>CDP, GNP, and Governing Council of Galapagos. (2010). Galapagos Report 2009-2010. Puerto Ayora, Galapagos, Ecuador.</li>
+					
+					<li>Charles Darwin Foundation. (2012). CDF meteorological database: Base de datos meterologico de la FCD. Retrieved from <ahref="http://www.darwinfoundation.org/datazone/climate/">http://www.darwinfoundation.org/datazone/climate/</a>.</li>
+					
+					<li>Epler, B. (2007). Tourism, the economy and population growth and conservation in Galapagos. Charles Darwin Foundation Papers. Retrieved from <a href="http://www.darwinfoundation.org/english/_upload/Epler_Tourism_Report-en_5-08.pdf">http://www.darwinfoundation.org/english/_upload/Epler_Tourism_Report-en_5-08.pdf</a>.</li>
+					
+					<li>Galapagos Conservancy. (2012). Biodiversity.  Retrieved from <a href="http://www.galapagos.org/about_galapagos/biodiversity/">http://www.galapagos.org/about_galapagos/biodiversity/</a>.</li>
+					
+					<li>Instituto Nacional de Estadistica y Censos. (2010). Fasciculo provincial Galapagos. Retrieved from <a href="http://inec.gob.ec/cpv/descargables/fasciculos_provinciales/galapagos.pdf">http://inec.gob.ec/cpv/descargables/fasciculos_provinciales/galapagos.pdf</a>.</li>
+					
+					<li>Lee, C, Beleacov, M., & Higgins, N. (2012). State government finances summary: 2011. Government Division Briefs. Retrieved from <a href="http://www2.census.gov/govs/state/11statesummaryreport.pdf">http://www2.census.gov/govs/state/11statesummaryreport.pdf</a>.</li>
+					
+					<li>Liang, X. (1999). Teacher pay in 12 Latin American countries: How does teacher pay compare to other professions, what determines teacher pay, and who are the teachers? World Bank Human Development Department LCSHD Paper Series No. 49. Retrieved from <a href="http://www.thedialogue.org/PublicationFiles/Liang%2027-English.pdf">http://www.thedialogue.org/PublicationFiles/Liang%2027-English.pdf</a>.</li>
+					
+					<li>Mendieta, M & Falconi, K. (2008). The current status of the educational system in Galapagos. Galapagos Report 2007-2008. Retrieved from <a href="http://www.galapagos.org/wp-content/uploads/2012/04/socio3-current-education-status.pdf">http://www.galapagos.org/wp-content/uploads/2012/04/socio3-current-education-status.pdf</a>.</li>
+					
+					<li>National Center for Education Statistics. (2003). State and county estimates of low literacy. Retrieved from <a href="http://nces.ed.gov/naal/estimates/StateEstimates.aspx">http://nces.ed.gov/naal/estimates/StateEstimates.aspx</a>.</li>
+					
+					<li>National Climate Data Center. (2013). Average relative humidity. Retrieved from <a href="http://www.ncdc.noaa.gov/oa/climate/online/ccd/avgrh.html">http://www.ncdc.noaa.gov/oa/climate/online/ccd/avgrh.html</a>.</li>
+					
+					<li>National Climate Data Center. (2013). Climatological rankings.  Retrieved from <a href="http://www.ncdc.noaa.gov/temp-and-precip/ranks.php">http://www.ncdc.noaa.gov/temp-and-precip/ranks.php</a>.</li>
+					
+					<li>National Education Association. (2011). Rankings & estimates: Rankings of the states 2011 and estimates of school statistics 2012. Retrieved from <a href="http://www.nea.org/assets/docs/NEA_Rankings_And_Estimates_FINAL_20120209.pdf">http://www.nea.org/assets/docs/NEA_Rankings_And_Estimates_FINAL_20120209.pdf</a>.</li>
+					
+					<li>National Environmental Satellite, Data and Information Service. (2013).  Comparative climate data. Retrieved from <a href="http://ols.nndc.noaa.gov/plolstore/plsql/olstore.prodspecific?prodnum=C00095-PUB-A0001">http://ols.nndc.noaa.gov/plolstore/plsql/olstore.prodspecific?prodnum=C00095-PUB-A0001</a>.</li>
+					
+					<li>Sevilla, R. (2008). An inconvenient truth and some uncomfortable decisions concerning tourism in Galapagos. Galapagos Research, 65.  Retrieved from <a href="http://datazone.darwinfoundation.org/media/pdf/65/GR_65_2008_Sevilla_Inconvenient_truth.pdf">http://datazone.darwinfoundation.org/media/pdf/65/GR_65_2008_Sevilla_Inconvenient_truth.pdf</a>.</li>
+					
+					<li>The State of the Birds. (2012). The state of the birds. Retrieved from <a href="http://www.stateofthebirds.org/2009/habitats/">http://www.stateofthebirds.org/2009/habitats/</a>.</li>
+					
+					<li>U.S. Census Bureau. (2012). Gross domestic product by state in current and real (2005) dollars by state.  Retrieved from <a href="http://www.census.gov/compendia/statab/cats/income_expenditures_poverty_wealth/gross_domestic_product_gdp.html">http://www.census.gov/compendia/statab/cats/income_expenditures_poverty_wealth/gross_domestic_product_gdp.html</a>.</li>
+					
+					<li>U.S. Census Bureau. (2012). Health expenditures. Retrieved from <a href="http://www.census.gov/compendia/statab/cats/health_nutrition/health_expenditures.html">http://www.census.gov/compendia/statab/cats/health_nutrition/health_expenditures.html</a>.</li>
+					
+					<li>U.S. Census Bureau. (2012). Income statistics. Retrieved from <a href="http://www.census.gov/hhes/www/income/data/statistics/">http://www.census.gov/hhes/www/income/data/statistics/"</a>.</li>
+					
+					<li>U.S. Census Bureau. (2012). Elementary and secondary schools-teacher, enrollment and pupil-teacher ratio.  Retrieved from <a href="http://www.census.gov/compendia/statab/cats/education.html">http://www.census.gov/compendia/statab/cats/education.html</a>.</li>
+					
+					<li>U.S. Department of Interior. (2012). Protected area data portal.  Retrieved from <a href="http://gis1.usgs.gov/csas/gap/viewer/padus/Map.aspx">http://gis1.usgs.gov/csas/gap/viewer/padus/Map.aspx</a>.</li>
+				</ul>
+			<a class="close-reveal-modal">&#215;</a>
+			</div>
+		</div> <!--close source modal-->
+	</div> <!--close container-->
+</body>
+
+<script src="js/foundation1.min.js"></script>
+
+<!-- Initialize JS Plugins -->
+<script src="js/app.js"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+	$("#header").scrollTop(0); //prevent page jumping
+	$(".accordion").hide();	
+});
+    /*$.ajax({
+            url: 'js/states.json',
+            dataType: 'json',
+            success: function(data) {
+                $.each(data, function() {
+                $.each(this, function(k, v) {
+                $('<option id="' + (this).pk + '">' + (this).fields.name + '</option>').appendTo('.selectState');
+                })
+                })
+            }
+            });*/
+    $.getJSON('../js/states.json', function(data) {
+        $.each(data, function(index) {
+             $('<option id="' + data[index].pk + '">' + data[index].fields.name + '</option>').appendTo('.selectState');
+        });
+    });
+    
+    $(".selectState").change(function() {
+    	$("#state-student-image").empty();
+    	$(".accordion").show();
+    	var selectedId = $('option:selected', this).attr('id');
+    	if (selectedId === 'default') { selectedId = 1;	};
+        $.ajax({
+            url: '../js/states.json',
+            dataType: 'json',
+            success: function(data) {
+            	var t = data[selectedId-1].fields; //simplify json calling
+            	var studentNum = parseInt(t.student_teacher_ratio); //give us a number
+            	$("[id^=state-name]").html(t.name); //general id selector because of multiple divs with same id
+            	$("#state-rainfall").html(t.rainfall); //normal single-id selector
+				$("#state-protected_land_image").html("<img src=" +t.protected_land_image+ " width='75%' />");
+				$("#state-protected-percentage").html(t.protected_land_percentage + "%");
+				$("#state-birds_in_region").html(t.birds_in_region);
+				$("#state-birds_in_region_text").html("*" + t.birds_in_region_text);
+				$("#state-temperature").html(t.temperature);
+				$("#state-rainfall_text").html("<img src='" + t.rainfall_text + "' width='90px'/>");
+				$("#state-humidity").html(t.humidity);
+				$("#state-revenue").html(t.revenue);
+				$("#state-income").html(t.income);
+				$("#state-student_teacher_text").html(t.student_teacher_text);
+				$("#state-teacher_salary").html(t.teacher_salary);
+				$("#state-literacy_rate").html(t.literacy_rate);
+				$("#state-health_budget").html(t.health_budget);
+				$("#state-health_budget_text").html("<img src='" + t.health_budget_text + "' width='100%'/>");
+				$("#state-health_expenditure").html(t.health_expenditure);
+				$("#state-income_text").html("<img src='" + t.income_text + "' width='60px'/>");
+				$("#state-industry").html("<img src='" + t.industry + "' />");
+				$("#state-teacher-image").html("<img src='" + t.teacher + "' width='80px' />");
+				for (i=0; i<studentNum; i++) { // loop to append student images to state div
+					$("#state-student-image").append("<img src='../images/greenPerson.png' width='25px' />")
+					};
+            },
+            error: function() { console.log("failure to load json file") }
+        });
+    });
+</script>
+
+</html>

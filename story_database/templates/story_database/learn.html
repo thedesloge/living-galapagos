@@ -54,31 +54,31 @@
 					<a href="#" class="ls-s1" style="top:20px; left:242px; slidedirection : top; durationin : 2000; delayin : 0;">
 
 					    <div onclick="TINY.box.show({iframe:'{{STATIC_URL}}iframes/learnSlider.html',boxid:'frameless',animate:true, width:1200, height:675, fixed:false})">
-					    <img src="{{ STATIC_URL }}images/icon_scale.png" width="100%"/>
+					    <img class="hexIcon" src="{{ STATIC_URL }}images/icon_scale.png" width="100%"/>
 					    </div>
 					</a>
 					
 					<a href="#" class="ls-s1" style="top:20px; left:410px; slidedirection : top; durationin :2000; delayin : 0;">
 
 					    <div onclick="TINY.box.show({iframe:'{{STATIC_URL}}iframes/learnSlider.html#1',boxid:'frameless',animate:true, width:1200, height:675, fixed:false})">
-					    <img src="{{ STATIC_URL }}images/icon_arrow.png" width="100%"/>
+					    <img class="hexIcon" src="{{ STATIC_URL }}images/icon_arrow.png" width="100%"/>
 					    </div>
 					</a>
 					
 					<a href="#" class="ls-s1" style="top:20px; left:578px; slidedirection : top; durationin :2000; delayin : 0;">
 					    <div onclick="TINY.box.show({iframe:'{{STATIC_URL}}iframes/learnSlider.html#2',boxid:'frameless',animate:true, width:1200, height:675, fixed:false})">
-					    <img src="{{ STATIC_URL }}images/icon_leaf.png" width="100%">
+					    <img class="hexIcon" src="{{ STATIC_URL }}images/icon_leaf.png" width="100%">
 					    </div>
 					</a>
 					
 					<a href="#" class="ls-s1" style="top:220px; left:492px; slidedirection : bottom; durationin :2000; delayin : 0;">
 					    <div onclick="TINY.box.show({iframe:'{{STATIC_URL}}iframes/learnSlider.html#4',boxid:'frameless',animate:true, width:1200, height:675, fixed:false})">
-					    <img src="{{ STATIC_URL }}images/icon_hand.png" width="100%">
+					    <img class="hexIcon" src="{{ STATIC_URL }}images/icon_hand.png" width="100%">
 					    </div>
 					</a>
 					<a href="#" class="ls-s1" style="top:220px; left:328px; slidedirection : bottom; durationin : 2000; delayin : 0;">
 					    <div onclick="TINY.box.show({iframe:'{{STATIC_URL}}iframes/learnSlider.html#3',boxid:'frameless',animate:true, width:1200, height:675, fixed:false})">
-					    <img src="{{ STATIC_URL }}images/icon_swirlygig.png" width="100%">
+					    <img class="hexIcon" src="{{ STATIC_URL }}images/icon_swirlygig.png" width="100%">
 					    </div>
 					</a>
 					
@@ -171,8 +171,9 @@
 		<div class="articleBoxThin">
 		<div class="textHead">Twitter</div>
 		
-             	 <iframe width="100%" height="521" scrolling=no frameborder="0" src="{{STATIC_URL}}/iframes/Twitter.html"></iframe>
-			
+            <a class="twitter-timeline" href="https://twitter.com/search?q=%23galapagos" data-widget-id="330859755872600064">Tweets about "#galapagos"</a>
+	    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+	
 		</div>
 		
 		
@@ -198,12 +199,12 @@
 		    
 		    <div class="six columns">
 			
-		    <!--<div onclick="TINY.box.show({iframe:'{{STATIC_URL}}iframes/invasive/invasive.html',boxid:'frameless',animate:true, width:1200, height:675, fixed:false})">
-			<div class="cookieGameInfo"></div>
+		    <div onclick="TINY.box.show({iframe:'{{STATIC_URL}}iframes/compare/comparison.html',boxid:'frameless',animate:true, width:1200, height:675, fixed:false})">
+			<div class="compare"></div>
 			<div class="gameHeadText">
-				Journey to the Galapagos
+				Galapagos Comparison
 			</div>
-		    </div>-->
+		    </div>
 		    </div>
 		    
 		    </div>
@@ -271,7 +272,13 @@
 		</div>
 		<!--<iframe width="100%" height="500" scrolling=yes frameborder="0" src="http://caseymmiller.com/galapagos/reports/reports.html"></iframe>-->
 			
-		
+<script>
+    $('.hexIcon').hover(function() {
+                        $(this).addClass("animated pulse");
+                }, function() {
+                        $(this).removeClass("animated pulse");
+                });
+</script>		
 		
                 
 	

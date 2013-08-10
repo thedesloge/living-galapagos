@@ -34,10 +34,11 @@ src: url("../Fonts/museosans_300.ttf");
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fff', endColorstr='#fff',GradientType=0 ); /* IE6-9 */
     background: linear-gradient(top, #fff 0%,#fff 100%); /* W3C */
     height: 60px;
-    padding: 10px;
+    padding: 30px 0px 30px 0px;
 }
 .post_results ul li:hover{
-    background: #f4f4f4;
+    /*background: #f4f4f4;*/
+    padding: 30px 0px 30px 0px;
 }
 .post_results ul li a{
     font-family:headline;
@@ -50,7 +51,7 @@ src: url("../Fonts/museosans_300.ttf");
     margin-bottom:5px;
 }
 .post_results ul li a:hover{
-    color: #9BBC6C;
+    /*color: #9BBC6C;*/
 }
 .post_results ul li p {
     color: #6DB0B0;
