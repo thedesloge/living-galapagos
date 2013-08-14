@@ -223,7 +223,8 @@
                             froogaloop.addEvent('play', function(data) {
 								if (!isPlaying){
 									$(".dim").css("display","block");
-                                                                        $(".leftbtn").toggleClass("hide");
+                                                                        //$(".leftbtn").toggleClass("hide");
+                                                                        $(".leftbtn").fadeTo('slow', 0);
 									//$(".dim").animate({ opacity: "1.0" }, 800);;
 									isPlaying = true;
 									//makePause(false);
@@ -251,7 +252,8 @@
                         function onPause() {
                             froogaloop.addEvent('pause', function(data) {
 								slideOpen();
-                                $(".leftbtn").toggleClass("hide");
+                                //$(".leftbtn").toggleClass("hide");
+                                $(".leftbtn").fadeTo('slow', 1);
                                 console.log('pause event');
 								makePause(true);
                             });
@@ -267,7 +269,7 @@
                                 if($('#homePlayBtn')){
                                 	$('#player_1').css({'width':'100%', 'height':'100%'});
                                 	$('#homePlayBtn').show();
-                                        $(".leftbtn").show();
+                                        $(".leftbtn").fadeTo('slow', 1);
                                         
                                 	//$(".dim").css("display", "none");
                     			}

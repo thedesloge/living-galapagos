@@ -293,6 +293,11 @@ text-transform:uppercase;
 	text-shadow: 2px 2px 2px #000;
 }
 
+.topNav li a:hover, .topNav li a:focus{
+	color:#88BF1A;
+	transition: 800ms;
+}
+
 .divNav {
 	font-family:Caviar Dreams;
 	font-size: 1.5em;

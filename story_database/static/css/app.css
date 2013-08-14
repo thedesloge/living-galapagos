@@ -171,6 +171,12 @@ h3 {
 .tabs dd a, .tabs dd.active a {
 	background:none;
 }
+
+.tabs dd a:hover{
+	color: #88BF1A;
+	transition: 800ms;
+}
+
 .tabs > dd {
 	-webkit-box-shadow: 1px 0 0 rgba(255, 255, 255, 0.2) inset;
 	-moz-box-shadow: 1px 0 0 rgba(255, 255, 255, 0.2) inset;
@@ -288,6 +294,12 @@ h3 {
 	margin: 0 0 15px 0;	
 	padding-bottom:40px;
 	
+}
+
+.underline{
+	border-bottom-style:solid;
+	border-bottom-width: 300px;
+	border-bottom-color: #373;
 }
 /* -----------------------------------------
    Page Name 1
@@ -760,6 +772,10 @@ icons-div-home ul{
 .twitPad{
 	position:absolute;
 	left: -5%;
+}
+
+.customisable-border {
+border-width: 0px  !important;
 }
 /* -----------------------------------------
    Pseudo Classes
